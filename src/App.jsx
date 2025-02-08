@@ -39,7 +39,7 @@ const counselors = [
       qualifications: 'BBA in Sales and Marketing', 
       experience: '8 years in sales and management', 
       contact: 'rajdeep@example.com',
-      bio: 'Rajdeep brings 8 years of experience in sales and management. He has a deep understanding of customer behavior and works closely with clients to help them achieve their goals.'
+      bio: 'Rajdeep has 8 years of experience in sales and management, with a strong understanding of customer behavior and client success.'
   }
 ];
 
