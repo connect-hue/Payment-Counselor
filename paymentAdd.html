@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academically Courses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            background-color: #004d99;
+            color: white;
+            padding: 1rem;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+        }
+        .nav-tabs {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2rem;
+        }
+        .tab {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .tab.active {
+            background-color: #0066cc;
+        }
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+        }
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            justify-content: center;
+        }
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #004d99;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .filter-btn:hover {
+            background-color: #0066cc;
+        }
+        .search-bar {
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .search-input {
+            width: 50%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .course-block {
+            background-color: white;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .course-banner {
+            height: 100px;
+            background-color: #004d99;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        .know-more-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background-color: #004d99;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .know-more-btn:hover {
+            background-color: #0066cc;
+        }
+        .details {
+            margin-top: 1rem;
+            position: relative;
+        }
+        .close-btn {      
+            background-color: #ff6666;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .close-btn:hover {
+            background-color: #ff4d4d;
+        }
+        .hidden {
+            display: none;
+        }
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #004d99;
+            color: white;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .filters {
+                justify-content: center;
+            }
+            .nav-tabs {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .main-content {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+            .filters {
+                flex-direction: column;
+                align-items: center;
+            }
+            .filter-btn {
+                width: 100%;
+            }
+            .search-input{
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <ul class="nav-tabs">
+                <li class="tab active" onclick="showTab('courses', this)">Courses</li>
+                <li class="tab" onclick="showTab('counselors', this)">Counselors</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section id="courses" class="course-list">
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8" style="font-family: 'Poppins', sans-serif;">
+                <button class="active-btn px-4 py-2 border  rounded hover:bg-blue-700 hover:text-white transition" id="medicalDoctorButton"  onclick="filterCourses('Doctor', this)">
+                    Medical Doctor
+                </button>
+                <button class=" active-btn hover:bg-blue-700 hover:text-white xl:px-8 px-6 py-3 border border-[#0FB995] text-sm sm:text-base rounded-md" id="dentistButton" onclick="filterCourses('Dentist', this)">
+                    Dentist
+                </button>
+                <button class="active-btn hover:bg-blue-700 hover:text-white xl:px-8 px-6 py-3 border border-[#0FB995] text-sm sm:text-base rounded-md" id="pharmacistButton" onclick="filterCourses('Pharmacist', this)">
+                    Pharmacist
+                </button>
+                <button class="active-btn hover:bg-blue-700 hover:text-white xl:px-8 px-6 py-3 border border-[#0FB995] text-sm sm:text-base rounded-md" id="nurseButton" onclick="filterCourses('Nurses', this)">
+                    Nurses
+                </button>
+                <button class="active-btn hover:bg-blue-700 hover:text-white xl:px-8 px-6 py-3 border border-[#0FB995] text-sm sm:text-base rounded-md" id="physiotherapistButton" onclick="filterCourses('Physiotherapist', this)">
+                    Physiotherapist
+                </button>
+                <button class="active-btn hover:bg-blue-700 hover:text-white xl:px-8 px-6 py-3 border border-[#0FB995] text-sm sm:text-base rounded-md" id="optometristButton" onclick="filterCourses('Optometrist', this)">
+                    Optometrist
+                </button>
+                <button class="active-btn hover:bg-blue-700 hover:text-white xl:px-8 px-6 py-3 border border-[#0FB995] text-sm sm:text-base rounded-md" id="labTechnicianButton" onclick="filterCourses('Lab Technician', this)">
+                    Lab Technician
+                </button>
+            </div>            
+            
+            <div class="search-bar">
+                <input type="text" id="search" placeholder="Search courses..." class="search-input" oninput="searchCourses()">
+            </div>
+
+            <div class="flex items-center justify-center ease-in-out">
+                <!-- Cards -->
+                <div id="courses-container" class="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 overflow-x-auto no-scrollbar md:max-w-[80%] lg:max-w-[90%] xl:max-w-full">
+                    <!-- Loop through the courses array -->
+                </div>
+            </div>
+            
+        </section>
+        <section id="details" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+            <div class="relative bg-white shadow-lg p-6 w-full h-full">
+                <!-- Close Button -->
+                <button class="absolute top-3 right-3 bg-red-500 hover:bg-red-600 rounded-full h-8 w-8 flex items-center justify-center text-white text-xl font-bold" onclick="closeDetails()">
+                    &times;
+                </button>
+        
+                <!-- Course Title -->
+                <h1 id="course-name" class="text-2xl font-semibold text-gray-800 mb-4 text-center">Course Name</h1>
+        
+                <!-- Course Details -->
+                <div class="space-y-4 border-t pt-4">
+                            
+                <!-- Course Description -->
+                <div class="flex items-center">
+                <div id="course-description" class="text-gray-600 mb-4 text-center">
+                    Description of the course will go here.
+                </div>
+                </div>
+                <div class="sm:flex sm:items-center sm:justify-evenly">
+                    <div class="flex items-center">
+                        <strong class="w-24 text-gray-700">Brochure:</strong>
+                        <a id="course-brochure" href="#" class="text-blue-600 hover:underline">Click here</a>
+                    </div>
+                    <div class="flex items-center">
+                        <strong class="w-24 text-gray-700">Fees:</strong>
+                        <span id="course-fees" class="text-gray-800 font-medium">1000 AUD</span>
+                    </div>
+                    <div class="flex items-center">
+                        <strong class="w-24 text-gray-700">Students:</strong>
+                        <span id="course-students" class="text-gray-800 font-medium">1000+</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="counselors" class="counselor-list hidden">
+            <h2 class="text-3xl font-bold mb-6 text-center">Counselors</h2>
+            <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="counselorGrid">
+                <!-- Counselors will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Academically. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const courses = [
+            { name: 'AMC Exam Preparation Course', category: 'Doctor', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '1000 AUD', students: '1000+' },
+            { name: 'Pharmacy Exam', category: 'Pharmacist', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '800 AUD', students: '800+' },
+            { name: 'Nursing Exam', category: 'Nurses', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '700 AUD', students: '700+' },
+            { name: 'AMC Exam Preparation Course', category: 'Doctor', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '1000 AUD', students: '1000+' },
+            { name: 'Pharmacy Exam', category: 'Pharmacist', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '800 AUD', students: '800+' },
+            { name: 'Nursing Exam', category: 'Nurses', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '700 AUD', students: '700+' }
+        ];
+    
+        const counselors = [
+    { 
+        name: 'Manish', 
+        id: '2234', 
+        designation: 'Sales', 
+        qualifications: 'MBA in Marketing', 
+        experience: '5 years in sales and counseling', 
+        contact: 'manish@example.com',
+        bio: 'Manish has extensive experience in sales and customer relationship management. He is passionate about helping individuals make informed decisions about their careers.'
+    },
+    { 
+        name: 'Sneha', 
+        id: '5678', 
+        designation: 'Sales', 
+        qualifications: 'B.Tech in Computer Science', 
+        experience: '3 years in technical sales and consulting', 
+        contact: 'sneha@example.com',
+        bio: 'Sneha specializes in technical sales and has worked with several tech companies. She is dedicated to understanding clients’ needs and providing them with the best solutions.'
+    },
+    { 
+        name: 'Rajdeep', 
+        id: '9012', 
+        designation: 'Sales', 
+        qualifications: 'BBA in Sales and Marketing', 
+        experience: '8 years in sales and management', 
+        contact: 'rajdeep@example.com',
+        bio: 'Rajdeep brings 8 years of experience in sales and management. He has a deep understanding of customer behavior and works closely with clients to help them achieve their goals.'
+    }
+];
+    
+        function generateCourses(filteredCourses) {
+            const container = document.getElementById('courses-container');
+            container.innerHTML = ''; // Clear previous results
+            filteredCourses.forEach(course => {
+                const courseCard = document.createElement('div');
+                courseCard.classList.add('flex-shrink-0', 'max-sm:w-full', 'border-dashed', 'border-blue-600', 'w-[200px]', 'sm:w-48', 'md:w-72', 'border', 'rounded-lg', 'shadow', 'hover:shadow-lg');
+    
+                courseCard.innerHTML = `
+                    <div class="p-4 flex flex-col items-start">
+                        <img src="${course.brochure}" alt="Course Image" class="mb-4 rounded-md bg-white border-8 max-sm:w-[70vw] w-[40vw] h-[25vh] border-[#0074FE]" />
+                        <div class="text-start">
+                            <h6 class="text-base font-medium text-start">${course.name}</h6>
+                            <ul class="mt-2 text-gray-600 text-sm sm:text-base">
+                                <li class="flex items-center font-semibold">
+                                    Category: ${course.category}
+                                </li>
+                                <li class="flex items-center">
+                                   Fees: ${course.fees}
+                                </li>
+                                <li class="flex items-center">
+                                    Students: ${course.students}
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="mt-4 px-4 py-2 w-full bg-blue-500 text-white text-sm sm:text-base rounded-md hover:bg-blue-600" onclick="showDetails('${course.name}')">
+                            Preview
+                        </button>
+                    </div>
+                `;
+                container.appendChild(courseCard);
+            });
+        }
+    
+        function showDetails(name) {
+            console.log("Hello")
+        // Find the course by name
+        const course = courses.find(c => c.name === name);
+        
+        if (course) {
+            // Update course details in the modal
+            document.getElementById('course-name').textContent = course.name;
+            document.getElementById('course-description').textContent = course.description;
+            document.getElementById('course-fees').textContent = course.fees;
+            document.getElementById('course-students').textContent = course.students;
+            document.getElementById('course-brochure').href = course.brochure;
+            
+            // Show the modal
+            document.getElementById('details').classList.remove('hidden');
+        }
+    }
+
+        function filterCourses(category,element) {
+            const filtered = courses.filter(course => course.category === category);
+            generateCourses(filtered);
+            
+            document.querySelectorAll('.active-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-700', 'text-white');
+                // btn.classList.add('border-blue-700', 'text-blue-700');
+            });
+            element.classList.add('bg-blue-700', 'text-white');
+            // element.classList.remove('border-blue-700', 'text-blue-700');
+            }
+    
+        function searchCourses() {
+            const searchText = document.getElementById('search').value.toLowerCase();
+            const filtered = courses.filter(course => 
+                course.name.toLowerCase().includes(searchText) ||
+                course.category.toLowerCase().includes(searchText) ||
+                course.description.toLowerCase().includes(searchText)
+            );
+            generateCourses(filtered);
+        }
+    
+        // Rest of the original JavaScript code remains unchanged below this point
+function renderCounselors() {
+    const counselorGrid = document.getElementById('counselorGrid');
+    counselorGrid.innerHTML = ''; // Clear any existing content
+
+    counselors.forEach(counselor => {
+        const counselorBlock = document.createElement('div');
+        counselorBlock.className = 'course-block bg-white p-6 rounded-lg shadow-xl mb-4 cursor-pointer transition-all duration-500 ease-in-out';
+
+        // Adding the basic information of the counselor (name, ID, designation)
+        counselorBlock.innerHTML = `
+            <div class="flex flex-col space-x-4">
+                <div class="text-left">
+                    <h3 class="text-2xl font-semibold">${counselor.name}</h3>
+                    <p class="text-gray-600 text-lg">ID: ${counselor.id}</p>
+                    <p class="text-gray-600 text-lg">Designation: ${counselor.designation}</p>
+                    <p class="text-gray-600 text-lg">Contact: ${counselor.contact}</p>
+                </div>
+            </div>
+            <button class="enquire-btn mt-4 py-2 px-6 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300" onclick="enquire(${counselor.id}, this)">Enquire</button>
+        `;
+
+        counselorGrid.appendChild(counselorBlock);
+    });
+}
+
+function enquire(userId, button) {
+    // Find the counselor block (the parent div of the clicked button)
+    const counselorBlock = button.closest('.course-block');
+    
+    // Find the counselor based on user ID
+    const counselor = counselors.find(c => c.id == userId);
+    
+    // Smooth transition for background color change
+    counselorBlock.style.transition = 'background-color 0.5s ease-in-out';
+    
+    // Change the background color to blue
+    counselorBlock.style.backgroundColor = 'blue';
+    
+    // Update the content to show the 8-digit user ID, qualifications, and experience
+    counselorBlock.innerHTML = `
+        <div class="flex flex-col space-x-4">
+            <div class="text-left">
+                <h3 class="text-2xl font-semibold text-white">${counselor.name}</h3>
+                <p class="text-white text-lg">User ID: ${userId.toString().padStart(8, '0')}</p>
+                <p class="text-white text-lg">Qualifications: ${counselor.qualifications}</p>
+                <p class="text-white text-lg">Experience: ${counselor.experience}</p>
+                <p class="text-white text-lg">Contact: ${counselor.bio}</p>
+            </div>
+        </div>
+        
+        <button class="mt-4 py-2 px-6 bg-gray-500 text-white rounded-full hover:bg-gray-600 transition duration-300" onclick="renderCounselors()">Back</button>
+    `;
+}
+    
+        function showTab(tabId, element) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(tabId).classList.remove('hidden');
+    
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            element.classList.add('active');
+    
+            if (tabId === 'courses') generateCourses(courses);
+            if (tabId === 'counselors') renderCounselors();
+        }
+    
+        function closeDetails() {
+            document.querySelector('#details').classList.add('hidden');
+            document.querySelector('#courses').classList.remove('hidden');
+        }
+
+        // Initial render
+        generateCourses(courses);
+    </script>
+</body>
+</html>
