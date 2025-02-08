@@ -1,14 +1,43 @@
 import React, { useState } from "react";
 
-const CounselorList = ({ counselors }) => {
-  const [flippedCounselorId, setFlippedCounselorId] = useState(null);
-
-  const handleFlip = (id) => {
-    setFlippedCounselorId(flippedCounselorId === id ? null : id);
-  };
-
+const counselors = [
+  { 
+      name: 'Manish', 
+      id: '2234', 
+      designation: 'Sales', 
+      qualifications: 'MBA in Marketing', 
+      experience: '5 years in sales and counseling', 
+      contact: 'manish@example.com',
+      bio: 'Manish has extensive experience in sales and customer relationship management. He is passionate about helping individuals make informed decisions about their careers.'
+  },
+  { 
+      name: 'Sneha', 
+      id: '5678', 
+      designation: 'Sales', 
+      qualifications: 'B.Tech in Computer Science', 
+      experience: '3 years in technical sales and consulting', 
+      contact: 'sneha@example.com',
+      bio: 'Sneha specializes in technical sales and has worked with several tech companies. She is dedicated to understanding clients’ needs and providing them with the best solutions.'
+  },
+  { 
+      name: 'Rajdeep', 
+      id: '9012', 
+      designation: 'Sales', 
+      qualifications: 'BBA in Sales and Marketing', 
+      experience: '8 years in sales and management', 
+      contact: 'rajdeep@example.com',
+      bio: 'Rajdeep brings 8 years of experience in sales and management. He has a deep understanding of customer behavior and works closely with clients to help them achieve their goals.'
+  }
+];
+const CounselorList = () => {
+  
+    const [flippedCounselorId, setFlippedCounselorId] = useState(null);
+  
+    const handleFlip = (id) => {
+      setFlippedCounselorId(flippedCounselorId === id ? null : id);
+    };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 mt-24">
       {counselors.map((counselor) => (
         <div key={counselor.id} className="relative w-full h-64 perspective">
           <div
