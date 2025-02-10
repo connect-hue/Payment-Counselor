@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import userImage from '../assets/user.jpg';
 
 const counselors = [
   { 
@@ -77,9 +78,7 @@ const CounselorList = () => {
             >
               <h3 className="text-xl font-semibold">{counselor.name}</h3>
               <p >ID: {counselor.id}</p>
-              <p >Qualification: {counselor.qualifications}</p>
-              <p>Experience: {counselor.experience}</p>
-              <p >Bio:{counselor.bio}</p>
+              <img src={userImage} className="h-20"></img>
               <button
                 onClick={() => handleFlip(counselor.id)}
                 className="mt-2 px-4 py-2 bg-red-500 text-white rounded"

@@ -12,6 +12,8 @@ import CounselorList from "./Components/CounselorList";
 
 import "./global.css";
 import FilterSection from "./Components/Filtersection";
+import CourseDetailsPage from "./Pages/CourseDetailsPage";
+
 
 
 // const filterData = [
@@ -54,12 +56,12 @@ import FilterSection from "./Components/Filtersection";
 // ];
 
 const courses = [
-  { name: 'AMC Exam Preparation Course', category: 'Doctor', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '1000 AUD', students: '1000+' },
-  { name: 'Pharmacy Exam', category: 'Pharmacist', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '800 AUD', students: '800+' },
-  { name: 'Nursing Exam', category: 'Nurses', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '700 AUD', students: '700+' },
-  { name: 'AMC Exam Preparation Course', category: 'Doctor', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '1000 AUD', students: '1000+' },
-  { name: 'Pharmacy Exam', category: 'Pharmacist', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '800 AUD', students: '800+' },
-  { name: 'Nursing Exam', category: 'Nurses', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '700 AUD', students: '700+' }
+  { name: 'AMC Exam Preparation Course', category: 'Doctor', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '1000 AUD', students: '1000+' , link:"#"},
+  { name: 'Pharmacy Exam', category: 'Pharmacist', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '800 AUD', students: '800+' , link:"#"},
+  { name: 'Nursing Exam', category: 'Nurses', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '700 AUD', students: '700+' , link:"#"},
+  { name: 'AMC Exam Preparation Course', category: 'Doctor', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '1000 AUD', students: '1000+' , link:"#"},
+  { name: 'Pharmacy Exam', category: 'Pharmacist', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '800 AUD', students: '800+' , link:"#"},
+  { name: 'Nursing Exam', category: 'Nurses', description: ' Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease', brochure: './client/public/Assets/Courses/06-trinity college dublin.jpeg', fees: '700 AUD', students: '700+', link:"#" }
 ];
 function App() {
 
@@ -74,7 +76,7 @@ function App() {
               <>
                 <FilterSection />
                 <SearchBar />
-                <CourseList courses={courses}   />
+                {/* <CourseList courses={courses}   /> */}
               </>
           
           
@@ -85,6 +87,7 @@ function App() {
         <Route path="/counselors" element={<CounselorList/>}/>
        
         <Route path="/preview/:name" element={<Filter />} />
+        <Route path="/:courseName" element={<CourseDetailsPage/>} />
       </Routes>
       <Footer/>
     </BrowserRouter>
