@@ -37,9 +37,9 @@ const CounselorList = () => {
       setFlippedCounselorId(flippedCounselorId === id ? null : id);
     };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 mt-24">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4  mt-[5%] h-[79vh] ">
       {counselors.map((counselor) => (
-        <div key={counselor.id} className="relative w-full h-64 perspective">
+        <div key={counselor.id} className="relative w-full h-64 perspective ">
           <div
             className={`relative w-full h-full transition-transform duration-500 transform ${
               flippedCounselorId === counselor.id ? "rotate-y-180" : ""
