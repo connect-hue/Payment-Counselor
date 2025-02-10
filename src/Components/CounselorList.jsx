@@ -38,20 +38,20 @@ const CounselorList = () => {
       setFlippedCounselorId(flippedCounselorId === id ? null : id);
     };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4  mt-[5%] h-[79vh] ">
+    <div className="grid grid-cols-1 md:grid-cols-3  gap-4 p-4  mt-20 overflow-auto min-h-screen z-0 relative ">
       {counselors.map((counselor) => (
-        <div key={counselor.id} className="relative w-full h-64 perspective ">
+        <div key={counselor.id} className="w-full h-64  ">
           <div
-            className={`relative w-full h-full transition-transform duration-500 transform ${
+            className={` w-full h-full transition-transform duration-500 transform ${
               flippedCounselorId === counselor.id ? "rotate-y-180" : ""
             }`}
             style={{
-              transformStyle: "preserve-3d",
+              transformStyle: "preserve-3d"
             }}
           >
             {/* Front of the Card */}
             <div
-              className="absolute inset-0 w-full h-full p-4 border rounded-lg shadow-md bg-white flex flex-col justify-between"
+              className="absolute border  border-dashed border-blue-600  inset-0 w-full h-full p-4 rounded-lg shadow-md bg-white flex flex-col justify-between"
               style={{
                 backfaceVisibility: "hidden",
               }}
@@ -70,18 +70,18 @@ const CounselorList = () => {
 
             {/* Back of the Card */}
             <div
-              className="absolute inset-0 w-full h-full p-4 border rounded-lg shadow-md bg-white flex flex-col justify-start items-start rotate-y-180"
+              className=" inset-0 w-full h-full p-4   border  border-dashed border-blue-600 rounded-lg shadow-md bg-white flex flex-col justify-start items-start rotate-y-180"
               style={{
                 backfaceVisibility: "hidden",
                 transform: "rotateY(180deg)",
               }}
             >
-              <h3 className="text-xl font-semibold">{counselor.name}</h3>
-              <p >ID: {counselor.id}</p>
-              <img src={userImage} className="h-20"></img>
+              {/* <h3 className="text-xl font-semibold">{counselor.name}</h3>
+              <p >ID: {counselor.id}</p> */}
+              <img src={userImage} className="h-44  object-contain w-full"></img>
               <button
                 onClick={() => handleFlip(counselor.id)}
-                className="mt-2 px-4 py-2 bg-red-500 text-white rounded"
+                className="mt-2 text-center w-full px-4 py-2 bg-red-500 text-white rounded"
               >
                 Close
               </button>
