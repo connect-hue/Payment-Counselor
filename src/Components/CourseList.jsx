@@ -4,11 +4,11 @@ import CourseDetails from "./CourseDetails";
 
 
 
-const CourseList = ({courses}) => {
+const CourseList = ({ courses }) => {
   const [selectedCourse, setSelectedCourse] = useState(null);
 
   return (
-    <div className="p-8">
+    <div className={`p-8 ${courses.length > 2 ? '' : 'h-screen'}`}>
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {courses.map((course, index) => (
           <CourseCard key={index} course={course} onClick={() => setSelectedCourse(course)} />

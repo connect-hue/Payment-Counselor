@@ -1,13 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 const filterData = [
+  { name: "Pharmacist", img: "/Assets/pharmacist.jpg" },
+  { name: "Nursing", img: "/Assets/nurses.jpg" },
+  { name: "Physiotherapist", img: "/Assets/physiotherapist.jpg" },
   { name: "Medical Doctor", img: "/Assets/doctor.jpg" },
   { name: "Dentist", img: "/Assets/dentist.jpg" },
-  { name: "Pharmacist", img: "/Assets/pharmacist.jpg" },
-  { name: "Nurses", img: "/Assets/nurses.jpg" },
-  { name: "Physiotherapist", img: "/Assets/physiotherapist.jpg" },
+  { name: "Veterinary", img: "/Assets/labtech.jpg" },
   { name: "Optometrist", img: "/Assets/optometrist.jpg" },
-  { name: "Lab Technician", img: "/Assets/labtech.jpg" }
+  { name: "Healthcare Professionals", img: "/Assets/optometrist.jpg" },
 ];
 const FilterSection = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const FilterSection = () => {
 
 
   return (
-    <div className="h-screen">
+    <div className="xl:h-screen">
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4  p-8 mt-24">
         {filterData.map((data, index) => (
           <div
