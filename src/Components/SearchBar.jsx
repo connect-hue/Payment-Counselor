@@ -3,12 +3,17 @@ import React from "react";
 const SearchBar = ({ onSearch }) => {
   return (
     <div className="flex justify-center my-4">
-      <input
-        type="text"
-        placeholder="Search courses..."
-        className="w-1/2 p-2 border border-gray-300 rounded"
-        onChange={(e) => onSearch(e.target.value)}
-      />
+      <div className="w-1/2 flex border border-gray-300 rounded p-2 items-center">
+        <svg width="28" height="28" viewBox="0 0 28 33" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5">
+          <path fillRule="evenodd" clipRule="evenodd" d="M14.0623 0.10498C17.6659 0.10498 21.2702 1.46455 24.0107 4.18736C29.0973 9.24124 29.4612 17.2504 25.1064 22.7294L32.5152 30.0904C32.6689 30.2427 32.7908 30.4236 32.874 30.6228C32.9572 30.822 33 31.0355 33 31.2511C33 31.4668 32.9572 31.6803 32.874 31.8794C32.7908 32.0786 32.6689 32.2595 32.5152 32.4118C32.3619 32.5649 32.1796 32.6865 31.9789 32.7694C31.7781 32.8523 31.5628 32.895 31.3454 32.895C31.128 32.895 30.9127 32.8523 30.712 32.7694C30.5112 32.6865 30.3289 32.5649 30.1756 32.4118L22.7667 25.0507C17.2514 29.371 9.19141 29.0164 4.10753 23.9653C-1.37346 18.5197 -1.367 9.63298 4.11413 4.18736C6.85462 1.46455 10.4587 0.10498 14.0623 0.10498ZM14.059 3.35808C11.305 3.35595 8.55059 4.40278 6.44065 6.49911C2.22076 10.6918 2.22076 17.4513 6.44065 21.6439C10.6605 25.8366 17.4575 25.8302 21.6774 21.6377C25.8973 17.4451 25.8973 10.7016 21.6774 6.50892C19.5674 4.41259 16.813 3.36022 14.059 3.35808Z" fill="black" />
+        </svg>
+        <input
+          type="text"
+          placeholder="Search courses..."
+          className="w-full rounded focus:outline-none pl-2"
+          onChange={(e) => onSearch(e.target.value)}
+        />
+      </div>
     </div>
   );
 };

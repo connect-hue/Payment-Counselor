@@ -311,7 +311,7 @@ const Filter = () => {
     if (location === "All") {
       setFilteredCourses(courses);
     } else {
-      const filtered = courses.filter((course) => course.country === location);
+      const filtered = courses.filter((course) => course.location === location);
       setFilteredCourses(filtered);
     }
   };
@@ -319,19 +319,23 @@ const Filter = () => {
   return (
     <>
       <h1 className="text-2xl mt-24 font-bold px-4">{name}</h1>
-      <SearchBar />
-      {filteredCourses.length > 2 &&
-        <div className="flex justify-center flex-wrap gap-4 my-4">
+      {courses.length > 2 &&
+        <div
+          className="flex-wrap justify-center gap-2 sm:gap-4 mb-8 max-lg:hidden flex"
+          style={{ fontFamily: "Poppins, sans-serif" }}
+        >
           {filterData.map((filter) => (
             <button
               key={filter.name}
-              className={`px-4 py-2 rounded-md hover:bg-blue-600 text-white ${selectedFilter === filter.name ? "bg-blue-700" : "bg-blue-500"}`}
+              className={`xl:px-8 px-6 py-3 border border-[#0FB995] text-sm sm:text-base rounded-md ${selectedFilter === filter.name ? "bg-[#0FB995] text-white" : "text-black"
+                }`}
               onClick={() => handleFilterClick(filter.name)}
             >
               {filter.name}
             </button>
           ))}
         </div>}
+      <SearchBar />
       <CourseList courses={filteredCourses} />
     </>
   );
