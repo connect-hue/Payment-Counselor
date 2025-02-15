@@ -8,7 +8,7 @@ const filterData = [
   { name: "Dentist", img: "/Assets/dentist.jpg" },
   { name: "Veterinary", img: "/Assets/labtech.jpg" },
   { name: "Optometrist", img: "/Assets/optometrist.jpg" },
-  { name: "Healthcare Professionals", img: "/Assets/optometrist.jpg" },
+  { name: "Healthcare Professionals", img: "/Assets/healthcare.png" },
 ];
 const FilterSection = () => {
   const navigate = useNavigate();
