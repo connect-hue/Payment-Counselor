@@ -8,11 +8,13 @@ function CourseDetailsPage() {
     return (
         <div className="flex-col items-center mt-25 justify-center w-[85%] mx-auto">
             <div className="flex justify-center items-center w-full">
-                <img
-                    src={CourseImage}
-                    alt="Course Description"
-                    className="h-[80%] rounded "
-                />
+                <a href={`${coursesData.link}`} target="blank">
+                    <img
+                        src={CourseImage}
+                        alt="Course Description"
+                        className="h-[80%] rounded "
+                    />
+                </a>
             </div>
             <div className="mt-8">
                 <h1 className=" text-2xl lg:text-4xl mb-2 font-semibold text-[#3C3C3C]" style={{ fontFamily: "Poppins, sans-serif" }}>{coursesData.name}</h1>

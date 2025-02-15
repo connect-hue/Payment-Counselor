@@ -20,7 +20,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/opra_exam.jpeg',
       fees: '1200 AUD',
       students: '1500+',
-      location: 'Australia'
+      location: 'Australia',
+      link: 'https://youtu.be/N3gZs_jLqrk'
     },
     {
       name: 'GPAT Exam Preparation Course',
@@ -29,7 +30,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/gpat_exam.jpeg',
       fees: '8000 INR',
       students: '2000+',
-      location: 'India'
+      location: 'India',
+      link: 'https://youtu.be/4e3jHkSHUgo'
     },
     {
       name: 'OPRA Exam Crash Course',
@@ -38,7 +40,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/opra_crash_course.jpeg',
       fees: '600 AUD',
       students: '800+',
-      location: 'Australia'
+      location: 'Australia',
+      link: 'https://youtu.be/N3gZs_jLqrk'
     },
     {
       name: 'NIPER JEE Exam Preparation Course',
@@ -47,7 +50,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/niper_jee.jpeg',
       fees: '9000 INR',
       students: '1200+',
-      location: 'India'
+      location: 'India',
+      link: 'https://youtu.be/RrmAJdaIWrA'
     },
     {
       name: 'New Zealand OPRA Exam Coaching and Preparation Course',
@@ -56,7 +60,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/nz_opra_exam.jpeg',
       fees: '1300 NZD',
       students: '1000+',
-      location: 'New Zealand'
+      location: 'New Zealand',
+      link: 'https://youtu.be/4bhDplI-XSY'
     },
     {
       name: 'PSI Pharmacy Equivalence Exam (TCQR)',
@@ -65,7 +70,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/psi_exam.jpeg',
       fees: '1100 EUR',
       students: '900+',
-      location: 'Ireland'
+      location: 'Ireland',
+      link: 'https://youtu.be/btnftDz7mfU'
     },
     {
       name: 'Pharmaceutical Calculations Course',
@@ -74,7 +80,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/pharma_calculations.jpeg',
       fees: '500 USD',
       students: '1500+',
-      location: 'Global'
+      location: 'Global',
+      link: 'https://youtu.be/jDOV5ZXpZHE'
     },
     {
       name: 'SPLE Preparation Course',
@@ -83,7 +90,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/sple_exam.jpeg',
       fees: '1400 SAR',
       students: '1100+',
-      location: 'Saudi Arabia'
+      location: 'Saudi Arabia',
+      link: 'https://academically.com/pharmacist/sple-preparation-course/'
     },
     {
       name: 'Oman Prometric Exam Preparation Course for Pharmacists',
@@ -92,7 +100,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/oman_prometric.jpeg',
       fees: '800 OMR',
       students: '700+',
-      location: 'Oman'
+      location: 'Oman',
+      link: 'https://youtu.be/HJDO7abS9mg'
     },
     {
       name: 'DHA Exam Preparation Course for Pharmacists',
@@ -101,7 +110,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/dha_exam.jpeg',
       fees: '950 AED',
       students: '1300+',
-      location: 'Dubai'
+      location: 'Dubai',
+      link: ''
     },
     {
       name: 'Australian Pharmacy Intern Written & Oral Exam Preparation Course',
@@ -110,7 +120,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/australian_pharmacy_intern.jpeg',
       fees: '1000 AUD',
       students: '1200+',
-      location: 'Australia'
+      location: 'Australia',
+      link: ''
     },
     {
       name: 'PEBC Exam Preparation Course',
@@ -119,7 +130,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/pebc_exam.jpeg',
       fees: '1100 CAD',
       students: '1400+',
-      location: 'Canada'
+      location: 'Canada',
+      link: 'https://academically.com/pharmacist/pebc-exam-become-a-pharmacist-in-canada/'
     },
     {
       name: 'MOH Exam Preparation Course',
@@ -128,7 +140,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/moh_exam.jpeg',
       fees: '900 AED',
       students: '900+',
-      location: 'UAE'
+      location: 'UAE',
+      link: 'https://youtu.be/V0JOB_gw_pA'
     },
     {
       name: 'Qatar Prometric Exam Preparation Course for Pharmacists',
@@ -137,7 +150,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/qatar_prometric.jpeg',
       fees: '950 QAR',
       students: '1100+',
-      location: 'Qatar'
+      location: 'Qatar',
+      link: ''
     },
     {
       name: 'Kuwait MOH Pharmacy Exam Coaching & Preparation Course',
@@ -146,7 +160,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/kuwait_moh_exam.jpeg',
       fees: '1000 KWD',
       students: '1100+',
-      location: 'Kuwait'
+      location: 'Kuwait',
+      link: ''
     },
     {
       name: 'Bahrain Pharmacy Licensure Examination (BPLE) Preparation Course',
@@ -155,7 +170,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/bple_exam.jpeg',
       fees: '1100 BHD',
       students: '1000+',
-      location: 'Bahrain'
+      location: 'Bahrain',
+      link: ''
     }
   ],
   'Nursing': [
@@ -166,7 +182,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/nclex_exam.jpeg',
       fees: '1000 USD',
       students: '1800+',
-      location: 'Australia'
+      location: 'Australia',
+      link: 'https://youtu.be/2ScjWYC885E'
     },
     {
       name: 'NCLEX Exam Preparation Crash Course',
@@ -175,7 +192,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/nclex_crash_course.jpeg',
       fees: '700 USD',
       students: '1200+',
-      location: 'Australia'
+      location: 'Australia',
+      link: 'https://youtu.be/2ScjWYC885E'
     }
   ],
   'Physiotherapist': [
@@ -186,7 +204,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/apc_written_assessment.jpeg',
       fees: '1100 AUD',
       students: '1300+',
-      location: 'Australia'
+      location: 'Australia',
+      link: 'https://youtu.be/PmYNLZTnieU'
     },
     {
       name: 'HCPC Registration for Physiotherapists',
@@ -195,7 +214,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/hcpc_registration.jpeg',
       fees: '900 GBP',
       students: '1000+',
-      location: 'United Kingdom'
+      location: 'United Kingdom',
+      link: ''
     }
   ],
   'Medical Doctor': [
@@ -206,7 +226,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/amc_exam.jpeg',
       fees: '1500 AUD',
       students: '1800+',
-      location: 'Australia'
+      location: 'Australia',
+      link: 'https://youtu.be/cyKpBv_xGl0'
     },
     {
       name: 'AMC Clinical Exam Preparation Course',
@@ -215,7 +236,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/amc_clinical_exam.jpeg',
       fees: '1800 AUD',
       students: '1500+',
-      location: 'Australia'
+      location: 'Australia',
+      link: ''
     },
     {
       name: 'NZREX Clinical Exam Preparation Course',
@@ -224,7 +246,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/nzrex_exam.jpeg',
       fees: '1700 NZD',
       students: '1300+',
-      location: 'New Zealand'
+      location: 'New Zealand',
+      link: 'https://youtu.be/ImJ4T04FKwg'
     },
     {
       name: 'USMLE Exam Preparation Course',
@@ -233,7 +256,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/usmle_exam.jpeg',
       fees: '2000 USD',
       students: '1900+',
-      location: 'USA'
+      location: 'USA',
+      link: 'https://youtu.be/4fIn4F4jl2k'
     },
     {
       name: 'PLAB Exam Preparation Course',
@@ -242,7 +266,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/plab_exam.jpeg',
       fees: '1600 GBP',
       students: '1400+',
-      location: 'UK'
+      location: 'UK',
+      link: 'https://youtu.be/5yxr-9ZkHfo'
     },
     {
       name: 'AMC Exam Preparation Crash Course',
@@ -251,7 +276,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/amc_crash_course.jpeg',
       fees: '1400 AUD',
       students: '1200+',
-      location: 'Australia'
+      location: 'Australia',
+      link: 'https://youtu.be/cyKpBv_xGl0'
     }
   ],
   'Dentist': [
@@ -262,7 +288,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/adc_exam.jpeg',
       fees: '1800 AUD',
       students: '1600+',
-      location: 'Australia'
+      location: 'Australia',
+      link: 'https://academically.com/dentist/adc-exam-become-a-registered-dentist-in-australia/'
     }
   ],
   'Veterinary': [
@@ -273,7 +300,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/ave_exam.jpeg',
       fees: '1900 AUD',
       students: '1400+',
-      location: 'Australia'
+      location: 'Australia',
+      link: ''
     }
   ],
   'Optometrist': [
@@ -284,7 +312,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/coe_exam.jpeg',
       fees: '1700 AUD',
       students: '1300+',
-      location: 'Australia'
+      location: 'Australia',
+      link: 'https://youtu.be/d_a16bfimtQ'
     }
   ],
 
@@ -296,7 +325,8 @@ const coursesObject = {
       brochure: './client/public/Assets/Courses/doh_exam.jpeg',
       fees: '1600 AED',
       students: '1500+',
-      location: 'Global'
+      location: 'Global',
+      link: 'https://youtu.be/1sdqo4e97HE'
     }
   ]
 };
