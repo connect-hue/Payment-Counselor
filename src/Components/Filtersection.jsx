@@ -19,24 +19,26 @@ const FilterSection = () => {
 
 
   return (
-    <div className="xl:h-screen">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4  p-8 mt-24">
+    <div className="xl:h-screen p-8 mt-20">
+      <h1 className="text-center text-3xl font-semibold">Our Courses</h1>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 mt-8">
         {filterData.map((data, index) => (
           <div
             key={index}
-            className="flex-shrink-0   border-dashed border-blue-600 sm:w-48 md:w-72 border rounded-lg shadow hover:shadow-lg "
+            className="flex-shrink-0 border-[#00D9B7] sm:w-72 md:w-84 xl:w-98 border rounded-lg shadow hover:shadow-lg "
           >
             <div className="p-4 flex flex-col ">
               <img
                 src={data.img}
                 alt={data.name}
-                className="mb-4 rounded-md bg-white border-8 max-sm:w-[70vw] w-full h-[120px] border-[#0074FE] object-cover"
+                className="mb-4 rounded-md bg-white max-sm:w-[70vw] w-full h-[250px] object-cover"
               />
               <div className="text-center">
-                <h6 className="text-base font-medium">{data.name}</h6>
+                <h5 className="text-lg font-semibold text-[#030A21]"
+                  style={{ fontFamily: "'Poppins', sans-serif" }}>{data.name}</h5>
               </div>
               <button
-                className="mt-4 px-4 py-2 w-full bg-blue-500 text-white text-sm sm:text-base rounded-md hover:bg-blue-600"
+                className="mt-4 px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7]"
                 onClick={() => handlePreviewClick(data.name)} // Pass item's ID
               >
                 Preview
