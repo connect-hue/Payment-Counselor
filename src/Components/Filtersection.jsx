@@ -19,13 +19,13 @@ const FilterSection = () => {
 
 
   return (
-    <div className="xl:h-screen p-8 mt-20">
+    <div className="h-full p-8 mt-20 ">
       <h1 className="text-center text-3xl font-semibold">Our Courses</h1>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 mt-8">
+      <div className="  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4 gap-4 mt-4 overflow-auto z-0 relative p-4">
         {filterData.map((data, index) => (
           <div
             key={index}
-            className="flex-shrink-0 border-[#00D9B7] sm:w-72 md:w-84 xl:w-98 border rounded-lg shadow hover:shadow-lg "
+            className="w-full h-100 max-sm:h-110 border border-[#00D9B7]  "
           >
             <div className="p-4 flex flex-col ">
               <img
@@ -38,8 +38,8 @@ const FilterSection = () => {
                   style={{ fontFamily: "'Poppins', sans-serif" }}>{data.name}</h5>
               </div>
               <button
-                className="mt-4 px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7]"
-                onClick={() => handlePreviewClick(data.name)} // Pass item's ID
+                className="mt-4 px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7] cursor-pointer"
+                onClick={() => handlePreviewClick(data.name)} 
               >
                 Preview
               </button>

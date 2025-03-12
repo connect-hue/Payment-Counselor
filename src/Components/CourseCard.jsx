@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 const CourseCard = ({ course, onClick }) => {
   return (
     <div
-      className="flex-shrink-0 border-[#00D9B7] sm:w-72 md:w-84 xl:w-98 border rounded-lg shadow hover:shadow-lg ">
+      className="w-full h-114 max-sm:h-120 border border-[#00D9B7]  ">
       <div className="p-4 flex flex-col ">
         <img src={course.brochure} alt={course.name}
           className="mb-4 rounded-md bg-white max-sm:w-[70vw] w-full h-[250px] object-cover" />
         <div className="text-left">
-          <h3 className="font-semibold text-lg mt-2">{course.name}</h3>
+          <h3 className="font-semibold text-lg mt-2 line-clamp-1">{course.name}</h3>
         </div>
         <div className="flex justify-start gap-x-4">
           <p className="text-gray-600 p-2 rounded text-sm" style={{ background: 'rgba(153, 246, 228, 0.3)' }}>{course.category}</p>
@@ -22,7 +22,7 @@ const CourseCard = ({ course, onClick }) => {
         </div>
         <Link to={`/${course.name}`} state={{ course }}>
           <button
-            className="mt-4 px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7]"
+            className="mt-4 px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7] cursor-pointer"
           >
             Preview
           </button>

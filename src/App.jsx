@@ -64,11 +64,11 @@ function App() {
         <Route path="/" element={
           <>
 
-            <>
+            <div className="">
               <FilterSection />
               {/* <SearchBar /> */}
               {/* <CourseList courses={courses}   /> */}
-            </>
+            </div>
 
 
 
