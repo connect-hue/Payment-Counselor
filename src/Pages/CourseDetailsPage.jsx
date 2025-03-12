@@ -6,7 +6,7 @@ function CourseDetailsPage() {
     const coursesData = location.state?.course;
     console.log(coursesData);
     return (
-        <div className="flex-col items-center mt-25 justify-center w-[85%] mx-auto">
+        <div className=" flex-col items-center mt-25 justify-center w-[85%] mx-auto">
             <div className="flex justify-center items-center w-full">
                 <a href={`${coursesData.link}`} target="blank">
                     <img
@@ -16,7 +16,7 @@ function CourseDetailsPage() {
                     />
                 </a>
             </div>
-            <div className="mt-8">
+            <div className="mt-8 mb-24">
                 <h1 className=" text-2xl lg:text-4xl mb-2 font-semibold text-[#3C3C3C]" style={{ fontFamily: "Poppins, sans-serif" }}>{coursesData.name}</h1>
                 <p className="!mb-6 text-[#4E5566]" style={{ fontFamily: "Outfit, sans-serif" }}>{coursesData.description}</p>
                 <div className="md:flex-row flex flex-col gap-4 sm:justify-between ">

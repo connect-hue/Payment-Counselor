@@ -9,7 +9,7 @@ const CourseList = ({ courses }) => {
 
   return (
     <div className={`p-8 ${courses.length > 8 ? '' : 'h-screen'}`}>
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4 gap-4 mt-4 overflow-auto z-0 relative p-4">
         {courses.map((course, index) => (
           <CourseCard key={index} course={course} onClick={() => setSelectedCourse(course)} />
         ))}
