@@ -15,9 +15,9 @@ const coursesObject = {
   'Pharmacist': [
     {
       name: 'OPRA Exam Preparation Course',
-      category: 'Pharmacist',
+      category: 'Australia',
       description: 'Pass the Overseas Pharmacist Readiness Assessment (OPRA) exam on your first attempt with the best online OPRA coaching. Our OPRA preparation course includes online classes, extensive study resources, and AI-driven mock tests, making it the ideal OPRA Exam Preparation Course for international pharmacists seeking to move to and practise in Australia. Enrol in our trusted course today and confidently pass the Overseas Pharmacist Readiness Assessment (OPRA) exam with ease.',
-      brochure: './client/public/Assets/Courses/opra_exam.jpeg',
+      brochure: '/CourseImage/image.png',
       fees: '1200 AUD',
       students: '1500+',
       location: 'Australia',
