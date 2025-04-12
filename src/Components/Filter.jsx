@@ -21,6 +21,7 @@ const coursesObject = {
       fees: '1200 AUD',
       students: '1500+',
       location: 'Australia',
+      courseImage: 'https://assets.academically.com/course/BGqIOppn2my3OG7VuqtmfGWKPh01c5oXK2FuCgmE.jpg',
       link: 'https://youtu.be/N3gZs_jLqrk'
     },
     {
@@ -31,6 +32,7 @@ const coursesObject = {
       fees: '8000 INR',
       students: '2000+',
       location: 'India',
+      courseImage: 'https://assets.academically.com/course/znGUIriWGLvKqjy9Q3XqLbo9xSGZPelBPJ17qwdZ.jpg',
       link: 'https://youtu.be/4e3jHkSHUgo'
     },
     {
@@ -41,9 +43,20 @@ const coursesObject = {
       fees: '600 AUD',
       students: '800+',
       location: 'Australia',
+      courseImage: 'https://assets.academically.com/course/m9OxRX1uyBiNmDXBsDZ4QxExXFnbpwfxy2jXEAC8.jpg',
       link: 'https://youtu.be/N3gZs_jLqrk'
     },
-   
+    {
+      name: 'NIPER JEE Exam Preparation Course',
+      category: 'Pharmacist',
+      description: 'Enrolling in Academically\'s NIPER JEE Preparation Course can help you pass the National Institutes of Pharmaceutical Education and Research Joint Entrance Exam (NIPER JEE) on the first attempt. Study materials, recorded and live lectures, AI-powered practice exams, and individualized coaching are all available in this extensive course. You will be well-prepared for the test with our NIPER JEE Preparation Course, increasing your chances of getting accepted into this highly prestigious institution.',
+      brochure: './client/public/Assets/Courses/niper_jee.jpeg',
+      fees: '9000 INR',
+      students: '1200+',
+      location: 'India',
+      courseImage: 'https://assets.academically.com/course/bDMKepLpAmoRMxuo80So3VfZo6Evo0z8b8Y2pLfi.jpg',
+      link: 'https://youtu.be/RrmAJdaIWrA'
+    },
     {
       name: 'New Zealand OPRA Exam Coaching and Preparation Course',
       category: 'Pharmacist',
@@ -52,6 +65,7 @@ const coursesObject = {
       fees: '1300 NZD',
       students: '1000+',
       location: 'New Zealand',
+      courseImage: 'https://assets.academically.com/course/cnO0YNVGd0uU9X7K2ujYelMGUyIK4VUseKmi64z5.jpg',
       link: 'https://youtu.be/4bhDplI-XSY'
     },
     {
@@ -62,6 +76,7 @@ const coursesObject = {
       fees: '1100 EUR',
       students: '900+',
       location: 'Ireland',
+      courseImage: 'https://assets.academically.com/course/MfoqqJ3CMVO7gmN5MUjaYxtGTB3UII89r7XxbWpn.jpg',
       link: 'https://youtu.be/btnftDz7mfU'
     },
     {
@@ -72,6 +87,7 @@ const coursesObject = {
       fees: '500 USD',
       students: '1500+',
       location: 'Global',
+      courseImage: 'https://assets.academically.com/course/baIzQaTTfk0phRiTD5JFpOi4iHpTfQD7IgxXWaWM.jpg',
       link: 'https://youtu.be/jDOV5ZXpZHE'
     },
     {
@@ -82,7 +98,8 @@ const coursesObject = {
       fees: '1400 SAR',
       students: '1100+',
       location: 'Saudi Arabia',
-      link: 'https://academically.com/pharmacist/sple-preparation-course/'
+      courseImage: 'https://assets.academically.com/course/YykiyUJwc4EK6LzpIwA8VFqnNDZRmyzHGaO8UKNV.jpg',
+      link: 'https://youtu.be/As36LK4QRD8'
     },
     {
       name: 'Oman Prometric Exam Preparation Course for Pharmacists',
@@ -92,6 +109,7 @@ const coursesObject = {
       fees: '800 OMR',
       students: '700+',
       location: 'Oman',
+      courseImage: 'https://assets.academically.com/course/AFOWNHSXuVtInHEkOx6Oe5uOsTw2O2eJ5EGuitKl.jpg',
       link: 'https://youtu.be/HJDO7abS9mg'
     },
     {
@@ -102,7 +120,8 @@ const coursesObject = {
       fees: '950 AED',
       students: '1300+',
       location: 'Dubai',
-      link: ''
+      courseImage: 'https://assets.academically.com/course/drff20EUtbGOhOoPnkuTd3GHUTeNlvjarWmVFwWa.jpg',
+      link: 'https://youtu.be/7aEgg4qJAzc'
     },
     {
       name: 'Australian Pharmacy Intern Written & Oral Exam Preparation Course',
@@ -112,18 +131,9 @@ const coursesObject = {
       fees: '1000 AUD',
       students: '1200+',
       location: 'Australia',
+      courseImage: 'https://assets.academically.com/course/drff20EUtbGOhOoPnkuTd3GHUTeNlvjarWmVFwWa.jpg',
       link: ''
-    },
-    {
-      name: 'NIPER JEE Exam Preparation Course',
-      category: 'Pharmacist',
-      description: 'Enrolling in Academically\'s NIPER JEE Preparation Course can help you pass the National Institutes of Pharmaceutical Education and Research Joint Entrance Exam (NIPER JEE) on the first attempt. Study materials, recorded and live lectures, AI-powered practice exams, and individualized coaching are all available in this extensive course. You will be well-prepared for the test with our NIPER JEE Preparation Course, increasing your chances of getting accepted into this highly prestigious institution.',
-      brochure: '/CourseImage/Niper.png',
-      fees: '9000 INR',
-      students: '1200+',
-      location: 'India',
-      link: 'https://youtu.be/RrmAJdaIWrA'
-    },
+    },    
     {
       name: 'PEBC Exam Preparation Course',
       category: 'Pharmacist',
@@ -132,7 +142,8 @@ const coursesObject = {
       fees: '1100 CAD',
       students: '1400+',
       location: 'Canada',
-      link: 'https://academically.com/pharmacist/pebc-exam-become-a-pharmacist-in-canada/'
+      courseImage: 'https://assets.academically.com/course/uGf0baDvk8uaj1L2oLdZUtYQP2p1ICB2eTrR7lYv.jpg',
+      link: 'https://assets.academically.com/course/pebc-exam-preparation-course/1711966574.mp4'
     },
     {
       name: 'MOH Exam Preparation Course',
@@ -142,6 +153,7 @@ const coursesObject = {
       fees: '900 AED',
       students: '900+',
       location: 'UAE',
+      courseImage: 'https://assets.academically.com/course/2Df2QwQCYShiDZhjlhabz6UWlClET58m9RZpqNXg.jpg',
       link: 'https://youtu.be/V0JOB_gw_pA'
     },
     {
@@ -152,6 +164,7 @@ const coursesObject = {
       fees: '950 QAR',
       students: '1100+',
       location: 'Qatar',
+      courseImage: 'https://assets.academically.com/course/r4Eb70XRkw5gyqqaqIP7AWMO7ZXhN755l9q5hVVg.jpg',
       link: ''
     },
     {
@@ -162,6 +175,7 @@ const coursesObject = {
       fees: '1000 KWD',
       students: '1100+',
       location: 'Kuwait',
+      courseImage: 'https://assets.academically.com/course/5Kh5xBsKwd9dfM965hje1SDL6sDykJrc928kWQlC.jpg',
       link: ''
     },
     {
@@ -172,6 +186,7 @@ const coursesObject = {
       fees: '1100 BHD',
       students: '1000+',
       location: 'Bahrain',
+      courseImage: 'https://assets.academically.com/course/BdxK898fP2ymxKOLL2hSW3BLVBoKB5QR6GeGlkMg.jpg',
       link: ''
     }
   ],
@@ -184,6 +199,7 @@ const coursesObject = {
       fees: '1000 USD',
       students: '1800+',
       location: 'Australia',
+      courseImage: 'https://assets.academically.com/course/eUHZuvpIssBu2lIQCgp3QMF63tLSKeUdTHqVEs8E.jpg',
       link: 'https://youtu.be/2ScjWYC885E'
     },
     {
@@ -194,6 +210,7 @@ const coursesObject = {
       fees: '700 USD',
       students: '1200+',
       location: 'Australia',
+      courseImage: 'https://assets.academically.com/course/yaTA4NGPm0EEEn2PCHwnN18MNTpUOXjKdOnZS43p.jpg',
       link: 'https://youtu.be/2ScjWYC885E'
     }
   ],
@@ -206,6 +223,7 @@ const coursesObject = {
       fees: '1100 AUD',
       students: '1300+',
       location: 'Australia',
+      courseImage: 'https://assets.academically.com/course/JktyX0uJZ2uZJTJtxGlGFwDu4byvfHZBKUUvsOrL.jpg',
       link: 'https://youtu.be/PmYNLZTnieU'
     },
     {
@@ -216,7 +234,8 @@ const coursesObject = {
       fees: '900 GBP',
       students: '1000+',
       location: 'United Kingdom',
-      link: ''
+      link: '',
+      courseImage: 'https://assets.academically.com/course/I6iG9xSILdzU9gMVSxjayAeCKuXa4Kea3dZVsJbE.jpg'
     }
   ],
   'Doctor': [
@@ -228,6 +247,7 @@ const coursesObject = {
       fees: '1500 AUD',
       students: '1800+',
       location: 'Australia',
+      courseImage: 'https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg',
       link: 'https://youtu.be/cyKpBv_xGl0'
     },
     {
@@ -238,6 +258,7 @@ const coursesObject = {
       fees: '1800 AUD',
       students: '1500+',
       location: 'Australia',
+      courseImage: 'https://assets.academically.com/course/p7GoxJNPDkWSm0m7mEbJ6h1kxZOT5pOI9F378Uvp.jpg',
       link: ''
     },
     {
@@ -248,6 +269,7 @@ const coursesObject = {
       fees: '1700 NZD',
       students: '1300+',
       location: 'New Zealand',
+      courseImage: 'https://assets.academically.com/course/QdMWDIuzD5KjNlJdLKFwm2OD22qgOgsyGcGdlXNq.jpg',
       link: 'https://youtu.be/ImJ4T04FKwg'
     },
     {
@@ -258,6 +280,7 @@ const coursesObject = {
       fees: '2000 USD',
       students: '1900+',
       location: 'USA',
+      courseImage: 'https://assets.academically.com/course/XHXAY21uDL1oeBxgMbmvK0RfdhQqHZlw2EhYnYx4.jpg',
       link: 'https://youtu.be/4fIn4F4jl2k'
     },
     {
@@ -268,6 +291,7 @@ const coursesObject = {
       fees: '1600 GBP',
       students: '1400+',
       location: 'UK',
+      courseImage: 'https://assets.academically.com/course/pULmrKfQOLAW8d4lLeorWxBV9C2QMYAR1r5RMZo8.jpg',
       link: 'https://youtu.be/5yxr-9ZkHfo'
     },
     {
@@ -278,6 +302,7 @@ const coursesObject = {
       fees: '1400 AUD',
       students: '1200+',
       location: 'Australia',
+      courseImage: 'https://assets.academically.com/course/y7QITDwO2KA6SoIdRwDjdHcPixZyQm0vxJhuXd6b.jpg',
       link: 'https://youtu.be/cyKpBv_xGl0'
     }
   ],
@@ -290,7 +315,8 @@ const coursesObject = {
       fees: '1800 AUD',
       students: '1600+',
       location: 'Australia',
-      link: 'https://academically.com/dentist/adc-exam-become-a-registered-dentist-in-australia/'
+      courseImage: 'https://assets.academically.com/course/2ngM4jvRs9Smdj32jISWAqAcnreAqvHCqcAghSr8.jpg',
+      link: 'https://assets.academically.com/course/adc-exam-preparation-course/1719553756.mp4'
     }
   ],
   'Veterinary': [
@@ -302,6 +328,7 @@ const coursesObject = {
       fees: '1900 AUD',
       students: '1400+',
       location: 'Australia',
+      courseImage: 'https://assets.academically.com/course/BdxK898fP2ymxKOLL2hSW3BLVBoKB5QR6GeGlkMg.jpg',
       link: ''
     }
   ],
@@ -314,6 +341,7 @@ const coursesObject = {
       fees: '1700 AUD',
       students: '1300+',
       location: 'Australia',
+      courseImage: 'https://assets.academically.com/course/h7hHislDKvVpwiwd6CBenl4O0lIwNqdIlwZCmY1F.jpg',
       link: 'https://youtu.be/d_a16bfimtQ'
     }
   ],
@@ -327,6 +355,7 @@ const coursesObject = {
       fees: '1600 AED',
       students: '1500+',
       location: 'Global',
+      courseImage: 'https://assets.academically.com/course/EvRS0d9tDPit7SfgfCO2iV9xlVojGyn1ibec0S2d.jpg',
       link: 'https://youtu.be/1sdqo4e97HE'
     }
   ]

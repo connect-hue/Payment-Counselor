@@ -10,7 +10,7 @@ function CourseDetailsPage() {
             <div className="flex justify-center items-center w-full">
                 <a href={`${coursesData.link}`} target="blank">
                     <img
-                        src={CourseImage}
+                        src={coursesData.courseImage}
                         alt="Course Description"
                         className="h-[80%] rounded "
                     />
