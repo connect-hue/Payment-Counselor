@@ -94,34 +94,38 @@ const counselors = [
   },
   {
     name: 'Kartikay Singh Nayal',
-    id: '1008',
+    id: '1127',
     designation: 'Counselor',
     qualifications: 'B.Sc in Education',
     experience: '2 years in academic guidance',
     contact: 'kartikayn@academically.com',
+    userImage: '/Counsellors/Kartikay Singh Nayal - FRONT.jpg',
     bio: 'Kartikay is focused on supporting students with clear academic strategies.'
   },
   {
     name: 'MOHD ZAID KHAN',
-    id: '1009',
+    id: '1T01',
     designation: 'Counselor',
     qualifications: 'BBA in Business Analytics',
     experience: '3 years in student support',
     contact: 'zaidk@academically.com',
+    userImage: '/Counsellors/Mohd Zaid Khan - FRONT.jpg',
     bio: 'Zaid helps streamline admission and counseling processes.'
   },
   {
     name: 'MD Azhar',
-    id: '1010',
+    id: '1124',
     designation: 'Counselor',
     qualifications: 'MA in Education',
     experience: '4 years in academic admissions',
     contact: 'azharm@academically.com',
+    userImage: '/Counsellors/MD Azhar - FRONT.jpg',
     bio: 'Azhar specializes in handling complex university applications.'
   },
   {
     name: 'Asra Mansuri',
-    id: '1011',
+    id: 'IT04',
+    userImage: '/Counsellors/Asra Mansuri - FRONT.jpg',
     designation: 'Counselor',
     qualifications: 'B.Sc in Psychology',
     experience: '2.5 years in student support',
@@ -130,38 +134,42 @@ const counselors = [
   },
   {
     name: 'Eesha',
-    id: '1012',
+    id: '1118',
     designation: 'Counselor',
     qualifications: 'B.Com in Marketing',
     experience: '2 years in student services',
     contact: 'eeshas@academically.com',
+    userImage: '/Counsellors/Eesha - FRONT.jpg',
     bio: 'Eesha actively works with students to improve career outcomes.'
   },
   {
     name: 'Surya Pratap Singh',
-    id: '1013',
+    id: 'XXXX14',
     designation: 'Counselor',
     qualifications: 'MBA in International Business',
     experience: '6 years in advising roles',
     contact: 'suryas@academically.com',
+    userImage: '',
     bio: 'Surya Pratap ensures students receive the best opportunities abroad.'
   },
   {
     name: 'Dilpreet Singh',
-    id: '1014',
+    id: '1067',
     designation: 'Counselor',
     qualifications: 'MA in Career Counseling',
     experience: '4 years in academic consulting',
     contact: 'dilpreets@academically.com',
+    userImage: '/Counsellors/Dilpreet Singh - FRONT.jpg',
     bio: 'Dilpreet is focused on results-driven career counseling.'
   },
   {
     name: 'Rajdeep A',
-    id: '9012',
+    id: '1093',
     designation: 'Counselor',
     qualifications: 'BBA in Sales and Marketing',
     experience: '8 years in sales and management',
     contact: 'rajdeepa@academically.com',
+    userImage: '/Counsellors/Rajdeep Auravindam  - FRONT.jpg',
     bio: 'Rajdeep has 8 years of experience in sales and management, specializing in customer relations and goal-oriented solutions.'
   },
   {
@@ -171,12 +179,12 @@ const counselors = [
     qualifications: 'M.Com in HR',
     experience: '3 years in HR and academic support',
     contact: 'surbhic@academically.com',
-    userImage: '',
+    userImage: '/Counsellors/Surbhi Chandan - FRONT.jpg',
     bio: 'Surbhi brings a unique blend of HR expertise and student engagement.'
   },
   {
     name: 'Kartikey',
-    id: '1127',
+    id: 'XXXX12',
     designation: 'Counselor',
     qualifications: 'BBA in Career Counseling',
     experience: '2 years in student engagement',
@@ -186,12 +194,12 @@ const counselors = [
   },
   {
     name: 'Asra',
-    id: 'IT04',
+    id: 'XXXX13',
     designation: 'Counselor',
     qualifications: 'BA in Humanities',
     experience: '2 years in career support',
     contact: 'asra@example.com',
-    userImage: '/Counsellors/Asra Mansuri - FRONT.jpg',
+    userImage: '',
     bio: 'Asra is known for her personalized approach and student-first mindset.'
   }
 ];
