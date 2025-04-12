@@ -157,29 +157,32 @@ const counselors = [
   },
   {
     name: 'Surbhi Chandan',
-    id: '1015',
+    id: '1099',
     designation: 'Counselor',
     qualifications: 'M.Com in HR',
     experience: '3 years in HR and academic support',
     contact: 'surbhic@academically.com',
+    userImage: '',
     bio: 'Surbhi brings a unique blend of HR expertise and student engagement.'
   },
   {
     name: 'Kartikey',
-    id: '1016',
+    id: '1127',
     designation: 'Counselor',
     qualifications: 'BBA in Career Counseling',
     experience: '2 years in student engagement',
     contact: 'kartikey@example.com',
+    userImage: '',
     bio: 'Kartikey is focused on empowering students with the right career choices through dedicated mentoring.'
   },
   {
     name: 'Asra',
-    id: '1017',
+    id: 'IT04',
     designation: 'Counselor',
     qualifications: 'BA in Humanities',
     experience: '2 years in career support',
     contact: 'asra@example.com',
+    userImage: '/Counsellors/Asra Mansuri - FRONT.jpg',
     bio: 'Asra is known for her personalized approach and student-first mindset.'
   }
 ];
@@ -263,7 +266,7 @@ const CounselorList = () => {
             >
               {/* <h3 className="text-xl font-semibold">{counselor.name}</h3>
               <p >ID: {counselor.id}</p> */}
-              <img src={userImage} className="h-[100%]  object-contain rounded w-full"></img>
+              <img src={counselor.userImage} className="h-[100%]  object-contain rounded w-full"></img>
               <button
                 onClick={() => handleFlip(counselor.id)}
                 className=" absolute top-0 right-0 px-4 py-2 text-[#00D9B7] rounded-full"
