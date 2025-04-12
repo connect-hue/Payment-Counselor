@@ -218,7 +218,7 @@ const coursesObject = {
       link: ''
     }
   ],
-  'Medical Doctor': [
+  'Doctor': [
     {
       name: 'AMC Exam Preparation Course',
       category: 'Medical Doctor',
@@ -317,7 +317,7 @@ const coursesObject = {
     }
   ],
 
-  'Healthcare Professionals': [
+  'Other Professionals': [
     {
       name: 'DOH Exam Preparation Course',
       category: 'Healthcare Professionals',
