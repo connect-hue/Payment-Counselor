@@ -3,96 +3,189 @@ import userImage from '../assets/user.jpg';
 import imageCourse from '../assets/imagecourse.png'
 const counselors = [
   {
-    name: 'Manish',
-    id: '2234',
-    designation: 'Sales',
-    qualifications: 'MBA in Marketing',
-    experience: '5 years in sales and counseling',
-    contact: 'manish@example.com',
-    bio: 'Manish has extensive experience in sales and customer relationship management. He is passionate about helping individuals make informed decisions about their careers.'
+    name: 'Anshika Bhandari',
+    id: '1001',
+    designation: 'Counselor',
+    qualifications: 'MBA in Education Management',
+    experience: '2 years in academic counseling',
+    contact: 'anshikab@academically.com',
+    bio: 'Anshika is committed to guiding students in choosing the right academic paths.'
   },
   {
-    name: 'Sneha',
+    name: 'Suryasnata Mukherjee',
+    id: '1002',
+    designation: 'Counselor',
+    qualifications: 'MA in Psychology',
+    experience: '4 years in counseling and mentoring',
+    contact: 'suryasnatam@academically.com',
+    bio: 'Suryasnata excels in student psychology and provides personalized support.'
+  },
+  {
+    name: 'Sadaf Fatima',
+    id: '1003',
+    designation: 'Counselor',
+    qualifications: 'B.Ed and MA in English',
+    experience: '3 years in international education consulting',
+    contact: 'sadaff@academically.com',
+    bio: 'Sadaf helps students navigate international education opportunities.'
+  },
+  {
+    name: 'Muskaan Gupta',
+    id: '1004',
+    designation: 'Counselor',
+    qualifications: 'BBA in Marketing',
+    experience: '2.5 years in student counseling',
+    contact: 'muskaang@academically.com',
+    bio: 'Muskaan is passionate about connecting students with the right programs.'
+  },
+  {
+    name: 'Sneha Pandey',
     id: '5678',
-    designation: 'Sales',
+    designation: 'Counselor',
     qualifications: 'B.Tech in Computer Science',
     experience: '3 years in technical sales and consulting',
-    contact: 'sneha@example.com',
+    contact: 'snehap@academically.com',
     bio: 'Sneha specializes in technical sales and has worked with several tech companies. She is dedicated to understanding clients’ needs and providing them with the best solutions.'
   },
   {
-    name: 'Rajdeep',
-    id: '9012',
-    designation: 'Sales',
-    qualifications: 'BBA in Sales and Marketing',
-    experience: '8 years in sales and management',
-    contact: 'rajdeep@example.com',
-    bio: 'Rajdeep has 8 years of experience in sales and management, specializing in customer relations and goal-oriented solutions.'
+    name: 'Aditya Kumar Singh',
+    id: '1005',
+    designation: 'Counselor',
+    qualifications: 'MBA in HR',
+    experience: '4 years in education and HR advisory',
+    contact: 'aditya.singh@academically.com',
+    bio: 'Aditya provides expert advice in academic and career planning.'
   },
   {
-    name: 'Rajdeep',
-    id: '9012',
-    designation: 'Sales',
-    qualifications: 'BBA in Sales and Marketing',
-    experience: '8 years in sales and management',
-    contact: 'rajdeep@example.com',
-    bio: 'Rajdeep has 8 years of experience in sales and management, specializing in customer relations and goal-oriented solutions.'
+    name: 'Abhilasha Sharma',
+    id: '1006',
+    designation: 'Counselor',
+    qualifications: 'MSc in Counseling Psychology',
+    experience: '5 years in student mentoring',
+    contact: 'abhilashas@academically.com',
+    bio: 'Abhilasha supports students through mental health and career guidance.'
   },
   {
-    name: 'Manish',
+    name: 'Manish Bora',
     id: '2234',
-    designation: 'Sales',
+    designation: 'Counselor',
     qualifications: 'MBA in Marketing',
     experience: '5 years in sales and counseling',
-    contact: 'manish@example.com',
+    contact: 'manishb@academically.com',
     bio: 'Manish has extensive experience in sales and customer relationship management. He is passionate about helping individuals make informed decisions about their careers.'
   },
   {
-    name: 'Sneha',
-    id: '5678',
-    designation: 'Sales',
-    qualifications: 'B.Tech in Computer Science',
-    experience: '3 years in technical sales and consulting',
-    contact: 'sneha@example.com',
-    bio: 'Sneha specializes in technical sales and has worked with several tech companies. She is dedicated to understanding clients’ needs and providing them with the best solutions.'
+    name: 'Syed Saif Imam',
+    id: '1007',
+    designation: 'Counselor',
+    qualifications: 'BA in Sociology',
+    experience: '3 years in career coaching',
+    contact: 'saifs@academically.com',
+    bio: 'Syed Saif Imam works closely with students on career path alignment.'
   },
   {
-    name: 'Rajdeep',
+    name: 'Kartikay Singh Nayal',
+    id: '1008',
+    designation: 'Counselor',
+    qualifications: 'B.Sc in Education',
+    experience: '2 years in academic guidance',
+    contact: 'kartikayn@academically.com',
+    bio: 'Kartikay is focused on supporting students with clear academic strategies.'
+  },
+  {
+    name: 'MOHD ZAID KHAN',
+    id: '1009',
+    designation: 'Counselor',
+    qualifications: 'BBA in Business Analytics',
+    experience: '3 years in student support',
+    contact: 'zaidk@academically.com',
+    bio: 'Zaid helps streamline admission and counseling processes.'
+  },
+  {
+    name: 'MD Azhar',
+    id: '1010',
+    designation: 'Counselor',
+    qualifications: 'MA in Education',
+    experience: '4 years in academic admissions',
+    contact: 'azharm@academically.com',
+    bio: 'Azhar specializes in handling complex university applications.'
+  },
+  {
+    name: 'Asra Mansuri',
+    id: '1011',
+    designation: 'Counselor',
+    qualifications: 'B.Sc in Psychology',
+    experience: '2.5 years in student support',
+    contact: 'asram@academically.com',
+    bio: 'Asra Mansuri provides empathetic and insightful guidance to students.'
+  },
+  {
+    name: 'Eesha',
+    id: '1012',
+    designation: 'Counselor',
+    qualifications: 'B.Com in Marketing',
+    experience: '2 years in student services',
+    contact: 'eeshas@academically.com',
+    bio: 'Eesha actively works with students to improve career outcomes.'
+  },
+  {
+    name: 'Surya Pratap Singh',
+    id: '1013',
+    designation: 'Counselor',
+    qualifications: 'MBA in International Business',
+    experience: '6 years in advising roles',
+    contact: 'suryas@academically.com',
+    bio: 'Surya Pratap ensures students receive the best opportunities abroad.'
+  },
+  {
+    name: 'Dilpreet Singh',
+    id: '1014',
+    designation: 'Counselor',
+    qualifications: 'MA in Career Counseling',
+    experience: '4 years in academic consulting',
+    contact: 'dilpreets@academically.com',
+    bio: 'Dilpreet is focused on results-driven career counseling.'
+  },
+  {
+    name: 'Rajdeep A',
     id: '9012',
-    designation: 'Sales',
+    designation: 'Counselor',
     qualifications: 'BBA in Sales and Marketing',
     experience: '8 years in sales and management',
-    contact: 'rajdeep@example.com',
+    contact: 'rajdeepa@academically.com',
     bio: 'Rajdeep has 8 years of experience in sales and management, specializing in customer relations and goal-oriented solutions.'
   },
   {
-    name: 'Manish',
-    id: '2234',
-    designation: 'Sales',
-    qualifications: 'MBA in Marketing',
-    experience: '5 years in sales and counseling',
-    contact: 'manish@example.com',
-    bio: 'Manish has extensive experience in sales and customer relationship management. He is passionate about helping individuals make informed decisions about their careers.'
+    name: 'Surbhi Chandan',
+    id: '1015',
+    designation: 'Counselor',
+    qualifications: 'M.Com in HR',
+    experience: '3 years in HR and academic support',
+    contact: 'surbhic@academically.com',
+    bio: 'Surbhi brings a unique blend of HR expertise and student engagement.'
   },
   {
-    name: 'Sneha',
-    id: '5678',
-    designation: 'Sales',
-    qualifications: 'B.Tech in Computer Science',
-    experience: '3 years in technical sales and consulting',
-    contact: 'sneha@example.com',
-    bio: 'Sneha specializes in technical sales and has worked with several tech companies. She is dedicated to understanding clients’ needs and providing them with the best solutions.'
+    name: 'Kartikey',
+    id: '1016',
+    designation: 'Counselor',
+    qualifications: 'BBA in Career Counseling',
+    experience: '2 years in student engagement',
+    contact: 'kartikey@example.com',
+    bio: 'Kartikey is focused on empowering students with the right career choices through dedicated mentoring.'
   },
   {
-    name: 'Rajdeep',
-    id: '9012',
-    designation: 'Sales',
-    qualifications: 'BBA in Sales and Marketing',
-    experience: '8 years in sales and management',
-    contact: 'rajdeep@example.com',
-    bio: 'Rajdeep has 8 years of experience in sales and management, specializing in customer relations and goal-oriented solutions.'
-  },
+    name: 'Asra',
+    id: '1017',
+    designation: 'Counselor',
+    qualifications: 'BA in Humanities',
+    experience: '2 years in career support',
+    contact: 'asra@example.com',
+    bio: 'Asra is known for her personalized approach and student-first mindset.'
+  }
 ];
+
+
+
 const CounselorList = () => {
 
   const [flippedCounselorId, setFlippedCounselorId] = useState(null);

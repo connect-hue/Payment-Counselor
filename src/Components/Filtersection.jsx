@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Pharmacist from '/Assets/pharmacist.jpg';
-import Doctor from '/Assets/doctor.jpg';
-import Dentist from '/Assets/dentist.jpg';
-import Nursing from '/Assets/nurses.jpg';
-import Physiotherapist from '/Assets/physiotherapist.jpg';
-import Optometrist from '/Assets/optometrist.jpg';
-import Veterinary from '/Assets/labtech.jpg';
+import Pharmacist from '/Assets/pharmacist.png';
+import Doctor from '/Assets/doctor.png';
+import Dentist from '/Assets/dentist.png';
+import Nursing from '/Assets/nurses.png';
+import Physiotherapist from '/Assets/physiotherapist.png';
+import Optometrist from '/Assets/optometrist.png';
+import Veterinary from '/Assets/labtech.png';
 import Other from '/Assets/healthcare.png';
 
 const filterData = [
@@ -21,6 +21,7 @@ const filterData = [
 ];
 const FilterSection = () => {
   const navigate = useNavigate();
+  
 
   const handlePreviewClick = (name) => {
     navigate(`/preview/${encodeURIComponent(name)}`);
