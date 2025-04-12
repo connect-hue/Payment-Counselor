@@ -17,7 +17,7 @@ const coursesObject = {
       name: 'OPRA Exam Preparation Course',
       category: 'Australia',
       description: 'Pass the Overseas Pharmacist Readiness Assessment (OPRA) exam on your first attempt with the best online OPRA coaching. Our OPRA preparation course includes online classes, extensive study resources, and AI-driven mock tests, making it the ideal OPRA Exam Preparation Course for international pharmacists seeking to move to and practise in Australia. Enrol in our trusted course today and confidently pass the Overseas Pharmacist Readiness Assessment (OPRA) exam with ease.',
-      brochure: '/CourseImage/image.png',
+      brochure: '/CourseImage/Opra.png',
       fees: '1200 AUD',
       students: '1500+',
       location: 'Australia',
@@ -27,7 +27,7 @@ const coursesObject = {
       name: 'GPAT Exam Preparation Course',
       category: 'Pharmacist',
       description: 'Pass the Graduate Pharmacy Aptitude Test (GPAT) on your first attempt with our comprehensive GPAT Preparation Course! Designed for BPharm graduates aiming to pursue an MPharm program, this course offers everything you need to succeed: complete study materials, interactive online classes, previous year question banks, AI-driven mock tests, and more. With our GPAT Preparation Course, you\'ll be fully prepared to excel in the GPAT and secure admission to the top MPharmacy colleges in India. Enrol today to achieve your academic and career goals!',
-      brochure: './client/public/Assets/Courses/gpat_exam.jpeg',
+      brochure: '/CourseImage/Gpat.png',
       fees: '8000 INR',
       students: '2000+',
       location: 'India',
@@ -37,27 +37,18 @@ const coursesObject = {
       name: 'OPRA Exam Crash Course',
       category: 'Pharmacist',
       description: 'The OPRA preparation crash course by Academically is a cost-effective way to clear the Knowledge Assessment of Pharmaceutical Sciences (OPRA) Exam. This course offers you all the resources you need without having to go anywhere.',
-      brochure: './client/public/Assets/Courses/opra_crash_course.jpeg',
+      brochure: '/CourseImage/opracrash.png',
       fees: '600 AUD',
       students: '800+',
       location: 'Australia',
       link: 'https://youtu.be/N3gZs_jLqrk'
     },
-    {
-      name: 'NIPER JEE Exam Preparation Course',
-      category: 'Pharmacist',
-      description: 'Enrolling in Academically\'s NIPER JEE Preparation Course can help you pass the National Institutes of Pharmaceutical Education and Research Joint Entrance Exam (NIPER JEE) on the first attempt. Study materials, recorded and live lectures, AI-powered practice exams, and individualized coaching are all available in this extensive course. You will be well-prepared for the test with our NIPER JEE Preparation Course, increasing your chances of getting accepted into this highly prestigious institution.',
-      brochure: './client/public/Assets/Courses/niper_jee.jpeg',
-      fees: '9000 INR',
-      students: '1200+',
-      location: 'India',
-      link: 'https://youtu.be/RrmAJdaIWrA'
-    },
+   
     {
       name: 'New Zealand OPRA Exam Coaching and Preparation Course',
       category: 'Pharmacist',
       description: 'Best NZ OPRA Exam Coaching around the globe. Crack the OPRA Exam on your first attempt through our specialised online classes, tailored study materials, and AI-based OPRA mock tests for pharmacists aspiring to make a career in New Zealand (NZ).',
-      brochure: './client/public/Assets/Courses/nz_opra_exam.jpeg',
+      brochure: '/CourseImage/newzealandopra.png',
       fees: '1300 NZD',
       students: '1000+',
       location: 'New Zealand',
@@ -122,6 +113,16 @@ const coursesObject = {
       students: '1200+',
       location: 'Australia',
       link: ''
+    },
+    {
+      name: 'NIPER JEE Exam Preparation Course',
+      category: 'Pharmacist',
+      description: 'Enrolling in Academically\'s NIPER JEE Preparation Course can help you pass the National Institutes of Pharmaceutical Education and Research Joint Entrance Exam (NIPER JEE) on the first attempt. Study materials, recorded and live lectures, AI-powered practice exams, and individualized coaching are all available in this extensive course. You will be well-prepared for the test with our NIPER JEE Preparation Course, increasing your chances of getting accepted into this highly prestigious institution.',
+      brochure: '/CourseImage/Niper.png',
+      fees: '9000 INR',
+      students: '1200+',
+      location: 'India',
+      link: 'https://youtu.be/RrmAJdaIWrA'
     },
     {
       name: 'PEBC Exam Preparation Course',
