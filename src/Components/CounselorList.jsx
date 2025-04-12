@@ -4,83 +4,92 @@ import imageCourse from '../assets/imagecourse.png'
 const counselors = [
   {
     name: 'Anshika Bhandari',
-    id: '1001',
+    id: 'IT05',
     designation: 'Counselor',
     qualifications: 'MBA in Education Management',
     experience: '2 years in academic counseling',
     contact: 'anshikab@academically.com',
+    userImage: '/Counsellors/Anshika Bhandari - FRONT.jpg',
     bio: 'Anshika is committed to guiding students in choosing the right academic paths.'
   },
   {
     name: 'Suryasnata Mukherjee',
-    id: '1002',
+    id: '1072',
     designation: 'Counselor',
     qualifications: 'MA in Psychology',
     experience: '4 years in counseling and mentoring',
     contact: 'suryasnatam@academically.com',
+    userImage: '/Counsellors/Suryasnata Mukherjee - FRONT.jpg',
     bio: 'Suryasnata excels in student psychology and provides personalized support.'
   },
   {
     name: 'Sadaf Fatima',
-    id: '1003',
+    id: '1120',
     designation: 'Counselor',
     qualifications: 'B.Ed and MA in English',
     experience: '3 years in international education consulting',
     contact: 'sadaff@academically.com',
+    userImage: '/Counsellors/Sadaf Fatima - FRONT.jpg',
     bio: 'Sadaf helps students navigate international education opportunities.'
   },
   {
     name: 'Muskaan Gupta',
-    id: '1004',
+    id: '1070',
     designation: 'Counselor',
     qualifications: 'BBA in Marketing',
     experience: '2.5 years in student counseling',
     contact: 'muskaang@academically.com',
+    userImage: '/Counsellors/Muskaan Gupta - FRONT.jpg',
     bio: 'Muskaan is passionate about connecting students with the right programs.'
   },
   {
     name: 'Sneha Pandey',
-    id: '5678',
+    id: '1077',
     designation: 'Counselor',
     qualifications: 'B.Tech in Computer Science',
     experience: '3 years in technical sales and consulting',
     contact: 'snehap@academically.com',
+    userImage: '/Counsellors/Sneha Pandey - FRONT.jpg',
     bio: 'Sneha specializes in technical sales and has worked with several tech companies. She is dedicated to understanding clients’ needs and providing them with the best solutions.'
   },
   {
     name: 'Aditya Kumar Singh',
-    id: '1005',
+    id: 'Not in the list',
     designation: 'Counselor',
     qualifications: 'MBA in HR',
     experience: '4 years in education and HR advisory',
     contact: 'aditya.singh@academically.com',
+    userImage: '/Counsellors/Aditya Kumar Singh - FRONT.jpg',
     bio: 'Aditya provides expert advice in academic and career planning.'
   },
   {
     name: 'Abhilasha Sharma',
-    id: '1006',
+    id: '1119',
     designation: 'Counselor',
     qualifications: 'MSc in Counseling Psychology',
     experience: '5 years in student mentoring',
     contact: 'abhilashas@academically.com',
+    userImage: '/Counsellors/Abhilasha Sharma - FRONT.jpg',
     bio: 'Abhilasha supports students through mental health and career guidance.'
   },
   {
     name: 'Manish Bora',
-    id: '2234',
+    id: '1069',
     designation: 'Counselor',
     qualifications: 'MBA in Marketing',
     experience: '5 years in sales and counseling',
     contact: 'manishb@academically.com',
+    userImage: '/Counsellors/Manish Bora  - FRONT.jpg',
     bio: 'Manish has extensive experience in sales and customer relationship management. He is passionate about helping individuals make informed decisions about their careers.'
   },
   {
     name: 'Syed Saif Imam',
-    id: '1007',
+    id: '1117',
     designation: 'Counselor',
     qualifications: 'BA in Sociology',
     experience: '3 years in career coaching',
     contact: 'saifs@academically.com',
+    userImage: '/Counsellors/Anshika Bhandari - FRONT.jpg',
     bio: 'Syed Saif Imam works closely with students on career path alignment.'
   },
   {
