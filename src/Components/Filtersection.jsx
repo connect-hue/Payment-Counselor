@@ -1,14 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Pharmacist from '/Assets/pharmacist.jpg';
+import Doctor from '/Assets/doctor.jpg';
+import Dentist from '/Assets/dentist.jpg';
+import Nursing from '/Assets/nurses.jpg';
+import Physiotherapist from '/Assets/physiotherapist.jpg';
+import Optometrist from '/Assets/optometrist.jpg';
+import Veterinary from '/Assets/labtech.jpg';
+import Other from '/Assets/healthcare.png';
+
 const filterData = [
-  { name: "Pharmacist", img: "/Assets/pharmacist.jpg" },
-  { name: "Nursing", img: "/Assets/nurses.jpg" },
-  { name: "Physiotherapist", img: "/Assets/physiotherapist.jpg" },
-  { name: "Medical Doctor", img: "/Assets/doctor.jpg" },
-  { name: "Dentist", img: "/Assets/dentist.jpg" },
-  { name: "Veterinary", img: "/Assets/labtech.jpg" },
-  { name: "Optometrist", img: "/Assets/optometrist.jpg" },
-  { name: "Healthcare Professionals", img: "/Assets/healthcare.png" },
+  { name: "Pharmacist", img: Pharmacist },
+  { name: "Doctor", img: Doctor },
+  { name: "Dentist", img: Dentist },
+  { name: "Nursing", img: Nursing },
+  { name: "Physiotherapist", img: Physiotherapist },
+  { name: "Optometrist", img: Optometrist },
+  { name: "Veterinary", img: Veterinary },
+  { name: "Other Professionals", img: Other },
 ];
 const FilterSection = () => {
   const navigate = useNavigate();
@@ -39,7 +48,7 @@ const FilterSection = () => {
               </div>
               <button
                 className="mt-4 px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7] cursor-pointer"
-                onClick={() => handlePreviewClick(data.name)} 
+                onClick={() => handlePreviewClick(data.name)}
               >
                 Preview
               </button>
