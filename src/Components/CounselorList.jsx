@@ -10,6 +10,7 @@ const counselors = [
     experience: '2 years in academic counseling',
     contact: 'anshikab@academically.com',
     userImage: '/Counsellors/Anshika Bhandari - FRONT.jpg',
+    counselorImage: '',
     bio: 'Anshika is committed to guiding students in choosing the right academic paths.'
   },
   {
@@ -20,6 +21,7 @@ const counselors = [
     experience: '4 years in counseling and mentoring',
     contact: 'suryasnatam@academically.com',
     userImage: '/Counsellors/Suryasnata Mukherjee - FRONT.jpg',
+    counselorImage: '',
     bio: 'Suryasnata excels in student psychology and provides personalized support.'
   },
   {
@@ -30,6 +32,7 @@ const counselors = [
     experience: '3 years in international education consulting',
     contact: 'sadaff@academically.com',
     userImage: '/Counsellors/Sadaf Fatima - FRONT.jpg',
+    counselorImage: '/CounselorsImages/image (1).png',
     bio: 'Sadaf helps students navigate international education opportunities.'
   },
   {
@@ -40,6 +43,7 @@ const counselors = [
     experience: '2.5 years in student counseling',
     contact: 'muskaang@academically.com',
     userImage: '/Counsellors/Muskaan Gupta - FRONT.jpg',
+    counselorImage: '',
     bio: 'Muskaan is passionate about connecting students with the right programs.'
   },
   {
@@ -50,6 +54,7 @@ const counselors = [
     experience: '3 years in technical sales and consulting',
     contact: 'snehap@academically.com',
     userImage: '/Counsellors/Sneha Pandey - FRONT.jpg',
+    counselorImage: '',
     bio: 'Sneha specializes in technical sales and has worked with several tech companies. She is dedicated to understanding clients’ needs and providing them with the best solutions.'
   },
   {
@@ -60,6 +65,7 @@ const counselors = [
     experience: '4 years in education and HR advisory',
     contact: 'aditya.singh@academically.com',
     userImage: '/Counsellors/Aditya Kumar Singh - FRONT.jpg',
+    counselorImage: '',
     bio: 'Aditya provides expert advice in academic and career planning.'
   },
   {
@@ -70,6 +76,7 @@ const counselors = [
     experience: '5 years in student mentoring',
     contact: 'abhilashas@academically.com',
     userImage: '/Counsellors/Abhilasha Sharma - FRONT.jpg',
+    counselorImage: '/CounselorsImages/image (6).png',
     bio: 'Abhilasha supports students through mental health and career guidance.'
   },
   {
@@ -80,6 +87,7 @@ const counselors = [
     experience: '5 years in sales and counseling',
     contact: 'manishb@academically.com',
     userImage: '/Counsellors/Manish Bora  - FRONT.jpg',
+    counselorImage: '',
     bio: 'Manish has extensive experience in sales and customer relationship management. He is passionate about helping individuals make informed decisions about their careers.'
   },
   {
@@ -90,6 +98,7 @@ const counselors = [
     experience: '3 years in career coaching',
     contact: 'saifs@academically.com',
     userImage: '',
+    counselorImage: '/CounselorsImages/image (7).png',
     bio: 'Syed Saif Imam works closely with students on career path alignment.'
   },
   {
@@ -100,6 +109,7 @@ const counselors = [
     experience: '2 years in academic guidance',
     contact: 'kartikayn@academically.com',
     userImage: '/Counsellors/Kartikay Singh Nayal - FRONT.jpg',
+    counselorImage: '',
     bio: 'Kartikay is focused on supporting students with clear academic strategies.'
   },
   {
@@ -110,6 +120,7 @@ const counselors = [
     experience: '3 years in student support',
     contact: 'zaidk@academically.com',
     userImage: '/Counsellors/Mohd Zaid Khan - FRONT.jpg',
+    counselorImage: '/CounselorsImages/image (10).png',
     bio: 'Zaid helps streamline admission and counseling processes.'
   },
   {
@@ -130,6 +141,7 @@ const counselors = [
     qualifications: ['Pharmacist', 'Optometrist'],
     experience: '2.5 years in student support',
     contact: 'asram@academically.com',
+    counselorImage: '/CounselorsImages/image (3).png',
     bio: 'Asra Mansuri provides empathetic and insightful guidance to students.'
   },
   {
@@ -140,6 +152,7 @@ const counselors = [
     experience: '2 years in student services',
     contact: 'eeshas@academically.com',
     userImage: '/Counsellors/Eesha - FRONT.jpg',
+    counselorImage: '/CounselorsImages/image (5).png',
     bio: 'Eesha actively works with students to improve career outcomes.'
   },
   {
@@ -149,6 +162,7 @@ const counselors = [
     qualifications: ['Physiotherapist'],
     experience: '6 years in advising roles',
     contact: 'suryas@academically.com',
+    counselorImage: '/CounselorsImages/image (8).png',
     userImage: '',
     bio: 'Surya Pratap ensures students receive the best opportunities abroad.'
   },
@@ -160,6 +174,7 @@ const counselors = [
     experience: '4 years in academic consulting',
     contact: 'dilpreets@academically.com',
     userImage: '/Counsellors/Dilpreet Singh - FRONT.jpg',
+    counselorImage: '/CounselorsImages/image (9).png',
     bio: 'Dilpreet is focused on results-driven career counseling.'
   },
   {
@@ -170,6 +185,7 @@ const counselors = [
     experience: '8 years in sales and management',
     contact: 'rajdeepa@academically.com',
     userImage: '/Counsellors/Rajdeep Auravindam  - FRONT.jpg',
+    counselorImage: '/CounselorsImages/image (4).png',
     bio: 'Rajdeep has 8 years of experience in sales and management, specializing in customer relations and goal-oriented solutions.'
   },
   {
@@ -180,6 +196,7 @@ const counselors = [
     experience: '3 years in HR and academic support',
     contact: 'surbhic@academically.com',
     userImage: '/Counsellors/Surbhi Chandan - FRONT.jpg',
+    counselorImage: '/CounselorsImages/image (2).png',
     bio: 'Surbhi brings a unique blend of HR expertise and student engagement.'
   },
   {
@@ -200,6 +217,7 @@ const counselors = [
     experience: '2 years in career support',
     contact: 'asra@example.com',
     userImage: '',
+    counselorImage: '',
     bio: 'Asra is known for her personalized approach and student-first mindset.'
   }
   , {
@@ -350,9 +368,9 @@ const CounselorList = () => {
                 }}
               >
                 <img
-                  src={imageCourse}
+                  src={counselor.counselorImage}
                   alt="Course Description"
-                  className="h-[80%] rounded "
+                  className="h-[50%] rounded "
                 />
                 <h3 className="text-2xl font-semibold mt-3 mb-3">{counselor.name}</h3>
                 <p className="flex gap-x-2 items-center mb-1">
