@@ -292,7 +292,7 @@ const filterData = [
   { name: "Physiotherapist" },
   { name: "Doctor" },
   { name: "Dentist" },
-  { name: "Veterinary" },
+  // { name: "Veterinary" },
   { name: "Optometrist" },
   { name: "Other Professionals" },
 ];
