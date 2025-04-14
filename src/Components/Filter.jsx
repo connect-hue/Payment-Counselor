@@ -79,7 +79,7 @@ const coursesObject = {
       description: 'Clear the Pharmaceutical Society of Ireland Equivalence Examination on your first attempt with our online course designed for professional pharmacists trying to migrate to Ireland.',
       brochure: './client/public/Assets/Courses/psi_exam.jpeg',
       fees: '1100 EUR',
-      brochureLink: '', //fill this
+      brochureLink: 'https://drive.google.com/file/d/1rZsex4ShxAlvpfZgBfHJZk1_lanDtPS3/view?usp=sharing',
       students: '900+',
       location: 'Ireland',
       courseImage: 'https://assets.academically.com/course/MfoqqJ3CMVO7gmN5MUjaYxtGTB3UII89r7XxbWpn.jpg',
