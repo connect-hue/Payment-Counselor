@@ -254,7 +254,7 @@ const counselors = [
     name: 'Nasreen Hussain ',
     id: '1017',
     designation: 'Wrong Id Card',
-    qualifications: ['Doctor','Dentist'],
+    qualifications: ['Doctor', 'Dentist'],
     experience: '2 years in career support',
     contact: 'nasreen@academically.com',
     userImage: '',
@@ -264,7 +264,7 @@ const counselors = [
     name: 'Mayank Mrinal ',
     id: '1004',
     designation: 'Counselor',
-    qualifications: ['Doctor','Dentist'],
+    qualifications: ['Doctor', 'Dentist'],
     experience: '2 years in career support',
     contact: 'mayank@academically.com',
     userImage: '/Counsellors/Mayank Mrinal - FRONT.jpg',
@@ -310,7 +310,7 @@ const filterData = [
   { name: "Physiotherapist" },
   { name: "Doctor" },
   { name: "Dentist" },
-  { name: "Veterinary" },
+  // { name: "Veterinary" },
   { name: "Optometrist" },
   { name: "Other Professionals" },
 ];
@@ -337,7 +337,7 @@ const CounselorList = () => {
   };
 
   return (
-    <div className="mt-30">
+    <div className="mt-26">
       <div className="flex items-center justify-center gap-x-4 mb-6 flex-wrap gap-y-4 px-4">
         {filterData.map((filter) => (
           <button

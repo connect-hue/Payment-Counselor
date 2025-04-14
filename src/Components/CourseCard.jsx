@@ -20,7 +20,7 @@ const CourseCard = ({ course, onClick }) => {
             </svg>
             {course.fees}</p>
         </div>
-        <Link to={`/${course.name}`} state={{ course }}>
+        <Link to={`/${course.name.toLowerCase().replace(/\s+/g, '-')}`} state={{ course }}>
           <button
             className="mt-4 px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7] cursor-pointer"
           >

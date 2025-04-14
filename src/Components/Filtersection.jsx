@@ -16,12 +16,12 @@ const filterData = [
   { name: "Nursing", img: Nursing },
   { name: "Physiotherapist", img: Physiotherapist },
   { name: "Optometrist", img: Optometrist },
-  { name: "Veterinary", img: Veterinary },
+  // { name: "Veterinary", img: Veterinary },
   { name: "Other Professionals", img: Other },
 ];
 const FilterSection = () => {
   const navigate = useNavigate();
-  
+
 
   const handlePreviewClick = (name) => {
     navigate(`/preview/${encodeURIComponent(name)}`);
