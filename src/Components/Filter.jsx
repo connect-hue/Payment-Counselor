@@ -390,26 +390,45 @@ const coursesObject = {
     }
   ]
 };
+
 const Filter = () => {
   const { name } = useParams();
   const courses = coursesObject[name] || [];
   const [filteredCourses, setFilteredCourses] = useState(courses);
   const [selectedFilter, setSelectedFilter] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // 🔍 Function to filter by location
+  const filterCoursesByLocation = (location) => {
+    return location === "All"
+      ? courses
+      : courses.filter(course => course.location === location);
+  };
+
+  // 🔍 Function to filter by search query
+  const filterCoursesBySearch = (courseList, query) => {
+    if (!query) return courseList;
+    return courseList.filter(course =>
+      course.name.toLowerCase().includes(query.toLowerCase()) ||
+      course.description.toLowerCase().includes(query.toLowerCase())
+    );
+  };
+
+  // 🧠 Update filtered courses when filters or search changes
+  useEffect(() => {
+    const locationFiltered = filterCoursesByLocation(selectedFilter);
+    const finalFiltered = filterCoursesBySearch(locationFiltered, searchQuery);
+    setFilteredCourses(finalFiltered);
+  }, [selectedFilter, searchQuery, courses]);
 
   const handleFilterClick = (location) => {
     setSelectedFilter(location);
-    if (location === "All") {
-      setFilteredCourses(courses);
-    } else {
-      const filtered = courses.filter((course) => course.location === location);
-      setFilteredCourses(filtered);
-    }
   };
 
   return (
     <>
       <h1 className="text-2xl mt-24 font-bold px-4">{name}</h1>
-      {courses.length > 2 &&
+      {courses.length > 2 && (
         <div
           className="flex-wrap justify-center gap-2 sm:gap-4 mb-8 max-lg:hidden flex"
           style={{ fontFamily: "Poppins, sans-serif" }}
@@ -417,15 +436,19 @@ const Filter = () => {
           {filterData.map((filter) => (
             <button
               key={filter.name}
-              className={`xl:px-8 px-6 py-3 border border-[#0FB995] text-sm sm:text-base rounded-md ${selectedFilter === filter.name ? "bg-[#0FB995] text-white" : "text-black"
+              className={`xl:px-8 px-6 py-3 border border-[#0FB995] text-sm sm:text-base rounded-md ${selectedFilter === filter.name
+                  ? "bg-[#0FB995] text-white"
+                  : "text-black"
                 }`}
               onClick={() => handleFilterClick(filter.name)}
             >
               {filter.name}
             </button>
           ))}
-        </div>}
-      <SearchBar />
+        </div>
+      )}
+
+      <SearchBar onSearch={setSearchQuery} />
       <CourseList courses={filteredCourses} />
     </>
   );
