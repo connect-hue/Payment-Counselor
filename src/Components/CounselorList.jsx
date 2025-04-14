@@ -202,6 +202,88 @@ const counselors = [
     userImage: '',
     bio: 'Asra is known for her personalized approach and student-first mindset.'
   }
+  , {
+    name: 'Nishant Balhara ',
+    id: '1009',
+    designation: 'Counselor',
+    qualifications: ['Doctor', 'Physiotherapist'],
+    experience: '2 years in career support',
+    contact: 'nishantb@academically.com',
+    userImage: '/Counsellors/Nishant Balhara  - FRONT.jpg',
+    bio: 'Asra is known for her personalized approach and student-first mindset.'
+  },
+  {
+    name: 'Manas Vikas ',
+    id: '1047',
+    designation: 'Counselor',
+    qualifications: ['Doctor'],
+    experience: '2 years in career support',
+    contact: 'manasv@academically.com',
+    userImage: '/Counsellors/Manas Vikas - FRONT.jpg',
+    bio: 'Asra is known for her personalized approach and student-first mindset.'
+  },
+  {
+    name: 'Swati Periwal',
+    id: '1049',
+    designation: 'Counselor',
+    qualifications: ['Doctor'],
+    experience: '2 years in career support',
+    contact: 'swatip@academically.com',
+    userImage: '/Counsellors/Swati Periwal - FRONT.jpg',
+    bio: 'Asra is known for her personalized approach and student-first mindset.'
+  },
+  {
+    name: 'Nasreen Hussain ',
+    id: '1017',
+    designation: 'Wrong Id Card',
+    qualifications: ['Doctor','Dentist'],
+    experience: '2 years in career support',
+    contact: 'nasreen@academically.com',
+    userImage: '',
+    bio: 'Asra is known for her personalized approach and student-first mindset.'
+  },
+  {
+    name: 'Mayank Mrinal ',
+    id: '1004',
+    designation: 'Counselor',
+    qualifications: ['Doctor','Dentist'],
+    experience: '2 years in career support',
+    contact: 'mayank@academically.com',
+    userImage: '/Counsellors/Mayank Mrinal - FRONT.jpg',
+    bio: 'Asra is known for her personalized approach and student-first mindset.'
+  }
+  ,
+  {
+    name: 'Sana khan',
+    id: '1029',
+    designation: 'Counselor',
+    qualifications: ['Doctor', 'Physiotherapist'],
+    experience: '2 years in career support',
+    contact: 'sanak@academically.com',
+    userImage: '/Counsellors/Sana khan - FRONT.jpg',
+    bio: 'Asra is known for her personalized approach and student-first mindset.'
+  }
+  ,
+  {
+    name: 'B.Vasantha kumar',
+    id: '1046',
+    designation: 'Counselor',
+    qualifications: ['Dentist', 'Optometrist', 'Dentist'],
+    experience: '2 years in career support',
+    contact: 'vasanthak@academically.com',
+    userImage: '/Counsellors/B.Vasantha Kumar  -FRONT.jpg',
+    bio: 'Asra is known for her personalized approach and student-first mindset.'
+  },
+  {
+    name: 'Harita',
+    id: 'Not found',
+    designation: 'Counselor',
+    qualifications: ['Doctor'],
+    experience: '2 years in career support',
+    contact: 'Not Found',
+    userImage: '',
+    bio: 'Asra is known for her personalized approach and student-first mindset.'
+  }
 ];
 const filterData = [
   { name: "All" },
