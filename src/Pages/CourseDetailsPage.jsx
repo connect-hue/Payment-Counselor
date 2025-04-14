@@ -26,7 +26,7 @@ function CourseDetailsPage() {
             <div className="mb-4 w-20 h-20 xl:w-24 xl:h-24">{icon}</div>
             <h3 className="text-xl lg:text-2xl xl:text-3xl font-semibold">{heading}</h3>
             <p className="text-md lg:text-lg xl:text-xl">
-                {link ? <a href={link} className="underline">Click here</a> : subtext}
+                {link ? <a href={link} className="underline" target="_blank">Click here</a> : subtext}
             </p>
         </div>
     );
