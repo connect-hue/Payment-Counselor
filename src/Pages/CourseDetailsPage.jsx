@@ -4,17 +4,39 @@ import CourseImage from '../assets/image.png'
 function CourseDetailsPage() {
     const location = useLocation();
     const coursesData = location.state?.course;
+    const getYouTubeEmbedURL = (url) => {
+        try {
+            const parsedUrl = new URL(url);
+            const videoId = parsedUrl.searchParams.get("v");
+
+            // For youtu.be short links
+            if (!videoId && parsedUrl.hostname === "youtu.be") {
+                return `https://www.youtube.com/embed/${parsedUrl.pathname.slice(1)}`;
+            }
+
+            return `https://www.youtube.com/embed/${videoId}`;
+        } catch (error) {
+            console.error("Invalid YouTube URL", error);
+            return "";
+        }
+    };
+
+
+
+
     console.log(coursesData);
     return (
         <div className=" flex-col items-center mt-25 justify-center w-[85%] mx-auto">
-            <div className="flex justify-center items-center w-full">
-                <a href={`${coursesData.link}`} target="blank">
-                    <img
-                        src={coursesData.courseImage}
-                        alt="Course Description"
-                        className="h-[80%] rounded "
-                    />
-                </a>
+            <div className="flex justify-center items-center w-full  ">
+                <iframe
+                    src={getYouTubeEmbedURL(coursesData.link)}
+                    title="YouTube Video"
+                    style={{ width: "100%", border: "none" }}
+                    className="h-[80vh]"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                ></iframe>
+
             </div>
             <div className="mt-8 mb-24">
                 <h1 className=" text-2xl lg:text-4xl mb-2 font-semibold text-[#3C3C3C]" style={{ fontFamily: "Poppins, sans-serif" }}>{coursesData.name}</h1>

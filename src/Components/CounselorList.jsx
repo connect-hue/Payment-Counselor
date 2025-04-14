@@ -85,11 +85,11 @@ const counselors = [
   {
     name: 'Syed Saif Imam',
     id: '1117',
-    designation: 'Counselor',
+    designation: '*** id card not found',
     qualifications: 'BA in Sociology',
     experience: '3 years in career coaching',
     contact: 'saifs@academically.com',
-    userImage: '/Counsellors/Anshika Bhandari - FRONT.jpg',
+    userImage: '',
     bio: 'Syed Saif Imam works closely with students on career path alignment.'
   },
   {
