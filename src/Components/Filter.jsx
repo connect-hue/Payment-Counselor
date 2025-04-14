@@ -427,7 +427,7 @@ const Filter = () => {
 
   return (
     <>
-      <h1 className="text-2xl mt-24 font-bold px-4">{name}</h1>
+      <h1 className="text-2xl mt-24 font-bold px-4"></h1>
       {courses.length > 2 && (
         <div
           className="flex-wrap justify-center gap-2 sm:gap-4 mb-8 max-lg:hidden flex"
@@ -437,8 +437,8 @@ const Filter = () => {
             <button
               key={filter.name}
               className={`xl:px-8 px-6 py-3 border border-[#0FB995] text-sm sm:text-base rounded-md ${selectedFilter === filter.name
-                  ? "bg-[#0FB995] text-white"
-                  : "text-black"
+                ? "bg-[#0FB995] text-white"
+                : "text-black"
                 }`}
               onClick={() => handleFilterClick(filter.name)}
             >
