@@ -7,7 +7,7 @@ const CourseCard = ({ course, onClick }) => {
     <div
       className="w-full  border border-[#00D9B7]  ">
       <div className="p-4 flex flex-col ">
-        <img src={course.brochure} alt={course.name}
+        <img src={`/static${course.brochure}`} alt={course.name}
           className="mb-4 rounded-md bg-white" />
         <div className="text-left">
           <h3 className="font-semibold text-lg mt-2 line-clamp-1">{course.name}</h3>
