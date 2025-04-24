@@ -7,8 +7,5 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-  ],
-  server: {
-    hmr: false, // Disable Hot Module Replacement in production
-  }
+  ]
 })
