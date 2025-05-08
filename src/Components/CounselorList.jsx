@@ -65,7 +65,7 @@ const counselors = [
     experience: '4 years in education and HR advisory',
     contact: 'aditya.singh@academically.com',
     userImage: '/Counsellors/Aditya Kumar Singh - FRONT.jpg',
-    counselorImage: '/CounselorsImages/adityapratap.png',
+    counselorImage: '/CounselorsImages/aditya.png',
     bio: 'Aditya provides expert advice in academic and career planning.'
   },
   {
