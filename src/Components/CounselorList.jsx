@@ -10,7 +10,7 @@ const counselors = [
     experience: '2 years in academic counseling',
     contact: 'anshikab@academically.com',
     userImage: '/Counsellors/Anshika Bhandari - FRONT.jpg',
-    counselorImage: '',
+    counselorImage: '/CounselorsImages/anshika.png',
     bio: 'Anshika is committed to guiding students in choosing the right academic paths.'
   },
   {
@@ -21,7 +21,7 @@ const counselors = [
     experience: '4 years in counseling and mentoring',
     contact: 'suryasnatam@academically.com',
     userImage: '/Counsellors/Suryasnata Mukherjee - FRONT.jpg',
-    counselorImage: '',
+    counselorImage: '/CounselorsImages/suryasnata.png',
     bio: 'Suryasnata excels in student psychology and provides personalized support.'
   },
   {
@@ -43,7 +43,7 @@ const counselors = [
     experience: '2.5 years in student counseling',
     contact: 'muskaang@academically.com',
     userImage: '/Counsellors/Muskaan Gupta - FRONT.jpg',
-    counselorImage: '',
+    counselorImage: '/CounselorsImages/muskaan.png',
     bio: 'Muskaan is passionate about connecting students with the right programs.'
   },
   {
@@ -54,7 +54,7 @@ const counselors = [
     experience: '3 years in technical sales and consulting',
     contact: 'snehap@academically.com',
     userImage: '/Counsellors/Sneha Pandey - FRONT.jpg',
-    counselorImage: '',
+    counselorImage: '/CounselorsImages/sneha.png',
     bio: 'Sneha specializes in technical sales and has worked with several tech companies. She is dedicated to understanding clients’ needs and providing them with the best solutions.'
   },
   {
@@ -65,7 +65,7 @@ const counselors = [
     experience: '4 years in education and HR advisory',
     contact: 'aditya.singh@academically.com',
     userImage: '/Counsellors/Aditya Kumar Singh - FRONT.jpg',
-    counselorImage: '',
+    counselorImage: '/CounselorsImages/adityapratap.png',
     bio: 'Aditya provides expert advice in academic and career planning.'
   },
   {
@@ -109,7 +109,7 @@ const counselors = [
     experience: '2 years in academic guidance',
     contact: 'kartikayn@academically.com',
     userImage: '/Counsellors/Kartikay Singh Nayal - FRONT.jpg',
-    counselorImage: '',
+    counselorImage: '/CounselorsImages/kartikay.png',
     bio: 'Kartikay is focused on supporting students with clear academic strategies.'
   },
   {
@@ -131,6 +131,7 @@ const counselors = [
     experience: '4 years in academic admissions',
     contact: 'azharm@academically.com',
     userImage: '/Counsellors/MD Azhar - FRONT.jpg',
+    counselorImage: '/CounselorsImages/azhar.png',
     bio: 'Azhar specializes in handling complex university applications.'
   },
   {
