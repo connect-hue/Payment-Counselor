@@ -10,7 +10,7 @@ const counselors = [
     experience: '2 years in academic counseling',
     contact: 'anshikab@academically.com',
     userImage: '/Counsellors/Anshika Bhandari - FRONT.jpg',
-    counselorImage: '/CounselorsImages/anshika.png',
+    counselorImage: '/CounselorsImages/anshika1.png',
     bio: 'Anshika is committed to guiding students in choosing the right academic paths.'
   },
   {
@@ -21,7 +21,7 @@ const counselors = [
     experience: '4 years in counseling and mentoring',
     contact: 'suryasnatam@academically.com',
     userImage: '/Counsellors/Suryasnata Mukherjee - FRONT.jpg',
-    counselorImage: '/CounselorsImages/suryasnata.png',
+    counselorImage: '/CounselorsImages/suryasnata1.png',
     bio: 'Suryasnata excels in student psychology and provides personalized support.'
   },
   {
@@ -32,7 +32,7 @@ const counselors = [
     experience: '3 years in international education consulting',
     contact: 'sadaff@academically.com',
     userImage: '/Counsellors/Sadaf Fatima - FRONT.jpg',
-    counselorImage: '/CounselorsImages/image (1).png',
+    counselorImage: '/CounselorsImages/sadaf.png',
     bio: 'Sadaf helps students navigate international education opportunities.'
   },
   {
@@ -43,7 +43,7 @@ const counselors = [
     experience: '2.5 years in student counseling',
     contact: 'muskaang@academically.com',
     userImage: '/Counsellors/Muskaan Gupta - FRONT.jpg',
-    counselorImage: '/CounselorsImages/muskaan.png',
+    counselorImage: '/CounselorsImages/muskan2.png',
     bio: 'Muskaan is passionate about connecting students with the right programs.'
   },
   {
@@ -54,7 +54,7 @@ const counselors = [
     experience: '3 years in technical sales and consulting',
     contact: 'snehap@academically.com',
     userImage: '/Counsellors/Sneha Pandey - FRONT.jpg',
-    counselorImage: '/CounselorsImages/sneha.png',
+    counselorImage: '/CounselorsImages/sneha1.png',
     bio: 'Sneha specializes in technical sales and has worked with several tech companies. She is dedicated to understanding clients’ needs and providing them with the best solutions.'
   },
   {
@@ -65,7 +65,7 @@ const counselors = [
     experience: '4 years in education and HR advisory',
     contact: 'aditya.singh@academically.com',
     userImage: '/Counsellors/Aditya Kumar Singh - FRONT.jpg',
-    counselorImage: '/CounselorsImages/aditya.png',
+    counselorImage: '/CounselorsImages/aditya1.png',
     bio: 'Aditya provides expert advice in academic and career planning.'
   },
   {
@@ -76,7 +76,7 @@ const counselors = [
     experience: '5 years in student mentoring',
     contact: 'abhilashas@academically.com',
     userImage: '/Counsellors/Abhilasha Sharma - FRONT.jpg',
-    counselorImage: '/CounselorsImages/image (6).png',
+    counselorImage: '/CounselorsImages/abhilasha.png',
     bio: 'Abhilasha supports students through mental health and career guidance.'
   },
   {
@@ -98,20 +98,10 @@ const counselors = [
     experience: '3 years in career coaching',
     contact: 'saifs@academically.com',
     userImage: '',
-    counselorImage: '/CounselorsImages/image (7).png',
+    counselorImage: '/CounselorsImages/syed.png',
     bio: 'Syed Saif Imam works closely with students on career path alignment.'
   },
-  {
-    name: 'Kartikay Singh Nayal',
-    id: '1127',
-    designation: 'Counselor',
-    qualifications: ['Pharmacist'],
-    experience: '2 years in academic guidance',
-    contact: 'kartikayn@academically.com',
-    userImage: '/Counsellors/Kartikay Singh Nayal - FRONT.jpg',
-    counselorImage: '/CounselorsImages/kartikay.png',
-    bio: 'Kartikay is focused on supporting students with clear academic strategies.'
-  },
+
   {
     name: 'MOHD ZAID KHAN',
     id: '1T01',
@@ -120,20 +110,10 @@ const counselors = [
     experience: '3 years in student support',
     contact: 'zaidk@academically.com',
     userImage: '/Counsellors/Mohd Zaid Khan - FRONT.jpg',
-    counselorImage: '/CounselorsImages/image (10).png',
+    counselorImage: '/CounselorsImages/zaid.png',
     bio: 'Zaid helps streamline admission and counseling processes.'
   },
-  {
-    name: 'MD Azhar',
-    id: '1124',
-    designation: 'Counselor',
-    qualifications: ['Pharmacist'],
-    experience: '4 years in academic admissions',
-    contact: 'azharm@academically.com',
-    userImage: '/Counsellors/MD Azhar - FRONT.jpg',
-    counselorImage: '/CounselorsImages/azhar.png',
-    bio: 'Azhar specializes in handling complex university applications.'
-  },
+ 
   {
     name: 'Asra Mansuri',
     id: 'IT04',
@@ -142,7 +122,7 @@ const counselors = [
     qualifications: ['Pharmacist', 'Optometrist'],
     experience: '2.5 years in student support',
     contact: 'asram@academically.com',
-    counselorImage: '/CounselorsImages/image (3).png',
+    counselorImage: '/CounselorsImages/asra.png',
     bio: 'Asra Mansuri provides empathetic and insightful guidance to students.'
   },
   {
@@ -153,7 +133,7 @@ const counselors = [
     experience: '2 years in student services',
     contact: 'eeshas@academically.com',
     userImage: '/Counsellors/Eesha - FRONT.jpg',
-    counselorImage: '/CounselorsImages/image (5).png',
+    counselorImage: '/CounselorsImages/eesha.png',
     bio: 'Eesha actively works with students to improve career outcomes.'
   },
   {
@@ -163,7 +143,7 @@ const counselors = [
     qualifications: ['Physiotherapist'],
     experience: '6 years in advising roles',
     contact: 'suryas@academically.com',
-    counselorImage: '/CounselorsImages/image (8).png',
+    counselorImage: '/CounselorsImages/surya.png',
     userImage: '',
     bio: 'Surya Pratap ensures students receive the best opportunities abroad.'
   },
@@ -175,7 +155,7 @@ const counselors = [
     experience: '4 years in academic consulting',
     contact: 'dilpreets@academically.com',
     userImage: '/Counsellors/Dilpreet Singh - FRONT.jpg',
-    counselorImage: '/CounselorsImages/image (9).png',
+    counselorImage: '/CounselorsImages/dilpreet.png',
     bio: 'Dilpreet is focused on results-driven career counseling.'
   },
   {
@@ -186,7 +166,7 @@ const counselors = [
     experience: '8 years in sales and management',
     contact: 'rajdeepa@academically.com',
     userImage: '/Counsellors/Rajdeep Auravindam  - FRONT.jpg',
-    counselorImage: '/CounselorsImages/image (4).png',
+    counselorImage: '/CounselorsImages/rajdeep1.png',
     bio: 'Rajdeep has 8 years of experience in sales and management, specializing in customer relations and goal-oriented solutions.'
   },
   {
@@ -197,31 +177,11 @@ const counselors = [
     experience: '3 years in HR and academic support',
     contact: 'surbhic@academically.com',
     userImage: '/Counsellors/Surbhi Chandan - FRONT.jpg',
-    counselorImage: '/CounselorsImages/image (2).png',
+    counselorImage: '/CounselorsImages/surbhi.png',
     bio: 'Surbhi brings a unique blend of HR expertise and student engagement.'
   },
-  {
-    name: 'Kartikey',
-    id: 'XXXX12',
-    designation: 'Counselor',
-    qualifications: ['Nursing'],
-    experience: '2 years in student engagement',
-    contact: 'kartikey@example.com',
-    userImage: '',
-    bio: 'Kartikey is focused on empowering students with the right career choices through dedicated mentoring.'
-  },
-  {
-    name: 'Asra',
-    id: 'XXXX13',
-    designation: 'Counselor',
-    qualifications: ['Nursing'],
-    experience: '2 years in career support',
-    contact: 'asra@example.com',
-    userImage: '',
-    counselorImage: '',
-    bio: 'Asra is known for her personalized approach and student-first mindset.'
-  }
-  , {
+ 
+   {
     name: 'Nishant Balhara ',
     id: '1009',
     designation: 'Counselor',
@@ -229,6 +189,7 @@ const counselors = [
     experience: '2 years in career support',
     contact: 'nishantb@academically.com',
     userImage: '/Counsellors/Nishant Balhara  - FRONT.jpg',
+    counselorImage: '/CounselorsImages/nishant.png',
     bio: 'Asra is known for her personalized approach and student-first mindset.'
   },
   {
@@ -351,87 +312,104 @@ const CounselorList = () => {
           </button>
         ))}
       </div>
-      <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4 gap-4 overflow-auto z-0 relative p-4 ${filteredCounselor.length > 4 ? '' : 'h-screen'}`}>
-        {filteredCounselor.map((counselor) => (
-          <div key={counselor.id} className="w-full h-112 max-sm:h-124">
+       <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 px-4 py-4  w-full relative ${
+      filteredCounselor.length <= 4 ? 'min-h-[calc(100vh-160px)]' : ''
+    }`}>
+      {filteredCounselor.map((counselor) => (
+        <div key={counselor.id} className="w-full lg:h-[29rem] h-[28rem] perspective-1000">
+          <div
+            className={`w-full h-full transition-all duration-500 ease-in-out transform ${
+              flippedCounselorId === counselor.id ? "rotate-y-180" : ""
+            }`}
+            style={{
+              transformStyle: "preserve-3d",
+              position: "relative"
+            }}
+          >
+            {/* Front of the Card */}
             <div
-              className={` w-full h-full transition-transform duration-500 transform ${flippedCounselorId === counselor.id ? "rotate-y-180" : ""
-                }`}
+              className="absolute border-2 border-[#00D9B7] inset-0 w-full h-full p-4 rounded-xl shadow-lg bg-white flex flex-col justify-between backface-hidden"
               style={{
-                transformStyle: "preserve-3d"
+                backfaceVisibility: "hidden",
+                transform: "rotateY(0deg)"
               }}
             >
-              {/* Front of the Card */}
-              <div
-                className="absolute border border-[#00D9B7]  inset-0 w-full h-full p-4 rounded-lg shadow-md bg-white flex flex-col justify-between"
-                style={{
-                  backfaceVisibility: "hidden",
-                }}
-              >
+              <div className="lg:h-[60%] md:h-[45%] h-[55%] w-full overflow-hidden rounded-lg bg-gray-100">
                 <img
                   src={counselor.counselorImage}
-                  alt="Course Description"
-                  className="h-[50%] rounded "
+                  alt={counselor.name}
+                  className="w-full h-full object-fit"
                 />
-                <h3 className="text-2xl font-semibold mt-3 mb-3">{counselor.name}</h3>
-                <p className="flex gap-x-2 items-center mb-1">
-                  <svg width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="1.64453" y="2.05579" width="24.2843" height="15.8376" fill="#00D9B7" fill-opacity="0.13" />
-                    <path d="M24.736 1H2.47029C1.44663 1 0.589844 1.83003 0.589844 2.88045V17.1807C0.589844 18.2043 1.41988 19.0611 2.47029 19.0611H24.7083C25.7598 19.0611 26.5888 18.2033 26.5888 17.1807L26.5898 2.88045C26.5898 1.85679 25.7596 1 24.736 1ZM25.6217 17.1527C25.6217 17.6501 25.2066 18.0651 24.7093 18.0651H2.47013C1.97274 18.0651 1.58552 17.6501 1.58552 17.1805V2.88026C1.58552 2.38287 2.00054 1.99565 2.47013 1.99565H24.7358C25.2332 1.99565 25.6204 2.41066 25.6204 2.88026L25.6217 17.1527Z" fill="#030A21" stroke="#030A21" stroke-width="0.8" />
-                    <path d="M22.8556 9.63H14.0599C13.7829 9.63 13.5625 9.85142 13.5625 10.1274C13.5625 10.4044 13.7839 10.6248 14.0599 10.6248H22.8556C23.1326 10.6248 23.353 10.4034 23.353 10.1274C23.353 9.85036 23.1316 9.63 22.8556 9.63Z" fill="#030A21" stroke="#030A21" stroke-width="0.5" />
-                    <path d="M20.1729 12.2294H14.0599C13.7829 12.2294 13.5625 12.4508 13.5625 12.7268C13.5625 13.0038 13.7839 13.2241 14.0599 13.2241H20.1729C20.4499 13.2241 20.6703 13.0027 20.6703 12.7268C20.6703 12.4508 20.4488 12.2294 20.1729 12.2294Z" fill="#030A21" stroke="#030A21" stroke-width="0.5" />
-                    <path d="M22.8556 7.05737H14.0599C13.7829 7.05737 13.5625 7.27879 13.5625 7.55476C13.5625 7.83179 13.7839 8.05214 14.0599 8.05214H22.8556C23.1326 8.05214 23.353 7.83073 23.353 7.55476C23.3262 7.27879 23.1316 7.05737 22.8556 7.05737Z" fill="#030A21" stroke="#030A21" stroke-width="0.5" />
-                    <path d="M8.23049 10.0172C9.75154 10.0172 10.9967 8.77215 10.9967 7.251C10.9967 5.72995 9.75165 4.5127 8.23049 4.5127C6.70945 4.5127 5.49219 5.75777 5.49219 7.251C5.49219 8.74422 6.70945 10.0172 8.23049 10.0172ZM8.23049 5.50862C9.22633 5.50862 10.0286 6.31086 10.0286 7.27888C10.0286 8.27471 9.22633 9.07695 8.23049 9.07695C7.23465 9.07695 6.46023 8.27471 6.46023 7.27888C6.46023 6.28304 7.23465 5.50862 8.23049 5.50862Z" fill="#030A21" stroke="#030A21" stroke-width="0.5" />
-                    <path d="M8.2295 10.3765C6.01641 10.3765 4.24609 12.1745 4.24609 14.3867V15.051C4.24609 15.328 4.46751 15.5484 4.74348 15.5484C5.02051 15.5484 5.24086 15.3269 5.24086 15.051V14.3867C5.24086 12.7266 6.59611 11.3447 8.25628 11.3447C9.91646 11.3447 11.2983 12.7 11.2983 14.3867V15.051C11.2983 15.328 11.5197 15.5484 11.7957 15.5484C12.0727 15.5484 12.293 15.3269 12.293 15.051V14.3867C12.2396 12.1469 10.4416 10.3765 8.2295 10.3765Z" fill="#030A21" stroke="#030A21" stroke-width="0.5" />
-                  </svg>
-                  {counselor.id}
-                </p>
-                <p className="flex gap-x-2 items-center mb-1">
-                  <svg width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="1.58984" y="4" width="23" height="15" fill="#00D9B7" fill-opacity="0.13" />
-                    <path d="M24.3284 10.9242C23.9244 10.9242 23.6466 11.202 23.6466 11.606V18.9292C23.6466 19.207 23.4699 19.3585 23.2173 19.3585H2.9648C2.68703 19.3585 2.53551 19.1818 2.53551 18.9292V11.606C2.53551 11.202 2.25773 10.9242 1.85369 10.9242C1.44965 10.9242 1.17188 11.202 1.17188 11.606V18.9292C1.17188 19.9646 1.9547 20.7474 2.99006 20.7474H23.2426C24.2779 20.7474 25.0608 19.9646 25.0608 18.9292V11.606C25.0355 11.202 24.7577 10.9242 24.3284 10.9242Z" fill="#030A21" stroke="#030A21" stroke-width="0.4" />
-                    <path d="M23.7717 3.04545H17.5848V2.69192C17.5848 1.73232 16.8525 1 15.8929 1H10.2868C9.32722 1 8.59489 1.73232 8.59489 2.69192V3.04545H2.40803C1.37267 3.04545 0.589844 3.82828 0.589844 4.86364V8.47475C0.589844 9.30808 1.17065 10.0404 1.97873 10.2172L10.8424 12.1869V13.3737C10.8424 13.702 11.0696 13.9293 11.3979 13.9293H14.7818C15.11 13.9293 15.3373 13.702 15.3373 13.3737V12.1869L24.201 10.2172C25.009 10.0404 25.5898 9.28283 25.5898 8.47475V4.86364C25.5898 3.82828 24.807 3.04545 23.7717 3.04545ZM24.201 8.4495C24.201 8.67677 24.0747 8.85354 23.8474 8.87879L15.3373 10.798V10.4444V9.9899C15.3373 9.66162 15.11 9.43434 14.7818 9.43434H11.3979C11.0696 9.43434 10.8424 9.66162 10.8424 9.9899V10.4444V10.798L2.30702 8.87879C2.105 8.85354 1.97873 8.67677 1.97873 8.4495V4.86364C1.97873 4.58586 2.1555 4.43434 2.40803 4.43434H23.7717C24.0494 4.43434 24.201 4.61111 24.201 4.86364V8.4495Z" fill="#030A21" stroke="#030A21" stroke-width="0.4" />
-                  </svg>
-                  {counselor.designation}
-                </p>
-                <p className="flex gap-x-2 items-center mb-5">
-                  <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="0.589844" y="2" width="23" height="15" fill="#00D9B7" fill-opacity="0.13" />
-                    <path d="M2.93467 1C1.6337 1 0.589844 2.09423 0.589844 3.40894V15.5819C0.589844 16.8966 1.6337 18 2.93467 18H22.2795C23.5805 18 24.6243 16.8966 24.6243 15.5819V3.40894C24.6243 2.09423 23.5805 1 22.2795 1H2.93467ZM2.93467 2.17241H22.2795C22.453 2.17241 22.6168 2.22238 22.7649 2.29147L13.3307 11.2495C12.8977 11.6606 12.3356 11.6606 11.9018 11.2495L2.44923 2.29147C2.59737 2.22238 2.76118 2.17241 2.93467 2.17241ZM1.78058 3.27155L8.45785 9.60077L1.89049 16.159C1.80825 15.9882 1.76226 15.7927 1.76226 15.5819V3.40894C1.76226 3.36134 1.77618 3.31742 1.78058 3.27155ZM23.4336 3.27155C23.4383 3.31742 23.4518 3.36134 23.4518 3.40894V15.5819C23.4518 15.7896 23.4036 15.9808 23.3235 16.1498L16.7745 9.59159L23.4336 3.27155ZM15.9228 10.4068L22.3345 16.8276C22.316 16.8276 22.2981 16.8276 22.2795 16.8276H2.93467C2.91914 16.8276 2.90419 16.8276 2.88889 16.8276L9.30967 10.4159L11.0958 12.1013C11.9465 12.9077 13.2862 12.9088 14.1367 12.1013L15.9228 10.4068Z" fill="#030A21" stroke="#030A21" stroke-width="0.4" />
-                  </svg>
-                  {counselor.contact}
-                </p>
-                <div className="w-full h-1 border border-dashed mb-2" />
-                <button
-                  onClick={() => handleFlip(counselor.id)}
-                  className="mt-2 px-4 py-2 bg-[#00D9B7] text-black font-semibold rounded"
-                >
-                  View Id Card
-                </button>
               </div>
+              
+              <div className="flex-1 flex flex-col justify-between pt-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{counselor.name}</h3>
+                  
+                  <div className="space-y-1">
+                    <p className="flex items-center gap-2 text-gray-700">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
+                        <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="#030A21"/>
+                      </svg>
+                      <span className="text-[12px] xl:text-[15px]"> {counselor.id}</span>
+                    </p>
+                    
+                    <p className="flex items-center gap-2 text-gray-700">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
+                        <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM17 12H7V10H17V12Z" fill="#030A21"/>
+                      </svg>
+                      <span className="text-[12px] xl:text-[15px]">{counselor.designation}</span>
+                    </p>
+                    
+                    <p className="flex items-center gap-2 text-gray-700">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
+                        <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#030A21"/>
+                      </svg>
+                      <span className="text-[12px] xl:text-[15px]">{counselor.contact}</span>
+                    </p>
+                  </div>
+                </div>
+                
+                <div>
+                  <div className="w-full h-px bg-gray-300 my-4"></div>
+                  <button
+                    onClick={() => handleFlip(counselor.id)}
+                    className="w-full py-3 bg-[#00D9B7] hover:bg-[#00c7a8] text-gray-900 font-semibold rounded-lg transition-colors duration-200"
+                  >
+                    View ID Card
+                  </button>
+                </div>
+              </div>
+            </div>
 
-              {/* Back of the Card */}
-              <div
-                className="relative border border-[#00D9B7]  inset-0 w-full h-full p-4 rounded-lg shadow-md bg-white flex flex-col justify-between"
-                style={{
-                  backfaceVisibility: "hidden",
-                  transform: "rotateY(180deg)",
-                }}
-              >
-                {/* <h3 className="text-xl font-semibold">{counselor.name}</h3>
-              <p >ID: {counselor.id}</p> */}
-                <img src={counselor.userImage} className="h-[100%]  object-contain rounded w-full"></img>
+            {/* Back of the Card */}
+            <div
+              className="absolute border-2 border-[#00D9B7] inset-0 w-full h-full p-4 rounded-xl shadow-lg bg-white flex items-center justify-center backface-hidden"
+              style={{
+                backfaceVisibility: "hidden",
+                transform: "rotateY(180deg)"
+              }}
+            >
+              <div className="relative w-full h-full">
+                <img 
+                  src={counselor.userImage} 
+                  className="w-full h-full object-contain rounded-lg"
+                  alt={`${counselor.name}'s ID Card`}
+                />
                 <button
                   onClick={() => handleFlip(counselor.id)}
-                  className=" absolute top-0 right-0 px-4 py-2 text-[#00D9B7] rounded-full"
+                  className="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors duration-200"
                 >
-                  X
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D9B7" strokeWidth="2">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
                 </button>
               </div>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
+    </div>
     </div>
   );
 };
