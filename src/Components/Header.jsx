@@ -10,22 +10,22 @@ const Header = () => {
       <nav className="flex justify-between items-center">
         <img src={logo} width={100} height={100} className="mr-auto" onClick={() => navigate('/')} />
         <ul className="flex sm:gap-6 gap-2 justify-center text-[#1E1E1E] ml-auto w-full">
-          <Link to="/">
+          {/* <Link to="/">
             <li
               className="cursor-pointer px-4 py-2 rounded hover:bg-[#0FB995] hover:text-white"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               Courses
             </li>
-          </Link>
-          <Link to="/counselors">
+          </Link> */}
+          {/* <Link to="/counselors">
             <li
               className="cursor-pointer px-4 py-2 rounded hover:bg-[#0FB995] hover:text-white"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               Counselors
             </li>
-          </Link>
+          </Link> */}
         </ul>
       </nav>
     </header>

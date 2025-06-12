@@ -145,7 +145,7 @@ function App() {
           </>
         } />
         <Route path="/courses" element={<CourseList />} />
-        <Route path="/counselors" element={<CounselorList />} />
+        {/* <Route path="/counselors" element={<CounselorList />} /> */}
 
         <Route path="/preview/:name" element={<Filter />} />
         <Route path="/:courseName" element={<CourseDetailsPage />} />
