@@ -113,7 +113,7 @@ const counselors = [
     counselorImage: '/CounselorsImages/zaid.png',
     bio: 'Zaid helps streamline admission and counseling processes.'
   },
- 
+
   {
     name: 'Asra Mansuri',
     id: 'IT04',
@@ -179,18 +179,6 @@ const counselors = [
     userImage: '/Counsellors/Surbhi Chandan - FRONT.jpg',
     counselorImage: '/CounselorsImages/surbhi.png',
     bio: 'Surbhi brings a unique blend of HR expertise and student engagement.'
-  },
- 
-   {
-    name: 'Nishant Balhara ',
-    id: '1009',
-    designation: 'Counselor',
-    qualifications: ['Doctor', 'Physiotherapist'],
-    experience: '2 years in career support',
-    contact: 'nishantb@academically.com',
-    userImage: '/Counsellors/Nishant Balhara  - FRONT.jpg',
-    counselorImage: '/CounselorsImages/nishant.png',
-    bio: 'Asra is known for her personalized approach and student-first mindset.'
   },
   {
     name: 'Manas Vikas ',
@@ -312,104 +300,102 @@ const CounselorList = () => {
           </button>
         ))}
       </div>
-       <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 px-4 py-4  w-full relative ${
-      filteredCounselor.length <= 4 ? 'min-h-[calc(100vh-160px)]' : ''
-    }`}>
-      {filteredCounselor.map((counselor) => (
-        <div key={counselor.id} className="w-full lg:h-[29rem] h-[28rem] perspective-1000">
-          <div
-            className={`w-full h-full transition-all duration-500 ease-in-out transform ${
-              flippedCounselorId === counselor.id ? "rotate-y-180" : ""
-            }`}
-            style={{
-              transformStyle: "preserve-3d",
-              position: "relative"
-            }}
-          >
-            {/* Front of the Card */}
+      <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 px-4 py-4  w-full relative ${filteredCounselor.length <= 4 ? 'min-h-[calc(100vh-160px)]' : ''
+        }`}>
+        {filteredCounselor.map((counselor) => (
+          <div key={counselor.id} className="w-full lg:h-[29rem] h-[28rem] perspective-1000">
             <div
-              className="absolute border-2 border-[#00D9B7] inset-0 w-full h-full p-4 rounded-xl shadow-lg bg-white flex flex-col justify-between backface-hidden"
+              className={`w-full h-full transition-all duration-500 ease-in-out transform ${flippedCounselorId === counselor.id ? "rotate-y-180" : ""
+                }`}
               style={{
-                backfaceVisibility: "hidden",
-                transform: "rotateY(0deg)"
+                transformStyle: "preserve-3d",
+                position: "relative"
               }}
             >
-              <div className="lg:h-[60%] md:h-[45%] h-[55%] w-full overflow-hidden rounded-lg bg-gray-100">
-                <img
-                  src={counselor.counselorImage}
-                  alt={counselor.name}
-                  className="w-full h-full object-fit"
-                />
-              </div>
-              
-              <div className="flex-1 flex flex-col justify-between pt-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{counselor.name}</h3>
-                  
-                  <div className="space-y-1">
-                    <p className="flex items-center gap-2 text-gray-700">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
-                        <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="#030A21"/>
-                      </svg>
-                      <span className="text-[12px] xl:text-[15px]"> {counselor.id}</span>
-                    </p>
-                    
-                    <p className="flex items-center gap-2 text-gray-700">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
-                        <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM17 12H7V10H17V12Z" fill="#030A21"/>
-                      </svg>
-                      <span className="text-[12px] xl:text-[15px]">{counselor.designation}</span>
-                    </p>
-                    
-                    <p className="flex items-center gap-2 text-gray-700">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
-                        <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#030A21"/>
-                      </svg>
-                      <span className="text-[12px] xl:text-[15px]">{counselor.contact}</span>
-                    </p>
+              {/* Front of the Card */}
+              <div
+                className="absolute border-2 border-[#00D9B7] inset-0 w-full h-full p-4 rounded-xl shadow-lg bg-white flex flex-col justify-between backface-hidden"
+                style={{
+                  backfaceVisibility: "hidden",
+                  transform: "rotateY(0deg)"
+                }}
+              >
+                <div className="lg:h-[60%] md:h-[45%] h-[55%] w-full overflow-hidden rounded-lg bg-gray-100">
+                  <img
+                    src={counselor.counselorImage}
+                    alt={counselor.name}
+                    className="w-full h-full object-fit"
+                  />
+                </div>
+
+                <div className="flex-1 flex flex-col justify-between pt-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">{counselor.name}</h3>
+
+                    <div className="space-y-1">
+                      <p className="flex items-center gap-2 text-gray-700">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
+                          <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="#030A21" />
+                        </svg>
+                        <span className="text-[12px] xl:text-[15px]"> {counselor.id}</span>
+                      </p>
+
+                      <p className="flex items-center gap-2 text-gray-700">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
+                          <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM17 12H7V10H17V12Z" fill="#030A21" />
+                        </svg>
+                        <span className="text-[12px] xl:text-[15px]">{counselor.designation}</span>
+                      </p>
+
+                      <p className="flex items-center gap-2 text-gray-700">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
+                          <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#030A21" />
+                        </svg>
+                        <span className="text-[12px] xl:text-[15px]">{counselor.contact}</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="w-full h-px bg-gray-300 my-4"></div>
+                    <button
+                      onClick={() => handleFlip(counselor.id)}
+                      className="w-full py-3 bg-[#00D9B7] hover:bg-[#00c7a8] text-gray-900 font-semibold rounded-lg transition-colors duration-200"
+                    >
+                      View ID Card
+                    </button>
                   </div>
                 </div>
-                
-                <div>
-                  <div className="w-full h-px bg-gray-300 my-4"></div>
+              </div>
+
+              {/* Back of the Card */}
+              <div
+                className="absolute border-2 border-[#00D9B7] inset-0 w-full h-full p-4 rounded-xl shadow-lg bg-white flex items-center justify-center backface-hidden"
+                style={{
+                  backfaceVisibility: "hidden",
+                  transform: "rotateY(180deg)"
+                }}
+              >
+                <div className="relative w-full h-full">
+                  <img
+                    src={counselor.userImage}
+                    className="w-full h-full object-contain rounded-lg"
+                    alt={`${counselor.name}'s ID Card`}
+                  />
                   <button
                     onClick={() => handleFlip(counselor.id)}
-                    className="w-full py-3 bg-[#00D9B7] hover:bg-[#00c7a8] text-gray-900 font-semibold rounded-lg transition-colors duration-200"
+                    className="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors duration-200"
                   >
-                    View ID Card
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D9B7" strokeWidth="2">
+                      <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
                   </button>
                 </div>
               </div>
             </div>
-
-            {/* Back of the Card */}
-            <div
-              className="absolute border-2 border-[#00D9B7] inset-0 w-full h-full p-4 rounded-xl shadow-lg bg-white flex items-center justify-center backface-hidden"
-              style={{
-                backfaceVisibility: "hidden",
-                transform: "rotateY(180deg)"
-              }}
-            >
-              <div className="relative w-full h-full">
-                <img 
-                  src={counselor.userImage} 
-                  className="w-full h-full object-contain rounded-lg"
-                  alt={`${counselor.name}'s ID Card`}
-                />
-                <button
-                  onClick={() => handleFlip(counselor.id)}
-                  className="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors duration-200"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D9B7" strokeWidth="2">
-                    <path d="M18 6L6 18M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
     </div>
   );
 };
