@@ -472,8 +472,9 @@ const Filter = () => {
           ))}
         </div>
       )}
-
-      <SearchBar onSearch={setSearchQuery} />
+      { filteredCourses.length > 0 &&
+        <SearchBar onSearch={setSearchQuery} />
+      }
       <CourseList courses={filteredCourses} />
     </>
   );
