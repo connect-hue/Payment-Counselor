@@ -35,7 +35,7 @@ const FilterSection = () => {
         {filterData.map((data, index) => (
           <div
             key={index}
-            className="w-full h-100 max-sm:h-110 border border-[#00D9B7]  "
+            className="w-full h-100 border border-[#00D9B7]  "
           >
             <div className="p-4 flex flex-col ">
               <img

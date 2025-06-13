@@ -32,13 +32,13 @@ function CourseDetailsPage() {
     );
 
     return (
-        <div className="flex-col items-center mt-4 justify-center w-[85%] mx-auto max-sm:mt-14">
+        <div className="flex-col items-center mt-4 justify-center w-[85%] mx-auto">
             {/* YouTube Embed */}
-            <div className="flex justify-center items-center w-full ">
+            <div className="flex justify-center items-center w-full max-sm:mt-10 max-sm:mb-6">
                 <iframe
                     src={getYouTubeEmbedURL(coursesData.link)}
                     title="YouTube Video"
-                    className="w-full h-[90vh] max-sm:h-[50vh] rounded-xl shadow-lg scale-75"
+                    className="w-full h-[90vh] max-sm:h-[40vh] rounded-xl shadow-lg scale-75 max-sm:scale-100 max-sm:mt-14"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                 />
