@@ -453,9 +453,12 @@ const Filter = () => {
   return (
     <>
       <h1 className="text-2xl mt-24 font-bold px-4"></h1>
+      {filteredCourses.length > 0 &&
+        <SearchBar onSearch={setSearchQuery} />
+      }
       {courses.length > 2 && (
         <div
-          className="flex-wrap justify-center gap-2 sm:gap-4 mb-8 max-lg:hidden flex"
+          className="flex-wrap justify-center gap-2 sm:gap-4 mt-8 flex mx-6"
           style={{ fontFamily: "Poppins, sans-serif" }}
         >
           {filterData.map((filter) => (
@@ -472,9 +475,6 @@ const Filter = () => {
           ))}
         </div>
       )}
-      { filteredCourses.length > 0 &&
-        <SearchBar onSearch={setSearchQuery} />
-      }
       <CourseList courses={filteredCourses} />
     </>
   );
