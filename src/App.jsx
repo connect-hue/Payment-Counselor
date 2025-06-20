@@ -100,15 +100,15 @@ function App() {
     '/CounselorsImages/image (8).png',
     '/CounselorsImages/image (9).png',
     '/CounselorsImages/image (10).png',
-    '/Assets/dentist.png',
-    '/Assets/doctor.png',
-    '/Assets/healthcare.png',
+    '/Assets/dentist.jpg',
+    '/Assets/doctor.jpg',
+    '/Assets/healthcare.jpg',
     '/Assets/labtech.png',
     '/Assets/logo.svg',
-    '/Assets/nurses.png',
-    '/Assets/optometrist.png',
-    '/Assets/pharmacist.png',
-    '/Assets/physiotherapist.png'
+    '/Assets/nursing.jpg',
+    '/Assets/optometrist.jpg',
+    '/Assets/pharmacist.jpg',
+    '/Assets/physiotherapist.jpg'
   ];
 
   useEffect(() => {

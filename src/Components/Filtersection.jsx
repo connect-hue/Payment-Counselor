@@ -1,13 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Pharmacist from '/Assets/pharmacist.png';
-import Doctor from '/Assets/doctor.png';
-import Dentist from '/Assets/dentist.png';
-import Nursing from '/Assets/nurses.png';
-import Physiotherapist from '/Assets/physiotherapist.png';
-import Optometrist from '/Assets/optometrist.png';
+import Pharmacist from '/Assets/pharmacist.jpg';
+import Doctor from '/Assets/doctor.jpg';
+import Dentist from '/Assets/dentist.jpg';
+import Nursing from '/Assets/nursing.jpg';
+import Physiotherapist from '/Assets/physiotherapist.jpg';
+import Optometrist from '/Assets/optometrist.jpg';
 import Veterinary from '/Assets/labtech.png';
-import Other from '/Assets/healthcare.png';
+import Other from '/Assets/healthcare.jpg';
 
 const filterData = [
   { name: "Pharmacist", img: Pharmacist },
@@ -35,20 +35,20 @@ const FilterSection = () => {
         {filterData.map((data, index) => (
           <div
             key={index}
-            className="w-full h-100 border border-[#00D9B7]  "
+            className="w-full border border-[#00D9B7]  "
           >
             <div className="p-4 flex flex-col ">
               <img
                 src={data.img}
                 alt={data.name}
-                className="mb-4 rounded-md bg-white max-sm:w-[70vw] w-full h-[250px] object-cover"
+                className="mb-4 rounded-md bg-white max-sm:w-[70vw] w-full sm:h-[300px] object-cover"
               />
               <div className="text-center">
                 <h5 className="text-lg font-semibold text-[#030A21]"
                   style={{ fontFamily: "'Poppins', sans-serif" }}>{data.name}</h5>
               </div>
               <button
-                className="mt-4 px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7] cursor-pointer"
+                className="mt-2 px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7] cursor-pointer"
                 onClick={() => handlePreviewClick(data.name)}
               >
                 Preview
