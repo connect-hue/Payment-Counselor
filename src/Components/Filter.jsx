@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import CourseList from "./CourseList";
 
@@ -450,6 +450,7 @@ const Filter = () => {
   const [filteredCourses, setFilteredCourses] = useState(courses);
   const [selectedFilter, setSelectedFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   // 🔍 Function to filter by location
   const filterCoursesByLocation = (location) => {
@@ -474,10 +475,37 @@ const Filter = () => {
     setFilteredCourses(finalFiltered);
   }, [selectedFilter, searchQuery, courses]);
 
-  const handleFilterClick = (location) => {
-    setSelectedFilter(location);
+  // const handleFilterClick = (location) => {
+  //   setSelectedFilter(location);
+  // };
+
+  const handleFilterClick = (filterName) => {
+    setSelectedFilter(filterName);
+    
+    // Update URL with query parameter
+    const searchParams = new URLSearchParams();
+    if (filterName !== "All") {
+      searchParams.set('filter', filterName);
+    } else {
+      searchParams.delete('filter');
+    }
+    
+    // Preserve existing search parameters
+    const currentSearch = new URLSearchParams(location.search);
+    if (currentSearch.has('search')) {
+      searchParams.set('search', currentSearch.get('search'));
+    }
+    
+    navigate(`${location.pathname}?${searchParams.toString()}`, { replace: true });
   };
 
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const filterFromUrl = searchParams.get('filter');
+    if (filterFromUrl && filterData.some(f => f.name === filterFromUrl)) {
+      setSelectedFilter(filterFromUrl);
+    }
+  }, [location.search]);
   return (
     <>
       <h1 className="text-2xl mt-24 font-bold px-4"></h1>
