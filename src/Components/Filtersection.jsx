@@ -8,6 +8,7 @@ import Physiotherapist from '/Assets/physiotherapist.jpg';
 import Optometrist from '/Assets/optometrist.jpg';
 import Veterinary from '/Assets/labtech.png';
 import Other from '/Assets/healthcare.jpg';
+import JobAssistance from '/Assets/job-assisstance.jpg';
 
 const filterData = [
   { name: "Pharmacist", img: Pharmacist },
@@ -17,6 +18,7 @@ const filterData = [
   { name: "Physiotherapist", img: Physiotherapist },
   { name: "Optometrist", img: Optometrist },
   // { name: "Veterinary", img: Veterinary },
+  { name: "Job Assistance", img: JobAssistance },
   { name: "Other Professionals", img: Other },
 ];
 const FilterSection = () => {

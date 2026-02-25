@@ -422,6 +422,21 @@ function CourseDetailsPage() {
             "courseImage": "https://assets.academically.com/course/EvRS0d9tDPit7SfgfCO2iV9xlVojGyn1ibec0S2d.jpg",
             "link": "https://youtu.be/1sdqo4e97HE",
             "pathname": "/doh-exam-preparation-course"
+        },
+        {
+            "name": "Clinical Drug Development",
+            "category": "Job Assistance",
+            "description": "Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease.",
+            "brochure": "/CourseImage/Clinical-Drug-Development.png",
+            "audfees": "2400 AUD",
+            "inrfees": "1,50,000 INR",
+            "duration": "4 Months",
+            "brochureLink": "https://drive.google.com/file/d/1-gfbOnONXifTnE4Pfb8zFdHNdeHv_HF8/view?usp=sharing",
+            "students": "500+",
+            "location": "Australia",
+            "courseImage": "https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg",
+            "link": "",
+            "pathname": "/clinical-drug-development"
         }
     ];
 
@@ -456,15 +471,23 @@ function CourseDetailsPage() {
 
     return (
         <div className="flex-col items-center mt-4 justify-center w-[85%] mx-auto">
-            {/* YouTube Embed */}
+            {/* YouTube Embed or Course Image */}
             <div className="flex justify-center items-center w-full max-sm:mt-10 max-sm:mb-6">
-                <iframe
-                    src={getYouTubeEmbedURL(coursed?.link)}
-                    title="YouTube Video"
-                    className="w-full h-[90vh] max-sm:h-[40vh] rounded-xl shadow-lg scale-75 max-sm:scale-100 max-sm:mt-14"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                />
+                {pathName === "/clinical-drug-development" || pathName === "/clinical-drug-development/" ? (
+                    <img
+                        src="/CourseImage/CDD.png"
+                        alt="Clinical Drug Development"
+                        className="w-full h-[90vh] max-sm:h-[40vh] rounded-xl shadow-lg scale-75 max-sm:scale-100 max-sm:mt-14 object-contain"
+                    />
+                ) : (
+                    <iframe
+                        src={getYouTubeEmbedURL(coursed?.link)}
+                        title="YouTube Video"
+                        className="w-full h-[90vh] max-sm:h-[40vh] rounded-xl shadow-lg scale-75 max-sm:scale-100 max-sm:mt-14"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    />
+                )}
             </div>
 
             {/* Course Heading */}

@@ -426,6 +426,23 @@ const coursesObject = {
     }
   ],
 
+  'Job Assistance': [
+    {
+      name: 'Clinical Drug Development',
+      category: 'Job Assistance',
+      description: 'Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease.',
+      brochure: '/CourseImage/Clinical-Drug-Development.png',
+      audfees: '2400 AUD',
+      inrfees: '1,50,000 INR',
+      duration: '4 Months',
+      brochureLink: 'https://drive.google.com/file/d/1-gfbOnONXifTnE4Pfb8zFdHNdeHv_HF8/view?usp=sharing',
+      students: '500+',
+      location: 'India',
+      courseImage: 'https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg',
+      // link: 'https://youtu.be/cyKpBv_xGl0'
+    }
+  ],
+
   'Other Professionals': [
     {
       name: 'DOH Exam Preparation Course',
@@ -481,7 +498,7 @@ const Filter = () => {
 
   const handleFilterClick = (filterName) => {
     setSelectedFilter(filterName);
-    
+
     // Update URL with query parameter
     const searchParams = new URLSearchParams();
     if (filterName !== "All") {
@@ -489,13 +506,13 @@ const Filter = () => {
     } else {
       searchParams.delete('filter');
     }
-    
+
     // Preserve existing search parameters
     const currentSearch = new URLSearchParams(location.search);
     if (currentSearch.has('search')) {
       searchParams.set('search', currentSearch.get('search'));
     }
-    
+
     navigate(`${location.pathname}?${searchParams.toString()}`, { replace: true });
   };
 
