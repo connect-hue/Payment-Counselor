@@ -291,6 +291,20 @@ const coursesObject = {
       location: 'United Kingdom',
       link: '',
       courseImage: 'https://assets.academically.com/course/I6iG9xSILdzU9gMVSxjayAeCKuXa4Kea3dZVsJbE.jpg'
+    },
+    {
+      name: 'GULF Physiotherapist Exam Preparation Course',
+      category: 'Physiotherapist',
+      description: 'Clear physiotherapy licensure exams for Gulf countries like UAE, Qatar, Kuwait, Bahrain & Abu Dhabi on your first attempt with expert online coaching. Learn through live classes by Gulf-registered physiotherapists, get study materials, AI-powered mock tests, case-based practice, expert guidance & community support and everything you need to confidently pass exams. Enroll today and prepare to practice in Gulf countries with confidence.',
+      brochure: '/CourseImage/Physio.svg',
+      audfees: '637 AUD',
+      inrfees: '35,000 INR',
+      duration: '6 Months',
+      brochureLink: '',
+      students: '1200+',
+      location: 'Dubai',
+      courseImage: 'https://assets.academically.com/course/I6iG9xSILdzU9gMVSxjayAeCKuXa4Kea3dZVsJbE.jpg',
+      link: '/CourseImage/Physio.svg'
     }
   ],
   'Doctor': [
@@ -377,6 +391,20 @@ const coursesObject = {
       location: 'Australia',
       courseImage: 'https://assets.academically.com/course/y7QITDwO2KA6SoIdRwDjdHcPixZyQm0vxJhuXd6b.jpg',
       link: 'https://youtu.be/cyKpBv_xGl0'
+    },
+    {
+      name: 'GRMLE Exam Preparation Course for Doctors',
+      category: 'Medical Doctor',
+      description: 'Clear the medical licensure exams for Gulf countries such as UAE, Qatar, Kuwait, Bahrain, Abu Dhabi on your first attempt with the top-notch and best coaching online for DHA, MOH, DHP, KMLE and so on. Our course features live online classes by faculties registered, working and settled in Gulf countries. Get extensive study materials, AI-driven mock tests, community support and easily migrate to and practice in Gulf countries. Enroll in our course today and pass the licensure exams with confidence and ease.',
+      brochure: '/CourseImage/Doctor.svg',
+      audfees: '2000 AUD',
+      inrfees: '1,30,000 INR',
+      duration: '6 Months',
+      brochureLink: 'https://drive.google.com/file/d/1dOUaQXY3B2gqhigsXYrPhvXkeq-Eicjy/view?usp=sharing',
+      students: '250+',
+      location: 'Dubai',
+      courseImage: 'https://assets.academically.com/course/drff20EUtbGOhOoPnkuTd3GHUTeNlvjarWmVFwWa.jpg',
+      link: ''
     }
   ],
   'Dentist': [

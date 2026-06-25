@@ -289,6 +289,21 @@ function CourseDetailsPage() {
             "pathname": "/hcpc-registration-for-physiotherapists"
         },
         {
+            "name": "GULF Physiotherapist Exam Preparation Course",
+            "category": "Physiotherapist",
+            "description": "Clear physiotherapy licensure exams for Gulf countries like UAE, Qatar, Kuwait, Bahrain & Abu Dhabi on your first attempt with expert online coaching. Learn through live classes by Gulf-registered physiotherapists, get study materials, AI-powered mock tests, case-based practice, expert guidance & community support and everything you need to confidently pass exams. Enroll today and prepare to practice in Gulf countries with confidence.",
+            "brochure": "/CourseImage/Physiotherapy.svg",
+            "audfees": "637 AUD",
+            "inrfees": "35,000 INR",
+            "duration": "6 Months",
+            "brochureLink": "",
+            "students": "1200+",
+            "location": "Dubai",
+            "courseImage": "https://assets.academically.com/course/I6iG9xSILdzU9gMVSxjayAeCKuXa4Kea3dZVsJbE.jpg",
+            "link": "",
+            "pathname": "/dha-exam-preparation-course-for-physiotherapists"
+        },
+        {
             "name": "AMC Exam Preparation Course",
             "category": "Medical Doctor",
             "description": "Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease.",
@@ -377,6 +392,21 @@ function CourseDetailsPage() {
             "courseImage": "https://assets.academically.com/course/y7QITDwO2KA6SoIdRwDjdHcPixZyQm0vxJhuXd6b.jpg",
             "link": "https://youtu.be/cyKpBv_xGl0",
             "pathname": "/amc-exam-preparation-crash-course"
+        },
+        {
+            "name": "GRMLE Exam Preparation Course for Doctors",
+            "category": "Medical Doctor",
+            "description": "Get the best coaching for the Dubai Health Authority (DHA) Exam to become a licensed doctor in Dubai. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect DHA Exam Preparation Course for international doctors aiming to migrate to and practice in Dubai.",
+            "brochure": "/CourseImage/Doctor.svg",
+            "audfees": "637 AUD",
+            "inrfees": "35,000 INR",
+            "duration": "6 Months",
+            "brochureLink": "",
+            "students": "1200+",
+            "location": "ALL",
+            "courseImage": "https://assets.academically.com/course/drff20EUtbGOhOoPnkuTd3GHUTeNlvjarWmVFwWa.jpg",
+            "link": "",
+            "pathname": "/dha-exam-preparation-course-for-doctors"
         },
         {
             "name": "ADC Exam Preparation Course",
