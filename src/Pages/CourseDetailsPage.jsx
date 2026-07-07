@@ -296,7 +296,7 @@ function CourseDetailsPage() {
             "audfees": "637 AUD",
             "inrfees": "35,000 INR",
             "duration": "6 Months",
-            "brochureLink": "",
+            "brochureLink": "https://drive.google.com/file/d/1PYiu2D1fMJ1z4r8UYjI0Y1AyvEFAgR9i/view",
             "students": "1200+",
             "location": "Dubai",
             "courseImage": "https://assets.academically.com/course/I6iG9xSILdzU9gMVSxjayAeCKuXa4Kea3dZVsJbE.jpg",
