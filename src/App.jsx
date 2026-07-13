@@ -12,6 +12,7 @@ import CounselorList from "./Components/CounselorList";
 import "./global.css";
 import FilterSection from "./Components/Filtersection";
 import CourseDetailsPage from "./Pages/CourseDetailsPage";
+import PlacementsPage from "./Pages/PlacementsPage";
 
 
 
@@ -147,6 +148,7 @@ function App() {
         <Route path="/courses" element={<CourseList />} />
         {/* <Route path="/counselors" element={<CounselorList />} /> */}
 
+        <Route path="/placements" element={<PlacementsPage />} />
         <Route path="/preview/:name" element={<Filter />} />
         <Route path="/:courseName" element={<CourseDetailsPage />} />
       </Routes>
