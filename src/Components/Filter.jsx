@@ -468,6 +468,20 @@ const coursesObject = {
       location: 'India',
       courseImage: 'https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg',
       // link: 'https://youtu.be/cyKpBv_xGl0'
+    },
+    {
+      name: 'Medical Science Liaison (MSL)',
+      category: 'Job Assistance',
+      description: 'Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease.',
+      brochure: '/CourseImage/MSL.png',
+      audfees: '2400 AUD',
+      inrfees: '1,50,000 INR',
+      duration: '4 Months',
+      brochureLink: 'https://drive.google.com/file/d/1n5avgRWW5kWNSWubSZF7cYMTLAiQKHM9/view',
+      students: '500+',
+      location: 'Australia',
+      courseImage: 'https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg',
+      // link: 'https://youtu.be/cyKpBv_xGl0'
     }
   ],
 
@@ -557,7 +571,7 @@ const Filter = () => {
       {filteredCourses.length > 0 &&
         <SearchBar onSearch={setSearchQuery} />
       }
-      {courses.length > 2 && (
+      {courses.length > 1 && (
         <div
           className="flex-wrap justify-center gap-2 sm:gap-4 mt-8 flex mx-6"
           style={{ fontFamily: "Poppins, sans-serif" }}

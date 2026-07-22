@@ -457,7 +457,7 @@ function CourseDetailsPage() {
             "name": "Clinical Drug Development",
             "category": "Job Assistance",
             "description": "Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease.",
-            "brochure": "/CourseImage/Clinical-Drug-Development.png",
+            "brochure": "/CourseImage/CDD.png",
             "audfees": "2400 AUD",
             "inrfees": "1,50,000 INR",
             "duration": "4 Months",
@@ -467,6 +467,21 @@ function CourseDetailsPage() {
             "courseImage": "https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg",
             "link": "",
             "pathname": "/clinical-drug-development"
+        },
+        {
+            "name": "Medical Science Liaison (MSL)",
+            "category": "Job Assistance",
+            "description": "",
+            "brochure": "/CourseImage/Clinical-Drug-Development.png",
+            "audfees": "2400 AUD",
+            "inrfees": "1,50,000 INR",
+            "duration": "4 Months",
+            "brochureLink": "https://drive.google.com/file/d/1n5avgRWW5kWNSWubSZF7cYMTLAiQKHM9/view",
+            "students": "500+",
+            "location": "India",
+            "courseImage": "https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg",
+            "link": "",
+            "pathname": "/medical-science-liaison-(msl)"
         }
     ];
 
@@ -503,10 +518,10 @@ function CourseDetailsPage() {
         <div className="flex-col items-center mt-4 justify-center w-[85%] mx-auto">
             {/* YouTube Embed or Course Image */}
             <div className="flex justify-center items-center w-full max-sm:mt-10 max-sm:mb-6">
-                {pathName === "/clinical-drug-development" || pathName === "/clinical-drug-development/" ? (
+                {["/clinical-drug-development", "/clinical-drug-development/", "/medical-science-liaison-(msl)", "/medical-science-liaison-(msl)/"].includes(pathName) ? (
                     <img
-                        src="/CourseImage/CDD.png"
-                        alt="Clinical Drug Development"
+                        src={pathName.includes("msl") ? "/CourseImage/MSL.png" : (coursed?.location === "India" ? "/CourseImage/Clinical-Drug-Development.png" : "/CourseImage/CDD.png")}
+                        alt={coursed?.name || "Course Image"}
                         className="w-full h-[90vh] max-sm:h-[40vh] rounded-xl shadow-lg scale-75 max-sm:scale-100 max-sm:mt-14 object-contain"
                     />
                 ) : (

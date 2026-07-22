@@ -58,6 +58,9 @@ function App() {
 
   const imagesToPreload = [
     '/CourseImage/ADC.svg',
+    '/CourseImage/CDD.png',
+    '/CourseImage/Clinical-Drug-Development.png',
+    '/CourseImage/MSL.png',
     '/CourseImage/AMCclinical.svg',
     '/CourseImage/AMCcrash.svg',
     '/CourseImage/AMCexam.svg',
