@@ -25,7 +25,7 @@ const placementCards = [
   {
     id: 3,
     name: "Salman Junaid",
-    qualification: "Pharma.D.",
+    qualification: "Pharm. D.",
     package: "8 LPA and 7 LPA",
     image: "/Assets/Salman.png",
     companies: ["Oviyia Medsafe", "Salocin"],
@@ -138,16 +138,16 @@ const placementCards = [
     package: "13 LPA",
     image: "/Assets/Jetty.png",
     companies: ["IKS Health and Bajaj General Insurance"],
-    story: "I come from a family of doctors, so becoming one always felt inevitable, but after NEET-UG did not work out, I pursued my MBBS at European University in Tbilisi, Georgia. Returning to Kadapa, I faced repeated challenges with FMGE and gradually began questioning whether the clinical path was truly right for me. The thought of choosing differently was difficult, especially in a family where everyone had followed the same profession. Then I discovered a reel by Dr. Akram Ahmad about non-clinical careers for doctors and learned that many people with similar backgrounds had built successful careers in the pharmaceutical industry. After a detailed counselling session with Academically, I confidently explained the opportunities, scope, and future of Medical Affairs and MSL roles to my parents, who supported my decision to enrol in the Executive Diploma in Medical Affairs and Medical Science Liaison. Through interactions with industry leaders from organisations such as Cipla and Pfizer, personalised mentorship, and practical industry guidance, I gained clarity and confidence that no traditional classroom had provided. Today, I am graduating and have secured a ₹7.5 LPA role at IKS Health. In a family where everyone followed the same path, I chose differently, and I am grateful to Academically for showing me that choosing another direction can also lead to success.",
+    story: "I come from a family of doctors, so becoming one always felt inevitable, but after NEET-UG did not work out, I pursued my MBBS at European University in Tbilisi, Georgia. Returning to Kadapa, I faced repeated challenges with FMGE and gradually began questioning whether the clinical path was truly right for me. The thought of choosing differently was difficult, especially in a family where everyone had followed the same profession. Then I discovered a reel by Dr. Akram Ahmad about non-clinical careers for doctors and learned that many people with similar backgrounds had built successful careers in the pharmaceutical industry. After a detailed counselling session with Academically, I confidently explained the opportunities, scope, and future of Medical Affairs and MSL roles to my parents, who supported my decision to enrol in the Executive Program in Medical Affairs. Through interactions with industry leaders from organisations such as Cipla and Pfizer, personalised mentorship, and practical industry guidance, I gained clarity and confidence that no traditional classroom had provided. Today, I am graduating and have secured a ₹7.5 LPA role at IKS Health. In a family where everyone followed the same path, I chose differently, and I am grateful to Academically for showing me that choosing another direction can also lead to success.",
   },
    {
     id: 16,
     name: "M. Seshaphani Shabarishwara",
-    qualification: "Pharm.D",
+    qualification: "Pharm. D",
     package: "5 LPA",
     image: "/Assets/Seshphani.png",
     companies: ["Salocin"],
-    story: "I come from Gooty, a small city in Andhra Pradesh where pharmacy is one of the most common career paths, and after completing my Pharm.D, I felt my options were limited to opening a medical store, pursuing a PhD, or entering academics. None of these paths offered the clarity, affordability, or certainty I was looking for, and because no one around me had chosen a different route, I felt completely stuck. One evening, while scrolling through Instagram, I came across a reel by Dr. Akram Ahmad featuring Salman Junaid, who had completed Academically’s MSL course and secured an ₹8 LPA job. I contacted Academically the same day, and after understanding my background and personality, the counsellor introduced me to careers in Medical Affairs, Drug Safety, and Pharmacovigilance. I chose Medical Science Liaison because it immediately felt right. The course was unlike a traditional classroom, with faculty who had real experience handling KOL interactions, representing leading pharmaceutical brands, and managing industry challenges. Practical sessions and the capstone project gave me the confidence to think and perform like an industry professional. Just one month after graduating, I was hired by Salocin as an MSL at ₹5 LPA. A month earlier, I believed I had reached a dead end; today, I have the confidence to evaluate opportunities because I know more will come. One different decision took me somewhere no one around me expected me to be.",
+    story: "I come from Gooty, a small city in Andhra Pradesh where pharmacy is one of the most common career paths, and after completing my Pharm. D, I felt my options were limited to opening a medical store, pursuing a PhD, or entering academics. None of these paths offered the clarity, affordability, or certainty I was looking for, and because no one around me had chosen a different route, I felt completely stuck. One evening, while scrolling through Instagram, I came across a reel by Dr. Akram Ahmad featuring Salman Junaid, who had completed Academically’s MSL course and secured an ₹8 LPA job. I contacted Academically the same day, and after understanding my background and personality, the counsellor introduced me to careers in Medical Affairs, Drug Safety, and Pharmacovigilance. I chose Medical Science Liaison because it immediately felt right. The course was unlike a traditional classroom, with faculty who had real experience handling KOL interactions, representing leading pharmaceutical brands, and managing industry challenges. Practical sessions and the capstone project gave me the confidence to think and perform like an industry professional. Just one month after graduating, I was hired by Salocin as an MSL at ₹5 LPA. A month earlier, I believed I had reached a dead end; today, I have the confidence to evaluate opportunities because I know more will come. One different decision took me somewhere no one around me expected me to be.",
   },
    {
     id: 17,
@@ -170,7 +170,7 @@ const placementCards = [
    {
     id: 19,
     name: "Oshin Nirmal Neha",
-    qualification: "Pharm.D",
+    qualification: "MBBS",
     package: "11 LPA",
     image: "/Assets/NehaNirmal.png",
     companies: ["AIIMS Delhi(Oncology)"],
@@ -179,11 +179,11 @@ const placementCards = [
    {
     id: 20,
     name: "Uday Mudhol",
-    qualification: "Pharm.D",
+    qualification: "Pharm. D",
     package: "5 LPA",
     image: "/Assets/Uday.png",
     companies: ["Salocin and IQVIA"],
-    story: "I am Dr. Uday, a PharmD graduate from Rajiv Gandhi University of Health Sciences with a strong interest in clinical science, patient safety, research, and scientific communication. During my academic journey, I completed a thesis on Drug Utilization Evaluation in chronic kidney disease patients, focusing on renal dose adjustment, which strengthened my understanding of renal pharmacology, evidence-based prescribing, data interpretation, and individualized therapy. I also worked on two clinical case reports, developing skills in literature review, scientific writing, critical analysis, and medical documentation. Regular interactions with physicians during my research helped me discover my passion for scientific exchange and showed me how pharmacy knowledge can support clinical decision-making. Presenting disease-state topics at medical conferences further improved my confidence and ability to communicate complex information clearly to healthcare professionals. These experiences led me to explore Medical Affairs and the Medical Science Liaison role, where scientific expertise, KOL engagement, research understanding, and communication come together. I subsequently completed formal MSL training covering medical strategy, scientific exchange, compliance, and stakeholder engagement. Today, I am prepared to build a successful career in Medical Affairs by combining my PharmD foundation, research experience, presentation skills, and commitment to evidence-based patient care while continuing to learn, collaborate, and contribute meaningfully to the healthcare community.",
+    story: "I am Dr. Uday, a Pharm. D graduate from Rajiv Gandhi University of Health Sciences with a strong interest in clinical science, patient safety, research, and scientific communication. During my academic journey, I completed a thesis on Drug Utilization Evaluation in chronic kidney disease patients, focusing on renal dose adjustment, which strengthened my understanding of renal pharmacology, evidence-based prescribing, data interpretation, and individualized therapy. I also worked on two clinical case reports, developing skills in literature review, scientific writing, critical analysis, and medical documentation. Regular interactions with physicians during my research helped me discover my passion for scientific exchange and showed me how pharmacy knowledge can support clinical decision-making. Presenting disease-state topics at medical conferences further improved my confidence and ability to communicate complex information clearly to healthcare professionals. These experiences led me to explore Medical Affairs and the Medical Science Liaison role, where scientific expertise, KOL engagement, research understanding, and communication come together. I subsequently completed formal MSL training covering medical strategy, scientific exchange, compliance, and stakeholder engagement. Today, I am prepared to build a successful career in Medical Affairs by combining my PharmD foundation, research experience, presentation skills, and commitment to evidence-based patient care while continuing to learn, collaborate, and contribute meaningfully to the healthcare community.",
   },
 /*{
     id: 21,
@@ -206,7 +206,7 @@ const placementCards = [
   {
     id: 23,
     name: "Uday Mudhol",
-    qualification: "Pharm.D",
+    qualification: "Pharm. D",
     package: "5 LPA",
     image: "/Assets/",
     companies: ["Salocin and IQVIA"],
@@ -215,7 +215,7 @@ const placementCards = [
   {
     id: 20,
     name: "Uday Mudhol",
-    qualification: "Pharm.D",
+    qualification: "Pharm. D",
     package: "5 LPA",
     image: "/Assets/",
     companies: ["Salocin and IQVIA"],
@@ -224,7 +224,7 @@ const placementCards = [
   {
     id: 20,
     name: "Uday Mudhol",
-    qualification: "Pharm.D",
+    qualification: "Pharm. D",
     package: "5 LPA",
     image: "/Assets/",
     companies: ["Salocin and IQVIA"],

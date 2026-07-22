@@ -474,7 +474,7 @@ function CourseDetailsPage() {
             "description": "",
             "brochure": "/CourseImage/Clinical-Drug-Development.png",
             "audfees": "2400 AUD",
-            "inrfees": "1,50,000 INR",
+            "inrfees": "2,50,000 INR",
             "duration": "4 Months",
             "brochureLink": "https://drive.google.com/file/d/1n5avgRWW5kWNSWubSZF7cYMTLAiQKHM9/view",
             "students": "500+",

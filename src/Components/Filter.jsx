@@ -472,10 +472,10 @@ const coursesObject = {
     {
       name: 'Medical Science Liaison (MSL)',
       category: 'Job Assistance',
-      description: 'Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease.',
+      description: '',
       brochure: '/CourseImage/MSL.png',
       audfees: '2400 AUD',
-      inrfees: '1,50,000 INR',
+      inrfees: '2,50,000 INR',
       duration: '4 Months',
       brochureLink: 'https://drive.google.com/file/d/1n5avgRWW5kWNSWubSZF7cYMTLAiQKHM9/view',
       students: '500+',
