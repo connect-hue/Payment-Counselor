@@ -185,7 +185,7 @@ const placementCards = [
     companies: ["Salocin and IQVIA"],
     story: "I am Dr. Uday, a PharmD graduate from Rajiv Gandhi University of Health Sciences with a strong interest in clinical science, patient safety, research, and scientific communication. During my academic journey, I completed a thesis on Drug Utilization Evaluation in chronic kidney disease patients, focusing on renal dose adjustment, which strengthened my understanding of renal pharmacology, evidence-based prescribing, data interpretation, and individualized therapy. I also worked on two clinical case reports, developing skills in literature review, scientific writing, critical analysis, and medical documentation. Regular interactions with physicians during my research helped me discover my passion for scientific exchange and showed me how pharmacy knowledge can support clinical decision-making. Presenting disease-state topics at medical conferences further improved my confidence and ability to communicate complex information clearly to healthcare professionals. These experiences led me to explore Medical Affairs and the Medical Science Liaison role, where scientific expertise, KOL engagement, research understanding, and communication come together. I subsequently completed formal MSL training covering medical strategy, scientific exchange, compliance, and stakeholder engagement. Today, I am prepared to build a successful career in Medical Affairs by combining my PharmD foundation, research experience, presentation skills, and commitment to evidence-based patient care while continuing to learn, collaborate, and contribute meaningfully to the healthcare community.",
   },
-{
+/*{
     id: 21,
     name: "Ayesha Naureen",
     qualification: "MBBS",
@@ -229,7 +229,7 @@ const placementCards = [
     image: "/Assets/",
     companies: ["Salocin and IQVIA"],
     story: "",
-  },
+  },*/
 
 
 ];
