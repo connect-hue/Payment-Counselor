@@ -25,7 +25,7 @@ const placementCards = [
   {
     id: 3,
     name: "Salman Junaid",
-    qualification: "Pharm. D.",
+    qualification: "Pharm. D",
     package: "8 LPA and 7 LPA",
     image: "/Assets/Salman.png",
     companies: ["Oviyia Medsafe", "Salocin"],
@@ -163,7 +163,7 @@ const placementCards = [
     name: "Vineet",
     qualification: "BSc, MBBS, MPH",
     package: "13 LPA",
-    image: "/Assets/",
+    image: "/Assets/Vineet.png",
     companies: ["Bajaj General Insurance"],
     story: "",
   },
@@ -185,26 +185,35 @@ const placementCards = [
     companies: ["Salocin and IQVIA"],
     story: "I am Dr. Uday, a Pharm. D graduate from Rajiv Gandhi University of Health Sciences with a strong interest in clinical science, patient safety, research, and scientific communication. During my academic journey, I completed a thesis on Drug Utilization Evaluation in chronic kidney disease patients, focusing on renal dose adjustment, which strengthened my understanding of renal pharmacology, evidence-based prescribing, data interpretation, and individualized therapy. I also worked on two clinical case reports, developing skills in literature review, scientific writing, critical analysis, and medical documentation. Regular interactions with physicians during my research helped me discover my passion for scientific exchange and showed me how pharmacy knowledge can support clinical decision-making. Presenting disease-state topics at medical conferences further improved my confidence and ability to communicate complex information clearly to healthcare professionals. These experiences led me to explore Medical Affairs and the Medical Science Liaison role, where scientific expertise, KOL engagement, research understanding, and communication come together. I subsequently completed formal MSL training covering medical strategy, scientific exchange, compliance, and stakeholder engagement. Today, I am prepared to build a successful career in Medical Affairs by combining my PharmD foundation, research experience, presentation skills, and commitment to evidence-based patient care while continuing to learn, collaborate, and contribute meaningfully to the healthcare community.",
   },
-/*{
+{
     id: 21,
     name: "Ayesha Naureen",
     qualification: "MBBS",
     package: "13 LPA",
-    image: "/Assets/",
+    image: "/Assets/ayesha.png",
     companies: ["Bajaj General Insurance"],
-    story: "",
+    story: "I am Dr. Ayeshaa Naureen, an MBBS graduate from NRI Medical College, Visakhapatnam, who completed a 12-month internship at Siddhartha Government Medical College, Vijayawada. Coming from a humble family, my medical journey involved significant personal and financial sacrifices, which shaped me into a calm, patient, and resilient person. After my internship, I worked night shifts as a junior doctor at Ramesh Cardiac Centre, served for two years as a Government Medical Officer at a Primary Health Centre, and later worked under an endocrinologist at Aster Hospitals in Bengaluru. I also performed COVID-19 duties for nearly a year. After marriage and the birth of my daughter, balancing demanding clinical responsibilities with my personal life began affecting my health and work-life balance. While exploring alternative career opportunities, I discovered Academically Global Healthcare Academy and enrolled in its Medical Affairs and Medical Science Liaison training programme. The course strengthened my understanding of Medical Affairs, scientific communication, teamwork, leadership, evidence-based medicine, and industry expectations while helping me apply my clinical experience beyond traditional hospital practice. I am sincerely grateful to Academically and especially to Dr. Ateeb, Dr. Nishtha, Dr. Skanda, and Dr. Jatin for their personalised guidance, mentorship, and commitment to making me industry-ready for a meaningful career in Medical Affairs.",
   },
   {
     id: 22,
     name: "Nilesh Vijay Wani",
     qualification: "MBBS",
     package: "13 LPA",
-    image: "/Assets/",
+    image: "/Assets/nilesh.png",
     companies: ["Bajaj General Insurance"],
-    story: "",
+    story: "I am Dr. Nilesh Wani, an MBBS graduate from Jalalabad State Medical University, Kyrgyzstan. My journey began with a strong interest in science, sports, and learning, but several difficult experiences, including witnessing a medical emergency and losing my mother to kidney failure, inspired me to pursue medicine and understand diseases more deeply. Despite financial challenges and limited family support, my father and I arranged loans to fund my medical education abroad. During MBBS, I actively visited hospitals and libraries beyond regular classes to gain practical knowledge, particularly in neurology, nephrology, cardiology, and pharmacology. After returning to India, I completed observerships under specialists and worked in a medical store, where I became increasingly concerned about medication side effects, irrational prescribing, and the need for stronger drug-safety systems. This led me to explore careers in Medical Affairs and Clinical Research, and I discovered Academically Global through YouTube. I enrolled in its industry-focused programme to pursue my goal of understanding medicines, clinical trials, safety data, and scientific communication. The faculty and mentors helped me improve my communication, recognise my strengths and weaknesses, adapt to professional situations, and gain confidence. My life has been full of challenges, but every experience has strengthened my determination to build a meaningful career where I can contribute to safer medicines and better patient outcomes.",
   },
   {
     id: 23,
+    name: "Deekshitha",
+    qualification: "Pharm. D",
+    package: "5 LPA",
+    image: "/Assets/Deekshitha.png",
+    companies: ["Mitocon"],
+    story: "",
+  },
+ {
+    id: 24,
     name: "Uday Mudhol",
     qualification: "Pharm. D",
     package: "5 LPA",
@@ -213,7 +222,7 @@ const placementCards = [
     story: "",
   },
   {
-    id: 20,
+    id: 25,
     name: "Uday Mudhol",
     qualification: "Pharm. D",
     package: "5 LPA",
@@ -221,15 +230,6 @@ const placementCards = [
     companies: ["Salocin and IQVIA"],
     story: "",
   },
-  {
-    id: 20,
-    name: "Uday Mudhol",
-    qualification: "Pharm. D",
-    package: "5 LPA",
-    image: "/Assets/",
-    companies: ["Salocin and IQVIA"],
-    story: "",
-  },*/
 
 
 ];
