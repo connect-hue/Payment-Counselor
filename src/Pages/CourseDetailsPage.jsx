@@ -5,7 +5,7 @@ function CourseDetailsPage() {
     const coursesData = location.state?.course;
     const pathName = location.pathname;
 
-    const coursesObject = [
+    const coursesObject = [ 
         {
             "name": "OPRA Exam Preparation Course",
             "category": "Australia",
@@ -471,10 +471,10 @@ function CourseDetailsPage() {
         {
             "name": "Medical Science Liaison (MSL)",
             "category": "Job Assistance",
-            "description": "",
+            "description": "Build a successful career in the pharmaceutical industry with Academically's Executive Programme in Medical Affairs/Medical Science Liaison. Designed for doctors, pharmacists, dentists, life science graduates, and PhD holders, this 4-month online course offers industry-focused training, practical capstone projects, expert mentorship, and dedicated job assistance. Learn medical affairs, KOL engagement, scientific communication, clinical research, publication strategy, and evidence generation while developing skills that employers value. With interview preparation, career guidance, and placement support, the programme helps you confidently step into Medical Affairs and MSL roles across leading pharmaceutical and healthcare organisations.",
             "brochure": "/CourseImage/Clinical-Drug-Development.png",
-            "audfees": "2400 AUD",
-            "inrfees": "2,50,000 INR",
+            "audfees": "3445 AUD",
+            "inrfees": "2,32,000 INR including 18% GST",
             "duration": "4 Months",
             "brochureLink": "https://drive.google.com/file/d/1n5avgRWW5kWNSWubSZF7cYMTLAiQKHM9/view",
             "students": "500+",

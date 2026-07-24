@@ -1,25 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Pharmacist from '/Assets/pharmacist.jpg';
-import Doctor from '/Assets/doctor.jpg';
-import Dentist from '/Assets/dentist.jpg';
-import Nursing from '/Assets/nursing.jpg';
-import Physiotherapist from '/Assets/physiotherapist.jpg';
-import Optometrist from '/Assets/optometrist.jpg';
-import Veterinary from '/Assets/labtech.png';
-import Other from '/Assets/healthcare.jpg';
-import JobAssistance from '/Assets/job-assisstance.jpg';
 
 const filterData = [
-  { name: "Pharmacist", img: Pharmacist },
-  { name: "Doctor", img: Doctor },
-  { name: "Dentist", img: Dentist },
-  { name: "Nursing", img: Nursing },
-  { name: "Physiotherapist", img: Physiotherapist },
-  { name: "Optometrist", img: Optometrist },
-  // { name: "Veterinary", img: Veterinary },
-  { name: "Job Assistance", img: JobAssistance },
-  { name: "Other Professionals", img: Other },
+  { name: "Pharmacist", img: "/Assets/pharmacist.jpg" },
+  { name: "Doctor", img: "/Assets/doctor.webp" },
+  { name: "Dentist", img: "/Assets/dentist.webp" },
+  { name: "Nursing", img: "/Assets/nursing.webp" },
+  { name: "Physiotherapist", img: "/Assets/physiotherapist.webp" },
+  { name: "Optometrist", img: "/Assets/optometrist.webp" },
+  { name: "Job Assistance", img: "/Assets/job-assisstance.webp" },
+  { name: "Other Professionals", img: "/Assets/healthcare.webp" },
 ];
 const FilterSection = () => {
   const navigate = useNavigate();
