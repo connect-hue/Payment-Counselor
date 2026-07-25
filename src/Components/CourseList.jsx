@@ -4,7 +4,7 @@ import CourseDetails from "./CourseDetails";
 
 
 
-const CourseList = ({ courses }) => {
+const CourseList = ({ courses = [] }) => {
   const [selectedCourse, setSelectedCourse] = useState(null);
 
   return (

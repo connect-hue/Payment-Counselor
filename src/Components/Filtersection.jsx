@@ -1,5 +1,7 @@
+"use client";
+
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const filterData = [
   { name: "Pharmacist", img: "/Assets/pharmacist.jpg" },
@@ -12,13 +14,11 @@ const filterData = [
   { name: "Other Professionals", img: "/Assets/healthcare.webp" },
 ];
 const FilterSection = () => {
-  const navigate = useNavigate();
-
+  const router = useRouter();
 
   const handlePreviewClick = (name) => {
-    navigate(`/preview/${encodeURIComponent(name)}`);
+    router.push(`/preview/${encodeURIComponent(name)}`);
   };
-
 
   return (
     <div className="h-full p-8 mt-20 ">

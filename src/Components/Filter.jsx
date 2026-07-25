@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useRouter, useParams, usePathname, useSearchParams } from "next/navigation";
 import SearchBar from "./SearchBar";
 import CourseList from "./CourseList";
 
@@ -504,12 +504,16 @@ const coursesObject = {
 };
 
 const Filter = () => {
-  const { name } = useParams();
+  const params = useParams();
+  const name = decodeURIComponent(params.name || "");
   const courses = coursesObject[name] || [];
   const [filteredCourses, setFilteredCourses] = useState(courses);
   const [selectedFilter, setSelectedFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const filterFromUrl = searchParams.get('filter');
 
   // 🔍 Function to filter by location
   const filterCoursesByLocation = (location) => {
@@ -541,30 +545,23 @@ const Filter = () => {
   const handleFilterClick = (filterName) => {
     setSelectedFilter(filterName);
 
-    // Update URL with query parameter
-    const searchParams = new URLSearchParams();
+    const newSearchParams = new URLSearchParams(searchParams.toString());
     if (filterName !== "All") {
-      searchParams.set('filter', filterName);
+      newSearchParams.set('filter', filterName);
     } else {
-      searchParams.delete('filter');
+      newSearchParams.delete('filter');
     }
 
-    // Preserve existing search parameters
-    const currentSearch = new URLSearchParams(location.search);
-    if (currentSearch.has('search')) {
-      searchParams.set('search', currentSearch.get('search'));
-    }
-
-    navigate(`${location.pathname}?${searchParams.toString()}`, { replace: true });
+    router.replace(`${pathname}?${newSearchParams.toString()}`);
   };
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const filterFromUrl = searchParams.get('filter');
     if (filterFromUrl && filterData.some(f => f.name === filterFromUrl)) {
       setSelectedFilter(filterFromUrl);
+    } else {
+      setSelectedFilter("All");
     }
-  }, [location.search]);
+  }, [filterFromUrl]);
   return (
     <>
       <h1 className="text-2xl mt-24 font-bold px-4"></h1>
