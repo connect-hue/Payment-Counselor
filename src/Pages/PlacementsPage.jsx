@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { apiClient } from "../utils/apiClient";
 
 // Realistic upskilling placements data representing different medical categories.
 const placementCards = [
@@ -245,70 +246,116 @@ const sortedPlacementCards = [...placementCards].sort((a, b) =>
   getPackageValue(b.package) - getPackageValue(a.package)
 );
 
-const PlacementCard = ({ placement, onPreview }) => (
-  <div className="w-full border border-[#00D9B7] bg-white shadow-sm flex flex-col h-full">
+const SkeletonCard = () => (
+  <div className="w-full border border-[#00D9B7]/25 bg-white shadow-sm flex flex-col h-full animate-pulse">
     <div className="p-4 flex flex-col h-full">
-      {/* Image Container with Badges */}
-      <div className="relative mb-4 overflow-hidden rounded-md bg-gray-50 flex-shrink-0">
-        <img
-          src={placement.image}
-          alt={placement.name}
-          className="w-full h-[300px] object-cover"
-        />
-        {/* Companies badges overlaid on top-right of image */}
-        <div className="absolute right-3 top-3 flex flex-col gap-2">
-          {placement.companies.map((company) => (
-            <span
-              key={company}
-              className="rounded bg-white/95 px-3 py-1.5 text-xs font-bold text-[#17264B] shadow-sm border border-gray-100/50"
-            >
-              {company}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Main Details */}
-      <div className="text-center flex-grow flex flex-col justify-between">
+      <div className="w-full h-[300px] bg-gray-100 rounded-md mb-4 flex-shrink-0"></div>
+      <div className="text-center flex-grow flex flex-col justify-between space-y-4">
         <div>
-          <h3
-            className="text-lg font-semibold text-[#030A21] mb-1"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-          >
-            {placement.name}
-          </h3>
-          <p
-            className="text-sm font-medium text-gray-500 mb-3"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-          >
-            {placement.qualification}
-          </p>
+          <div className="h-5 bg-gray-150 rounded-md w-3/4 mx-auto mb-2"></div>
+          <div className="h-4 bg-gray-150 rounded-md w-1/2 mx-auto"></div>
         </div>
-
-        {/* Package & Preview Button */}
         <div>
-          <div
-            className="mb-3 text-lg font-bold text-[#17264B] bg-[#F7DD4B]/20 py-2 rounded-md"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-          >
-            {placement.package}
-          </div>
-          <button
-            onClick={() => onPreview(placement)}
-            className="w-full px-4 py-2 bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7]/90 transition-colors duration-200 cursor-pointer"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-          >
-            Preview
-          </button>
+          <div className="h-10 bg-gray-150 rounded-md w-full mb-3"></div>
+          <div className="h-10 bg-gray-150 rounded-md w-full"></div>
         </div>
       </div>
     </div>
   </div>
 );
 
+const PlacementCard = ({ placement, onPreview }) => {
+  const imageSrc = placement.imageUrl || placement.image;
+  const packageText = Array.isArray(placement.packages) ? placement.packages.join(" & ") : (placement.package || "");
+
+  return (
+    <div className="w-full border border-[#00D9B7] bg-white shadow-sm flex flex-col h-full">
+      <div className="p-4 flex flex-col h-full">
+        {/* Image Container with Badges */}
+        <div className="relative mb-4 overflow-hidden rounded-md bg-gray-50 flex-shrink-0">
+          <img
+            src={imageSrc}
+            alt={placement.imageAlt || placement.name}
+            className="w-full h-[300px] object-cover"
+            loading="lazy"
+          />
+          {/* Companies badges overlaid on top-right of image */}
+          <div className="absolute right-3 top-3 flex flex-col gap-2">
+            {(placement.companies || []).map((company) => (
+              <span
+                key={company}
+                className="rounded bg-white/95 px-3 py-1.5 text-xs font-bold text-[#17264B] shadow-sm border border-gray-100/50"
+              >
+                {company}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Main Details */}
+        <div className="text-center flex-grow flex flex-col justify-between">
+          <div>
+            <h3
+              className="text-lg font-semibold text-[#030A21] mb-1"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
+              {placement.name}
+            </h3>
+            <p
+              className="text-sm font-medium text-gray-500 mb-3"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
+              {placement.qualification}
+            </p>
+          </div>
+
+          {/* Package & Preview Button */}
+          <div>
+            <div
+              className="mb-3 text-lg font-bold text-[#17264B] bg-[#F7DD4B]/20 py-2 rounded-md"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
+              {packageText}
+            </div>
+            <button
+              onClick={() => onPreview(placement)}
+              className="w-full px-4 py-2 bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7]/90 transition-colors duration-200 cursor-pointer"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
+              Preview
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const PlacementsPage = () => {
+  const [placements, setPlacements] = useState([]);
   const [selectedPlacement, setSelectedPlacement] = useState(null);
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPlacements = async () => {
+      try {
+        setLoading(true);
+        const data = await apiClient.get("/api/placements");
+        if (data && data.length > 0) {
+          setPlacements(data);
+        } else {
+          console.warn("No placement records returned by API, using hardcoded fallback.");
+          setPlacements(sortedPlacementCards);
+        }
+      } catch (err) {
+        console.error("API error loading placements, using hardcoded fallback:", err);
+        setPlacements(sortedPlacementCards);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPlacements();
+  }, []);
 
   const handleCloseModal = () => setSelectedPlacement(null);
   const handleBackdropClick = (e) => {
@@ -316,6 +363,10 @@ const PlacementsPage = () => {
       setSelectedPlacement(null);
     }
   };
+
+  const modalImageSrc = selectedPlacement ? (selectedPlacement.imageUrl || selectedPlacement.image) : "";
+  const modalPackageText = selectedPlacement ? (Array.isArray(selectedPlacement.packages) ? selectedPlacement.packages.join(" & ") : (selectedPlacement.package || "")) : "";
+  const modalStoryText = selectedPlacement ? (selectedPlacement.successStory || selectedPlacement.story) : "";
 
   return (
     <main className="min-h-screen px-8 pt-28 pb-12 max-sm:px-4 bg-[#F8FAFC]" aria-labelledby="placements-title">
@@ -329,13 +380,17 @@ const PlacementsPage = () => {
 
       {/* Grid containing the cards */}
       <section className="mx-auto grid max-w-7xl grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 p-4">
-        {sortedPlacementCards.map((placement) => (
-          <PlacementCard
-            key={placement.id}
-            placement={placement}
-            onPreview={setSelectedPlacement}
-          />
-        ))}
+        {loading ? (
+          Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)
+        ) : (
+          placements.map((placement) => (
+            <PlacementCard
+              key={placement._id || placement.id}
+              placement={placement}
+              onPreview={setSelectedPlacement}
+            />
+          ))
+        )}
       </section>
 
       {/* Details Modal */}
@@ -358,7 +413,7 @@ const PlacementsPage = () => {
               {/* Header Info */}
               <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start text-center sm:text-left">
                 <img
-                  src={selectedPlacement.image}
+                  src={modalImageSrc}
                   alt={selectedPlacement.name}
                   className="h-28 w-28 flex-shrink-0 rounded-full border-4 border-[#00D9B7] object-cover shadow-md"
                 />
@@ -369,12 +424,14 @@ const PlacementsPage = () => {
                   >
                     {selectedPlacement.name}
                   </h2>
-                  <p
-                    className="text-sm font-semibold text-[#00D9B7] uppercase tracking-wide mt-1"
-                    style={{ fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    {selectedPlacement.role}
-                  </p>
+                  {selectedPlacement.role && (
+                    <p
+                      className="text-sm font-semibold text-[#00D9B7] uppercase tracking-wide mt-1"
+                      style={{ fontFamily: "'Poppins', sans-serif" }}
+                    >
+                      {selectedPlacement.role}
+                    </p>
+                  )}
                   <p
                     className="text-sm text-gray-500 mt-0.5"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
@@ -385,7 +442,7 @@ const PlacementsPage = () => {
                     className="mt-3 inline-block rounded-md bg-[#F7DD4B]/20 px-3 py-1 text-sm font-bold text-[#17264B]"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
-                    {selectedPlacement.package}
+                    {modalPackageText}
                   </div>
                 </div>
               </div>
@@ -394,7 +451,7 @@ const PlacementsPage = () => {
               <div className="mt-6 border-t border-gray-100 pt-4">
                 <h3 className="text-sm font-bold text-gray-700">Placed At</h3>
                 <div className="mt-2 flex flex-wrap gap-2">
-                  {selectedPlacement.companies.map((company) => (
+                  {(selectedPlacement.companies || []).map((company) => (
                     <span
                       key={company}
                       className="rounded bg-gray-100 px-3 py-1 text-xs font-bold text-[#17264B]"
@@ -408,8 +465,8 @@ const PlacementsPage = () => {
               {/* Success Story */}
               <div className="mt-5">
                 <h3 className="text-sm font-bold text-gray-700">Success Story</h3>
-                <div className="mt-2 rounded-lg border-l-4 border-[#00D9B7] bg-gray-50 p-4 italic text-sm text-gray-600 leading-relaxed">
-                  "{selectedPlacement.story}"
+                <div className="mt-2 rounded-lg border-l-4 border-[#00D9B7] bg-gray-50 p-4 italic text-sm text-gray-600 leading-relaxed max-h-[220px] overflow-y-auto whitespace-pre-wrap">
+                  "{modalStoryText}"
                 </div>
               </div>
             </div>

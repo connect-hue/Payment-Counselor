@@ -13,6 +13,9 @@ import "./global.css";
 import FilterSection from "./Components/Filtersection";
 import CourseDetailsPage from "./Pages/CourseDetailsPage";
 import PlacementsPage from "./Pages/PlacementsPage";
+import AdminLogin from "./Pages/AdminLogin";
+import AdminDashboard from "./Pages/AdminDashboard";
+import AdminPlacementForm from "./Pages/AdminPlacementForm";
 
 
 
@@ -153,6 +156,13 @@ function App() {
 
         <Route path="/placements" element={<PlacementsPage />} />
         <Route path="/preview/:name" element={<Filter />} />
+        
+        {/* Admin Placement Routes */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/placements" element={<AdminDashboard />} />
+        <Route path="/admin/placements/new" element={<AdminPlacementForm />} />
+        <Route path="/admin/placements/:id/edit" element={<AdminPlacementForm />} />
+
         <Route path="/:courseName" element={<CourseDetailsPage />} />
       </Routes>
       <Footer />
