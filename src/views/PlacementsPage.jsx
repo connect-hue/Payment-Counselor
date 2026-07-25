@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { apiClient } from "../utils/apiClient";
 
@@ -330,31 +332,33 @@ const PlacementCard = ({ placement, onPreview }) => {
   );
 };
 
-const PlacementsPage = () => {
-  const [placements, setPlacements] = useState([]);
+const PlacementsPage = ({ initialPlacements = [] }) => {
+  const [placements, setPlacements] = useState(initialPlacements.length > 0 ? initialPlacements : []);
   const [selectedPlacement, setSelectedPlacement] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(initialPlacements.length === 0);
 
   useEffect(() => {
-    const fetchPlacements = async () => {
-      try {
-        setLoading(true);
-        const data = await apiClient.get("/api/placements");
-        if (data && data.length > 0) {
-          setPlacements(data);
-        } else {
-          console.warn("No placement records returned by API, using hardcoded fallback.");
+    if (initialPlacements.length === 0) {
+      const fetchPlacements = async () => {
+        try {
+          setLoading(true);
+          const data = await apiClient.get("/api/placements");
+          if (data && data.length > 0) {
+            setPlacements(data);
+          } else {
+            console.warn("No placement records returned by API, using hardcoded fallback.");
+            setPlacements(sortedPlacementCards);
+          }
+        } catch (err) {
+          console.error("API error loading placements, using hardcoded fallback:", err);
           setPlacements(sortedPlacementCards);
+        } finally {
+          setLoading(false);
         }
-      } catch (err) {
-        console.error("API error loading placements, using hardcoded fallback:", err);
-        setPlacements(sortedPlacementCards);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPlacements();
-  }, []);
+      };
+      fetchPlacements();
+    }
+  }, [initialPlacements]);
 
   const handleCloseModal = () => setSelectedPlacement(null);
   const handleBackdropClick = (e) => {
