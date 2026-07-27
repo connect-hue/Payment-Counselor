@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { apiClient } from "../utils/apiClient";
+import { formatS3Url } from "../utils/s3Helpers";
 
 // Realistic upskilling placements data representing different medical categories.
 const placementCards = [
@@ -266,7 +267,7 @@ const SkeletonCard = () => (
 );
 
 const PlacementCard = ({ placement, onPreview }) => {
-  const imageSrc = placement.imageUrl || placement.image;
+  const imageSrc = formatS3Url(placement.imageUrl || placement.image);
   const packageText = Array.isArray(placement.packages) ? placement.packages.join(" & ") : (placement.package || "");
 
   return (
@@ -367,7 +368,7 @@ const PlacementsPage = ({ initialPlacements = [] }) => {
     }
   };
 
-  const modalImageSrc = selectedPlacement ? (selectedPlacement.imageUrl || selectedPlacement.image) : "";
+  const modalImageSrc = selectedPlacement ? formatS3Url(selectedPlacement.imageUrl || selectedPlacement.image) : "";
   const modalPackageText = selectedPlacement ? (Array.isArray(selectedPlacement.packages) ? selectedPlacement.packages.join(" & ") : (selectedPlacement.package || "")) : "";
   const modalStoryText = selectedPlacement ? (selectedPlacement.successStory || selectedPlacement.story) : "";
 

@@ -137,7 +137,7 @@ Set the following environment variables in your production server environment:
 - `AWS_ACCESS_KEY_ID` (Your S3 IAM access key)
 - `AWS_SECRET_ACCESS_KEY` (Your S3 IAM secret key)
 - `AWS_S3_BUCKET` (Name of your S3 bucket)
-- `AWS_PUBLIC_BASE_URL` (URL path of your S3 Bucket, e.g. `https://your-bucket.s3.amazonaws.com` or CloudFront URL)
+- `AWS_PUBLIC_BASE_URL` (URL path of your S3 Bucket, e.g. `https://s3.ap-south-1.amazonaws.com/your-bucket` or CloudFront URL)
 
 ---
 

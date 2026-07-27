@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { apiClient } from "../utils/apiClient";
+import { formatS3Url } from "../utils/s3Helpers";
 
 const AdminDashboard = () => {
   const [placements, setPlacements] = useState([]);
@@ -259,7 +260,7 @@ const AdminDashboard = () => {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center gap-3">
                           <img
-                            src={placement.imageUrl}
+                            src={formatS3Url(placement.imageUrl)}
                             alt={placement.name}
                             className="h-10 w-10 rounded-full object-cover border border-gray-200"
                           />
@@ -339,7 +340,7 @@ const AdminDashboard = () => {
                 <div key={placement._id} className="p-5 hover:bg-gray-50/50 flex flex-col gap-4">
                   <div className="flex items-center gap-3">
                     <img
-                      src={placement.imageUrl}
+                      src={formatS3Url(placement.imageUrl)}
                       alt={placement.name}
                       className="h-12 w-12 rounded-full object-cover border border-gray-200"
                     />
@@ -439,7 +440,7 @@ const AdminDashboard = () => {
             <div className="p-6 sm:p-8">
               <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start text-center sm:text-left">
                 <img
-                  src={previewPlacement.imageUrl}
+                  src={formatS3Url(previewPlacement.imageUrl)}
                   alt={previewPlacement.name}
                   className="h-28 w-28 flex-shrink-0 rounded-full border-4 border-[#00D9B7] object-cover shadow-md"
                 />

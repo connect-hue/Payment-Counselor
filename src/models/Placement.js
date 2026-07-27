@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { formatS3Url } from "@/src/utils/s3Helpers";
 
 const placementSchema = new mongoose.Schema(
   {
@@ -72,13 +73,17 @@ const placementSchema = new mongoose.Schema(
 );
 
 // Indexes for searching and sorting
+
 placementSchema.index({ name: 1 });
 placementSchema.index({ companies: 1 });
 // Compound search index or text index for name and companies
 placementSchema.index({ name: "text", companies: "text" });
 
-// Normalize company and package arrays: trim whitespace and remove empty values
+// Normalize company/package arrays and format S3 image URLs
 placementSchema.pre("save", function (next) {
+  if (this.imageUrl) {
+    this.imageUrl = formatS3Url(this.imageUrl);
+  }
   if (this.companies) {
     this.companies = this.companies
       .map((c) => (typeof c === "string" ? c.trim() : ""))
@@ -90,6 +95,24 @@ placementSchema.pre("save", function (next) {
       .filter((p) => p !== "");
   }
   next();
+});
+
+placementSchema.set("toJSON", {
+  transform: (doc, ret) => {
+    if (ret.imageUrl) {
+      ret.imageUrl = formatS3Url(ret.imageUrl);
+    }
+    return ret;
+  },
+});
+
+placementSchema.set("toObject", {
+  transform: (doc, ret) => {
+    if (ret.imageUrl) {
+      ret.imageUrl = formatS3Url(ret.imageUrl);
+    }
+    return ret;
+  },
 });
 
 const Placement = mongoose.models.Placement || mongoose.model("Placement", placementSchema);

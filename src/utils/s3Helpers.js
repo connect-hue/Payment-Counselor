@@ -3,6 +3,32 @@ import s3Client from "./s3.js";
 import { v4 as uuidv4 } from "uuid";
 
 /**
+ * Normalizes AWS S3 URLs from virtual-host style (bucket.s3.region.amazonaws.com)
+ * to path style (s3.region.amazonaws.com/bucket) to resolve SSL certificate mismatch
+ * when bucket names contain dots.
+ * 
+ * Example:
+ *   Current:  https://assets.academically.com.s3.ap-south-1.amazonaws.com/placements/test.webp
+ *   Replace:  https://s3.ap-south-1.amazonaws.com/assets.academically.com/placements/test.webp
+ * 
+ * @param {string} url
+ * @returns {string}
+ */
+export const formatS3Url = (url) => {
+  if (!url || typeof url !== "string") return url;
+
+  const virtualHostRegex = /^https?:\/\/([^\/]+)\.s3[\.\-]([a-z0-9\-]+)\.amazonaws\.com\/(.+)$/i;
+  const match = url.match(virtualHostRegex);
+
+  if (match) {
+    const [, bucket, region, key] = match;
+    return `https://s3.${region}.amazonaws.com/${bucket}/${key}`;
+  }
+
+  return url;
+};
+
+/**
  * Uploads a file buffer to AWS S3.
  * @param {Buffer} fileBuffer 
  * @param {string} mimeType 
@@ -15,7 +41,8 @@ export const uploadToS3 = async (fileBuffer, mimeType, originalName) => {
     const uuid = uuidv4();
     const ext = originalName.split(".").pop() || "png";
     const key = `placements/${uuid}.${ext}`;
-    const baseUrl = (process.env.AWS_PUBLIC_BASE_URL || "https://mock.s3.amazonaws.com").replace(/\/$/, "");
+    const rawBaseUrl = process.env.AWS_PUBLIC_BASE_URL || "https://mock.s3.amazonaws.com";
+    const baseUrl = formatS3Url(rawBaseUrl).replace(/\/$/, "");
     return {
       imageUrl: `${baseUrl}/${key}`,
       imageKey: key,
@@ -36,7 +63,8 @@ export const uploadToS3 = async (fileBuffer, mimeType, originalName) => {
 
   await s3Client.send(new PutObjectCommand(params));
 
-  const baseUrl = (process.env.AWS_PUBLIC_BASE_URL || "").replace(/\/$/, "");
+  const rawBaseUrl = process.env.AWS_PUBLIC_BASE_URL || `https://s3.${process.env.AWS_REGION || "ap-south-1"}.amazonaws.com/${process.env.AWS_S3_BUCKET || "assets.academically.com"}`;
+  const baseUrl = formatS3Url(rawBaseUrl).replace(/\/$/, "");
   const imageUrl = `${baseUrl}/${key}`;
 
   return {

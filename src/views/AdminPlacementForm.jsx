@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { apiClient } from "../utils/apiClient";
+import { formatS3Url } from "../utils/s3Helpers";
 
 const AdminPlacementForm = () => {
   const { id } = useParams();
@@ -45,8 +46,9 @@ const AdminPlacementForm = () => {
           setImageAlt(data.imageAlt || "");
           setSortOrder(data.sortOrder);
           setIsPublished(data.isPublished);
-          setExistingImageUrl(data.imageUrl);
-          setImagePreview(data.imageUrl);
+          const formattedUrl = formatS3Url(data.imageUrl);
+          setExistingImageUrl(formattedUrl);
+          setImagePreview(formattedUrl);
         } catch (err) {
           setError(err.message || "Failed to load placement details.");
         } finally {
