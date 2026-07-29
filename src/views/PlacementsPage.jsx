@@ -267,69 +267,69 @@ const SkeletonCard = () => (
 );
 
 const PlacementCard = ({ placement, onPreview }) => {
-  const imageSrc = formatS3Url(placement.imageUrl || placement.image);
+  const imageSrc = formatS3Url(placement.imageUrl || placement.image) || "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=600";
   const packageText = Array.isArray(placement.packages) ? placement.packages.join(" & ") : (placement.package || "");
+  const storyText = placement.story || placement.successStory || "Achieved remarkable career growth with industry-focused training and placement support.";
 
   return (
-    <div className="w-full border border-[#00D9B7] bg-white shadow-sm flex flex-col h-full">
-      <div className="p-4 flex flex-col h-full">
-        {/* Image Container with Badges */}
-        <div className="relative mb-4 overflow-hidden rounded-md bg-gray-50 flex-shrink-0">
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        .placement-testimonial-font {
+          font-family: 'Poppins', sans-serif;
+        }
+      `}</style>
+      <div 
+        className="max-w-80 w-full bg-black text-white rounded-2xl flex flex-col justify-between overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-purple-900/20 transition-all duration-300 cursor-pointer group mx-auto h-full placement-testimonial-font"
+        onClick={() => onPreview(placement)}
+      >
+        <div className="relative -mt-px overflow-hidden rounded-2xl flex-shrink-0">
           <img
             src={imageSrc}
             alt={placement.imageAlt || placement.name}
-            className="w-full h-[300px] object-cover"
+            className="h-[270px] w-full rounded-2xl group-hover:scale-105 transition-all duration-300 object-cover object-top"
             loading="lazy"
           />
+          <div className="absolute bottom-0 z-10 h-60 w-full bg-gradient-to-t pointer-events-none from-black to-transparent"></div>
           {/* Companies badges overlaid on top-right of image */}
-          <div className="absolute right-3 top-3 flex flex-col gap-2">
-            {(placement.companies || []).map((company) => (
-              <span
-                key={company}
-                className="rounded bg-white/95 px-3 py-1.5 text-xs font-bold text-[#17264B] shadow-sm border border-gray-100/50"
-              >
-                {company}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Main Details */}
-        <div className="text-center flex-grow flex flex-col justify-between">
-          <div>
-            <h3
-              className="text-lg font-semibold text-[#030A21] mb-1"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              {placement.name}
-            </h3>
-            <p
-              className="text-sm font-medium text-gray-500 mb-3"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              {placement.qualification}
-            </p>
-          </div>
-
-          {/* Package & Preview Button */}
-          <div>
-            <div
-              className="mb-3 text-lg font-bold text-[#17264B] bg-[#F7DD4B]/20 py-2 rounded-md"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              {packageText}
+          {placement.companies && placement.companies.length > 0 && (
+            <div className="absolute right-3 top-3 z-20 flex flex-wrap gap-1.5 justify-end">
+              {placement.companies.map((company) => (
+                <span
+                  key={company}
+                  className="rounded-full bg-black/70 backdrop-blur-md px-2.5 py-1 text-xs font-semibold text-white shadow-md border border-white/20"
+                >
+                  {company}
+                </span>
+              ))}
             </div>
+          )}
+        </div>
+        <div className="px-4 pb-4 pt-2 flex flex-col flex-grow justify-between">
+          <div>
+            <p className="font-medium border-b border-gray-600 pb-4 text-gray-200 text-sm line-clamp-3 italic">
+              “{storyText}”
+            </p>
+            <p className="mt-3 font-semibold text-white text-base">— {placement.name}</p>
+            <p className="text-xs font-medium text-gray-400 mt-0.5">{placement.qualification}</p>
+          </div>
+          <div className="mt-4 pt-3 flex items-center justify-between border-t border-gray-800">
+            <p className="text-sm font-medium bg-gradient-to-r from-[#8B5CF6] via-[#E0724A] to-[#9938CA] text-transparent bg-clip-text font-bold">
+              {packageText ? `${packageText}` : "Placed"}
+            </p>
             <button
-              onClick={() => onPreview(placement)}
-              className="w-full px-4 py-2 bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7]/90 transition-colors duration-200 cursor-pointer"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
+              onClick={(e) => {
+                e.stopPropagation();
+                onPreview(placement);
+              }}
+              className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#8B5CF6] to-[#9938CA] text-white hover:opacity-90 transition-opacity cursor-pointer shadow"
             >
               Preview
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
