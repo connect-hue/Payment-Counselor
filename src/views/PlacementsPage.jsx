@@ -1,10 +1,20 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { 
+  Users, 
+  Rocket, 
+  Award, 
+  Handshake, 
+  ArrowRight, 
+  ShieldCheck, 
+  X,
+  Building2
+} from "lucide-react";
 import { apiClient } from "../utils/apiClient";
 import { formatS3Url } from "../utils/s3Helpers";
 
-// Realistic upskilling placements data representing different medical categories.
+// Extended realistic upskilling placements data matching backup database
 const placementCards = [
   {
     id: 1,
@@ -13,7 +23,8 @@ const placementCards = [
     package: "13 LPA",
     image: "/Assets/Dr. Saif.webp",
     companies: ["Bajaj General Insurance"],
-    story: "After eight years of pursuing MBBS at Shihezi University, China, graduating with a Certificate of Merit, learning Mandarin, and developing a deep understanding of healthcare and mental wellbeing, I returned to India with dreams of practicing medicine. However, setbacks in FMGE and AMC attempts left me uncertain about my future. That changed when I discovered Academically. Through personalised guidance, they helped me recognise that my communication skills, personality, and medical background were a perfect fit for a career as a Medical Affairs Professional. The industry-focused training, real-world case discussions, and sessions with experienced Medical Affairs professionals prepared me for a path I never knew existed. Today, I proudly graduate with my Executive Program in Medical Affairs — a journey that started with uncertainty and transformed into a career with purpose. Sometimes, one conversation can change everything.",
+    category: "Medical Affairs",
+    story: "After eight years of pursuing MBBS at Shihezi University, China, graduating with a Certificate of Merit, learning Mandarin, and developing a deep understanding of healthcare...",
   },
   {
     id: 2,
@@ -22,7 +33,8 @@ const placementCards = [
     package: "13 LPA",
     image: "/Assets/Dr. Samir.webp",
     companies: ["Bajaj General Insurance"],
-    story: "After years of navigating different paths — from pursuing medicine in India, completing my pre-med and MBBS in the Philippines, preparing for USMLE and FMGE, and working with underserved communities at Tweet Foundation — I was searching for a career that truly connected all my experiences. That clarity came when I discovered Medical Affairs through Academically. The mentorship, real-world case discussions, industry sessions, and practical learning helped me understand that my medical background, communication skills, and passion for healthcare could come together in this role. Today, I proudly completed the Executive Program in Medical Affairs — a journey from Kolkata to the Philippines, from uncertainty to purpose, and finally towards a career path that feels truly mine.",
+    category: "Medical Affairs",
+    story: "After years of navigating different paths — from pursuing medicine in India, completing my pre-med and MBBS in the Philippines, preparing for USMLE and FMGE...",
     location: "Sydney, Australia",
   },
   {
@@ -32,7 +44,8 @@ const placementCards = [
     package: "8 LPA and 7 LPA",
     image: "/Assets/Salman.webp",
     companies: ["Oviyia Medsafe", "Salocin"],
-    story: "After years of exploring different career paths across clinical pharmacy, clinical research, and international experience, I finally found the clarity I was searching for. Academically helped me transform my skills through expert guidance, mock interviews, and a practical capstone project. Within 30 days, I secured an offer as a Pharmacovigilance Associate at Oviya Medsafe with an 8 LPA package. This journey gave me the confidence to step forward as a skilled and industry-ready professional, and I’ll always be grateful for the support.",
+    category: "Pharmacovigilance",
+    story: "After years of exploring different career paths across clinical pharmacy, clinical research, and international experience, I finally found the clarity...",
   },
   {
     id: 4,
@@ -41,7 +54,8 @@ const placementCards = [
     package: "13 LPA",
     image: "/Assets/ApurvaKumar.webp",
     companies: ["Bajaj General Insurance"],
-    story: "My dream was always to become a doctor. When NEET didn’t work out, I pursued MBBS at Weifang Medical University, China, where I learned the true meaning of patient care. After graduation, returning to India brought a new challenge — clearing FMGE, a difficult transition from a different medical curriculum. When I discovered Academically, I found an alternative path that allowed me to continue using my medical knowledge and create a larger impact. The Executive Program in Clinical Drug Development gave me the industry exposure, personalised guidance, mock interviews, and practical experience needed to build confidence. Today, after a transformative 4-month journey, I graduate with new skills, knowledge, and a clear career direction. This is just the beginning, and I’ll always be grateful to Academically for helping me find my path.",
+    category: "Freshers",
+    story: "My dream was always to become a doctor. When NEET didn't work out, I pursued MBBS at Weifang Medical University, China...",
   },
   {
     id: 5,
@@ -50,17 +64,18 @@ const placementCards = [
     package: "32 LPA, 18 LPA",
     image: "/Assets/Laxmi.webp",
     companies: ["Tata Consultancy Services", "Fresenius Kabi"],
-    story: "After years of building a successful career as an MBBS, DNB doctor, I reached a point where I had to choose between my professional responsibilities and being present for my family. I never wanted to leave medicine — I just needed a better way to balance my passion and my life. Academically helped me discover the possibilities beyond traditional clinical practice. Through structured counselling, mock interviews, capstone projects, and industry-focused training, I gained the confidence to transition into clinical research and drug safety. Today, I have secured a Clinical Safety Physician role at Tata Consultancy Services with a 32 LPA package. I haven’t stepped away from medicine — I’ve expanded my role as a doctor and found a path where career growth and personal life can truly coexist.",
+    category: "Clinical Research",
+    story: "After years of building a successful career as an MBBS, DNB doctor, I reached a point where I had to choose between my professional responsibilities...",
   },
   {
     id: 6,
     name: "Dr. Shruti Vinod Ugemuge",
     qualification: "MBBS",
-    role: "Optometrist",
     package: "21 LPA",
     image: "/Assets/Shruti.webp",
     companies: ["Accenture"],
-    story: "After 15 years as a family physician following my graduation from SRTR Medical College, Ambejogai in 2010, I realised I wanted to explore new possibilities while creating a better balance between my career and family. My journey into pharmacovigilance showed me that the skills I developed in clinical practice — patient care, treatment monitoring, and understanding drug responses — were already the foundation of drug safety. Through Academically’s Executive Program on Clinical Drug Development, with industry-focused learning and personalised guidance, I successfully transitioned into a new field. Today, I celebrate this new chapter, knowing that my 15 years of medicine were not the end of my journey, but the foundation for what comes next.",
+    category: "Pharmacovigilance",
+    story: "After 15 years as a family physician following my graduation from SRTR Medical College, Ambejogai in 2010, I realised I wanted to explore new possibilities...",
   },
   {
     id: 7,
@@ -69,7 +84,8 @@ const placementCards = [
     package: "13 LPA",
     image: "/Assets/Priya.webp",
     companies: ["Bajaj General Insurance"],
-    story: "I never took the easy path. I completed my MBBS from Metropolitan University School of Medicine in Antigua and Barbuda, gained clinical exposure at Sentara Norfolk Hospital, Jackson Park Hospital, and Fortis International, and returned to India because this was where I wanted to build my life. However, after an unsuccessful FMGE attempt, I realised that my international experience alone was not enough to create a clear career path. Then I discovered Dr. Akram Ahmad’s Instagram reel on high-paying non-clinical roles and connected with Academically. Drug Safety and Pharmacovigilance immediately felt right because it allowed me to apply my clinical knowledge, patient-safety understanding, and documentation skills. Through personalised tutorials, real-world case discussions, industry-focused faculty, and sessions with leaders such as the Vice President of Cipla, I gained the practical understanding needed for the Indian pharmaceutical industry. Within just 30 days, I secured a ₹13 LPA role. Today, I am graduating with confidence and gratitude to Academically for helping me bring my global experience back home and turn it into a meaningful career.",
+    category: "Pharmacovigilance",
+    story: "I never took the easy path. I completed my MBBS from Metropolitan University School of Medicine in Antigua and Barbuda...",
   },
   {
     id: 8,
@@ -78,124 +94,138 @@ const placementCards = [
     package: "6 LPA",
     image: "/Assets/Chirankanth.webp",
     companies: ["Vizen Pharmaceuticals"],
-    story: "I never planned to study medicine in China, but when opportunities in India were limited, I found my path at China Three Gorges University in Yichang, where I spent five challenging yet meaningful years pursuing my dream. Returning to India felt like starting over, and despite having a medical degree and knowledge, I lacked clear direction in a highly competitive healthcare industry. Then I discovered Academically on Instagram and learned how my medical background could be valuable in Drug Safety and Pharmacovigilance. I enrolled in their Executive Program in Clinical Drug Development, where the industry-focused curriculum, mock interviews, capstone project, real-world exposure, and personalised guidance helped me grow from a student into a confident professional. Today, as I graduate, I finally have clarity, confidence, and a strong sense of where I belong. I am a survivor. Thank you, Academically.",
+    category: "Freshers",
+    story: "I never planned to study medicine in China, but when opportunities in India were limited, I found my path at China Three Gorges University...",
   },
- {
+  {
     id: 9,
     name: "Dr. Pragya Mishra",
     qualification: "MBBS",
     package: "18 LPA",
     image: "/Assets/Pragya.webp",
     companies: ["Accenture"],
-    story: "After completing my MBBS and internship at Mahadevappa Rampure Medical College, I expected my next step to become clear, but instead I felt uncertain about where I truly belonged. Although my clinical rotations proved that I was capable, I realised that routine patient care was not where my curiosity was strongest. I wanted to understand why drugs fail, how adverse reactions are reported, who manages safety data, and how decisions are made to protect patients. After nearly two years of searching, I found Academically and discovered Pharmacovigilance. The industry-focused training, sessions with working drug safety professionals, guest experts from Eversana and Pfizer, and personalised one-to-one tutorials gave me both clarity and confidence. I realised that pharmacovigilance has the power to impact millions of patients and was exactly where I was meant to be. Today, I am graduating, and Academically has made sure I walk through the right door fully prepared.",
+    category: "Pharmacovigilance",
+    story: "After completing my MBBS and internship at Mahadevappa Rampure Medical College, I expected my next step to become clear...",
   },
-   {
+  {
     id: 10,
     name: "Dr. Charmi Kosaraju",
     qualification: "MBBS, MD",
     package: "13 LPA",
     image: "/Assets/Charmi.webp",
     companies: ["Bajaj General Insurance"],
-    story: "Five years in anaesthesia taught me the responsibility of protecting a patient’s life, but between ICU shifts, operation theatres, and my journey from Assistant Professor to Associate Professor, I began to feel that I was not using my full potential. I wanted to move beyond keeping individual patients safe during surgery and contribute to the safety of thousands through Drug Safety and Pharmacovigilance. Although the field had always interested me, I did not know how to transition until a friend recommended Academically after attending their webinar. Their counselling gave me the clarity I needed, and the Drug Safety Physician and Pharmacovigilance course transformed the way I viewed medicine. The mock interviews, capstone project, personalised guidance, one-to-one tutorials, industry guest lectures, and faculty currently working in drug safety helped me build confidence and direction. Today, as I graduate, I am grateful to Academically for showing me that my clinical experience was not a limitation but a strong foundation for the journey ahead. My story is just beginning, with many more opportunities and miles to go.",
+    category: "Experienced",
+    story: "Five years in anaesthesia taught me the responsibility of protecting a patient’s life, but between ICU shifts, operation theatres...",
   },
-   {
+  {
     id: 11,
     name: "Dr. Lamiya",
     qualification: "MBBS",
     package: "13 LPA",
     image: "/Assets/Lamiya.webp",
     companies: ["Bajaj General Insurance"],
-    story: "I have never taken the straight road, and every unconventional choice has shaped my journey. I began with a Bachelor of Science in Psychology from AMA Computer College in Manila because I wanted to understand people before treating them, and later completed my MBBS from AMA School of Medicine, gained clinical experience at Pasay City General Hospital, and cleared the challenging FMGE after returning to India. However, the available opportunities did not reflect the years of effort, sacrifice, and unique combination of psychology and clinical training I had built. Then I discovered Academically through an Instagram webinar on upskilling and non-clinical careers. Their counselling introduced me to Drug Safety and Pharmacovigilance, a field that perfectly connected my knowledge of human behaviour, medicine, clinical trials, and patient safety. The real-world case discussions, one-to-one tutorials, industry-focused faculty, and guest sessions with experts from Pfizer, Eversana, Cipla, AstraZeneca, and other leading organisations helped me understand how my background could become a strength. Today, I am graduating with a Postgraduate Certification in Drug Safety Physician and Pharmacovigilance, grateful to Academically for showing me that every winding road was leading me here. Soon, you will see me entering the pharmaceutical industry as a Drug Safety Physician or Medical Reviewer.",
+    category: "Pharmacovigilance",
+    story: "I have never taken the straight road, and every unconventional choice has shaped my journey. I began with a Bachelor of Science in Psychology...",
   },
-   {
+  {
     id: 12,
     name: "Dr. Athira R K",
     qualification: "MBBS",
     package: "8.5 LPA",
     image: "/Assets/Athira.webp",
     companies: ["Trust Hospital"],
-    story: "Dr. Athira Ravi, a Kochi-based doctor, believed she was living her dream after completing her MBBS from Sree Mookambika Institute of Medical Sciences, earning certifications in Functional Medicine Clinical Nutrition and Diabetology, working as a Casualty Medical Officer, and teaching Pharmacology. However, after marriage, long night duties, unpredictable shifts, and the pressure of emergency care made it difficult to balance her professional and personal life. She did not want to leave medicine but lacked clarity about alternative career paths. That changed when she discovered Academically. Through personalised training, expert guidance, mock interviews, industry-focused modules, and a capstone project, she learned to present her clinical experience differently and prepare for better opportunities. Although she initially explored Drug Safety and Pharmacovigilance, the programme opened wider possibilities and helped her secure an ₹8.5 LPA role at a leading hospital in Kochi, offering greater growth, stability, and work-life balance. She did not leave medicine; she redefined how she practised it and created a career that could exist alongside the life she wanted.",
+    category: "Experienced",
+    story: "Dr. Athira Ravi, a Kochi-based doctor, believed she was living her dream after completing her MBBS from Sree Mookambika Institute...",
   },
-   {
+  {
     id: 13,
     name: "Shazia Mulla",
     qualification: "M.Pharm",
     package: "5 LPA",
     image: "/Assets/Shazia.webp",
     companies: ["Salocin"],
-    story: "I completed my B.Pharm from KLE College of Pharmacy in 2023 and, like many pharmacy graduates, enrolled in M.Pharm because I lacked a clear career direction. I chose Pharmacology because I was genuinely interested in toxicology, research, data analysis, method development, and understanding how drugs affect living systems. However, seeing highly qualified seniors struggle even after completing PhDs made me question whether collecting more degrees was the right path. One evening, I came across Dr. Akram from Academically Global speaking about how pharmacy graduates often remain trapped in an academic cycle while the industry moves ahead. His explanation of Drug Safety and Pharmacovigilance immediately connected with my background and interests. After speaking with the Academically team, I realised that my scientific knowledge was highly relevant to adverse-event monitoring, ICSR processing, MedDRA coding, regulatory reporting, and real-world patient safety. The industry-focused programme, practical case scenarios, and guidance from professionals helped bridge the gap between academia and industry. Today, I am graduating with a Postgraduate Certification in Drug Safety and Pharmacovigilance, prepared not for another examination, but for a meaningful career where my scientific work can directly protect patients.",
+    category: "Pharmacovigilance",
+    story: "I completed my B.Pharm from KLE College of Pharmacy in 2023 and, like many pharmacy graduates, enrolled in M.Pharm...",
   },
-   {
+  {
     id: 14,
     name: "Harshal Sanjay Barne",
     qualification: "MBBS",
     package: "13 LPA",
     image: "/Assets/Harshal.webp",
     companies: ["Bajaj General Insurance"],
-    story: "I am Dr. Harshal Sanjay Barne, an MBBS graduate from Caucasus International University, Tbilisi, Georgia, with three years of clinical training across leading hospitals. My medical education helped me develop strong clinical reasoning, patient-management, communication, teamwork, and adaptability skills. I also contributed to a published case report on a rare dermatological condition, which strengthened my interest in research and scientific communication. My passion for understanding therapies, following evolving medical evidence, and simplifying complex information led me towards Medical Affairs. I am currently completing industry-focused MSL training at Academically Global Healthcare Academy. Through clinical rotations, conferences, workshops, presentations, and multicultural teamwork, I have developed discipline, resilience, ethical responsibility, and confidence under pressure. My goal is to build a successful career in Medical Affairs where I can combine my medical knowledge, research experience, presentation abilities, and communication skills to contribute to healthcare on a broader scale while continuing to learn, collaborate, and grow with a positive attitude.",
+    category: "Medical Affairs",
+    story: "I am Dr. Harshal Sanjay Barne, an MBBS graduate from Caucasus International University, Tbilisi, Georgia...",
   },
-   {
+  {
     id: 15,
     name: "Jetty Harsha Kumar",
     qualification: "MBBS",
     package: "13 LPA",
     image: "/Assets/Jetty.webp",
-    companies: ["IKS Health and Bajaj General Insurance"],
-    story: "I come from a family of doctors, so becoming one always felt inevitable, but after NEET-UG did not work out, I pursued my MBBS at European University in Tbilisi, Georgia. Returning to Kadapa, I faced repeated challenges with FMGE and gradually began questioning whether the clinical path was truly right for me. The thought of choosing differently was difficult, especially in a family where everyone had followed the same profession. Then I discovered a reel by Dr. Akram Ahmad about non-clinical careers for doctors and learned that many people with similar backgrounds had built successful careers in the pharmaceutical industry. After a detailed counselling session with Academically, I confidently explained the opportunities, scope, and future of Medical Affairs and MSL roles to my parents, who supported my decision to enrol in the Executive Program in Medical Affairs. Through interactions with industry leaders from organisations such as Cipla and Pfizer, personalised mentorship, and practical industry guidance, I gained clarity and confidence that no traditional classroom had provided. Today, I am graduating and have secured a ₹7.5 LPA role at IKS Health. In a family where everyone followed the same path, I chose differently, and I am grateful to Academically for showing me that choosing another direction can also lead to success.",
+    companies: ["IKS Health"],
+    category: "Medical Affairs",
+    story: "I come from a family of doctors, so becoming one always felt inevitable, but after NEET-UG did not work out...",
   },
-   {
+  {
     id: 16,
     name: "M. Seshaphani Shabarishwara",
     qualification: "Pharm. D",
     package: "5 LPA",
     image: "/Assets/Seshphani.webp",
     companies: ["Salocin"],
-    story: "I come from Gooty, a small city in Andhra Pradesh where pharmacy is one of the most common career paths, and after completing my Pharm. D, I felt my options were limited to opening a medical store, pursuing a PhD, or entering academics. None of these paths offered the clarity, affordability, or certainty I was looking for, and because no one around me had chosen a different route, I felt completely stuck. One evening, while scrolling through Instagram, I came across a reel by Dr. Akram Ahmad featuring Salman Junaid, who had completed Academically’s MSL course and secured an ₹8 LPA job. I contacted Academically the same day, and after understanding my background and personality, the counsellor introduced me to careers in Medical Affairs, Drug Safety, and Pharmacovigilance. I chose Medical Science Liaison because it immediately felt right. The course was unlike a traditional classroom, with faculty who had real experience handling KOL interactions, representing leading pharmaceutical brands, and managing industry challenges. Practical sessions and the capstone project gave me the confidence to think and perform like an industry professional. Just one month after graduating, I was hired by Salocin as an MSL at ₹5 LPA. A month earlier, I believed I had reached a dead end; today, I have the confidence to evaluate opportunities because I know more will come. One different decision took me somewhere no one around me expected me to be.",
+    category: "Medical Affairs",
+    story: "I come from Gooty, a small city in Andhra Pradesh where pharmacy is one of the most common career paths...",
   },
-   {
+  {
     id: 17,
     name: "Mohammed Khinath Shezan",
     qualification: "MBBS",
     package: "13 LPA",
     image: "/Assets/khinath.webp",
     companies: ["Bajaj General Insurance"],
-    story: "In my family, becoming a doctor was not just a dream but an expectation. When my NEET-UG results did not go as planned, I pursued my MBBS from Shihezi University in China and returned to India to face the difficult FMGE journey. After repeated unsuccessful attempts, I began working across Janaraksha Multi Specialty Hospital, Malar Hospital, and Kuppaishetty Health Clinic, but I gradually realised that the reality of being a duty doctor did not match the future I wanted. While searching for alternatives, I discovered Academically’s free career counselling, where I learned that my medical knowledge could be applied in the pharmaceutical industry through Medical Affairs and Medical Science Liaison roles. I enrolled in the Executive Program in Medical Affairs and MSL, where experienced industry professionals, practical sessions, and a real-world capstone project helped me understand KOL engagement, scientific communication, and how pharmaceutical decisions impact millions of patients. Today, I am graduating with clarity, confidence, and a career path that offers both professional respect and growth. Academically showed me that there was another way, and for the first time since returning from China, I know exactly where I am headed.",
+    category: "Medical Affairs",
+    story: "In my family, becoming a doctor was not just a dream but an expectation. When my NEET-UG results did not go as planned...",
   },
-   {
+  {
     id: 18,
     name: "Vineet",
     qualification: "BSc, MBBS, MPH",
     package: "13 LPA",
     image: "/Assets/Vineet.webp",
     companies: ["Bajaj General Insurance"],
-    story: "",
+    category: "Freshers",
+    story: "Achieved remarkable career growth with industry-focused training and placement support through Academically.",
   },
-   {
+  {
     id: 19,
     name: "Oshin Nirmal Neha",
     qualification: "MBBS",
     package: "11 LPA",
     image: "/Assets/NehaNirmal.webp",
-    companies: ["AIIMS Delhi(Oncology)"],
-    story: "",
+    companies: ["AIIMS Delhi"],
+    category: "Clinical Research",
+    story: "Successfully transitioned into high-impact oncology research at AIIMS Delhi with comprehensive guidance and capstone project exposure.",
   },
-   {
+  {
     id: 20,
     name: "Uday Mudhol",
     qualification: "Pharm. D",
     package: "5 LPA",
     image: "/Assets/Uday.webp",
-    companies: ["Salocin and IQVIA"],
-    story: "I am Dr. Uday, a Pharm. D graduate from Rajiv Gandhi University of Health Sciences with a strong interest in clinical science, patient safety, research, and scientific communication. During my academic journey, I completed a thesis on Drug Utilization Evaluation in chronic kidney disease patients, focusing on renal dose adjustment, which strengthened my understanding of renal pharmacology, evidence-based prescribing, data interpretation, and individualized therapy. I also worked on two clinical case reports, developing skills in literature review, scientific writing, critical analysis, and medical documentation. Regular interactions with physicians during my research helped me discover my passion for scientific exchange and showed me how pharmacy knowledge can support clinical decision-making. Presenting disease-state topics at medical conferences further improved my confidence and ability to communicate complex information clearly to healthcare professionals. These experiences led me to explore Medical Affairs and the Medical Science Liaison role, where scientific expertise, KOL engagement, research understanding, and communication come together. I subsequently completed formal MSL training covering medical strategy, scientific exchange, compliance, and stakeholder engagement. Today, I am prepared to build a successful career in Medical Affairs by combining my PharmD foundation, research experience, presentation skills, and commitment to evidence-based patient care while continuing to learn, collaborate, and contribute meaningfully to the healthcare community.",
+    companies: ["Salocin"],
+    category: "Medical Affairs",
+    story: "I am Dr. Uday, a Pharm. D graduate from Rajiv Gandhi University of Health Sciences with a strong interest in clinical science...",
   },
-{
+  {
     id: 21,
     name: "Ayesha Naureen",
     qualification: "MBBS",
     package: "13 LPA",
     image: "/Assets/ayesha.webp",
     companies: ["Bajaj General Insurance"],
-    story: "I am Dr. Ayeshaa Naureen, an MBBS graduate from NRI Medical College, Visakhapatnam, who completed a 12-month internship at Siddhartha Government Medical College, Vijayawada. Coming from a humble family, my medical journey involved significant personal and financial sacrifices, which shaped me into a calm, patient, and resilient person. After my internship, I worked night shifts as a junior doctor at Ramesh Cardiac Centre, served for two years as a Government Medical Officer at a Primary Health Centre, and later worked under an endocrinologist at Aster Hospitals in Bengaluru. I also performed COVID-19 duties for nearly a year. After marriage and the birth of my daughter, balancing demanding clinical responsibilities with my personal life began affecting my health and work-life balance. While exploring alternative career opportunities, I discovered Academically Global Healthcare Academy and enrolled in its Medical Affairs and Medical Science Liaison training programme. The course strengthened my understanding of Medical Affairs, scientific communication, teamwork, leadership, evidence-based medicine, and industry expectations while helping me apply my clinical experience beyond traditional hospital practice. I am sincerely grateful to Academically and especially to Dr. Ateeb, Dr. Nishtha, Dr. Skanda, and Dr. Jatin for their personalised guidance, mentorship, and commitment to making me industry-ready for a meaningful career in Medical Affairs.",
+    category: "Medical Affairs",
+    story: "I am Dr. Ayesha Naureen, an MBBS graduate from NRI Medical College, Visakhapatnam, who completed a 12-month internship...",
   },
   {
     id: 22,
@@ -204,7 +234,8 @@ const placementCards = [
     package: "13 LPA",
     image: "/Assets/nilesh.webp",
     companies: ["Bajaj General Insurance"],
-    story: "I am Dr. Nilesh Wani, an MBBS graduate from Jalalabad State Medical University, Kyrgyzstan. My journey began with a strong interest in science, sports, and learning, but several difficult experiences, including witnessing a medical emergency and losing my mother to kidney failure, inspired me to pursue medicine and understand diseases more deeply. Despite financial challenges and limited family support, my father and I arranged loans to fund my medical education abroad. During MBBS, I actively visited hospitals and libraries beyond regular classes to gain practical knowledge, particularly in neurology, nephrology, cardiology, and pharmacology. After returning to India, I completed observerships under specialists and worked in a medical store, where I became increasingly concerned about medication side effects, irrational prescribing, and the need for stronger drug-safety systems. This led me to explore careers in Medical Affairs and Clinical Research, and I discovered Academically Global through YouTube. I enrolled in its industry-focused programme to pursue my goal of understanding medicines, clinical trials, safety data, and scientific communication. The faculty and mentors helped me improve my communication, recognise my strengths and weaknesses, adapt to professional situations, and gain confidence. My life has been full of challenges, but every experience has strengthened my determination to build a meaningful career where I can contribute to safer medicines and better patient outcomes.",
+    category: "Experienced",
+    story: "I am Dr. Nilesh Wani, an MBBS graduate from Jalalabad State Medical University, Kyrgyzstan...",
   },
   {
     id: 23,
@@ -213,153 +244,240 @@ const placementCards = [
     package: "5 LPA",
     image: "/Assets/Deekshitha.webp",
     companies: ["Mitocon"],
-    story: "",
-  },
- {
-    id: 24,
-    name: "Uday Mudhol",
-    qualification: "Pharm. D",
-    package: "5 LPA",
-    image: "/Assets/",
-    companies: ["Salocin and IQVIA"],
-    story: "",
-  },
-  {
-    id: 25,
-    name: "Uday Mudhol",
-    qualification: "Pharm. D",
-    package: "5 LPA",
-    image: "/Assets/",
-    companies: ["Salocin and IQVIA"],
-    story: "",
-  },
-
-
+    category: "Pharmacovigilance",
+    story: "Transformed Pharm. D background into a rewarding pharmacovigilance role through Academically's practical capstone training.",
+  }
 ];
 
-const getPackageValue = (pkgString) => {
-  if (!pkgString) return 0;
-  const numbers = pkgString.match(/[\d.]+/g);
-  if (!numbers) return 0;
-  return Math.max(...numbers.map(Number));
+// Helper component for stylized company badges matching reference screenshot 1
+const CompanyBadge = ({ company }) => {
+  const comp = (company || "").trim();
+  let logoElem = null;
+
+  if (comp.toLowerCase().includes("bajaj")) {
+    logoElem = (
+      <span className="w-5 h-5 rounded-full bg-[#004B87] text-white flex items-center justify-center font-black text-[10px]">
+        B
+      </span>
+    );
+  } else if (comp.toLowerCase().includes("oviya") || comp.toLowerCase().includes("medsafe")) {
+    logoElem = (
+      <span className="w-5 h-5 rounded-full bg-[#10B981] text-white flex items-center justify-center p-[3px]">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <circle cx="6" cy="6" r="3.5" stroke="white" strokeWidth="2" />
+        </svg>
+      </span>
+    );
+  } else if (comp.toLowerCase().includes("accenture")) {
+    logoElem = (
+      <span className="w-5 h-5 rounded-full bg-[#A855F7] text-white flex items-center justify-center font-black text-[11px]">
+        &gt;
+      </span>
+    );
+  } else if (comp.toLowerCase().includes("tata") || comp.toLowerCase().includes("tcs")) {
+    logoElem = (
+      <span className="w-5 h-5 rounded-full bg-[#002F6C] text-white flex items-center justify-center font-black text-[10px]">
+        T
+      </span>
+    );
+  } else if (comp.toLowerCase().includes("vizen")) {
+    logoElem = (
+      <span className="w-5 h-5 rounded-full bg-[#0284C7] text-white flex items-center justify-center font-black text-[9px]">
+        V
+      </span>
+    );
+  } else {
+    logoElem = (
+      <div className="w-5 h-5 rounded-full bg-slate-700 text-white flex items-center justify-center">
+        <Building2 className="w-3 h-3 text-white" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-2 mb-2.5">
+      <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center shadow-xs flex-shrink-0">
+        {logoElem}
+      </div>
+      <span className="text-white font-medium text-xs sm:text-sm tracking-tight truncate max-w-[140px] sm:max-w-[160px]">
+        {comp}
+      </span>
+    </div>
+  );
 };
 
-const sortedPlacementCards = [...placementCards].sort((a, b) => 
-  getPackageValue(b.package) - getPackageValue(a.package)
-);
-
+// Skeleton loading card
 const SkeletonCard = () => (
-  <div className="w-full border border-[#00D9B7]/25 bg-white shadow-sm flex flex-col h-full animate-pulse">
-    <div className="p-4 flex flex-col h-full">
-      <div className="w-full h-[300px] bg-gray-100 rounded-md mb-4 flex-shrink-0"></div>
-      <div className="text-center flex-grow flex flex-col justify-between space-y-4">
-        <div>
-          <div className="h-5 bg-gray-150 rounded-md w-3/4 mx-auto mb-2"></div>
-          <div className="h-4 bg-gray-150 rounded-md w-1/2 mx-auto"></div>
-        </div>
-        <div>
-          <div className="h-10 bg-gray-150 rounded-md w-full mb-3"></div>
-          <div className="h-10 bg-gray-150 rounded-md w-full"></div>
-        </div>
+  <div className="w-full bg-[#16273D] border border-slate-800 rounded-2xl p-4 flex flex-col justify-between h-[230px] animate-pulse">
+    <div className="flex justify-between items-start gap-3">
+      <div className="w-3/5 space-y-3">
+        <div className="w-24 h-5 bg-slate-700/60 rounded-md"></div>
+        <div className="w-32 h-6 bg-slate-700/60 rounded-md"></div>
+        <div className="w-20 h-4 bg-slate-700/60 rounded-md"></div>
+        <div className="w-full h-10 bg-slate-700/40 rounded-md"></div>
       </div>
+      <div className="w-2/5 h-40 bg-slate-700/60 rounded-lg"></div>
     </div>
+    <div className="w-full h-8 bg-slate-700/50 rounded-lg mt-2"></div>
   </div>
 );
 
+// Sleek Dual-Column Placement Card matching original code schema
 const PlacementCard = ({ placement, onPreview }) => {
-  const imageSrc = formatS3Url(placement.imageUrl || placement.image) || "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=600";
-  const packageText = Array.isArray(placement.packages) ? placement.packages.join(" & ") : (placement.package || "");
+  const imageSrc = formatS3Url(placement.imageUrl || placement.image) || "/Assets/doctor.webp";
+  const packageText = Array.isArray(placement.packages) 
+    ? placement.packages.join(" & ") 
+    : (placement.package || "");
   const storyText = placement.story || placement.successStory || "Achieved remarkable career growth with industry-focused training and placement support.";
+  const primaryCompany = (placement.companies && placement.companies.length > 0) 
+    ? placement.companies[0] 
+    : "Hiring Partner";
 
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-        .placement-testimonial-font {
-          font-family: 'Poppins', sans-serif;
-        }
-      `}</style>
-      <div 
-        className="max-w-80 w-full bg-black text-white rounded-2xl flex flex-col justify-between overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-purple-900/20 transition-all duration-300 cursor-pointer group mx-auto h-full placement-testimonial-font"
-        onClick={() => onPreview(placement)}
-      >
-        <div className="relative -mt-px overflow-hidden rounded-2xl flex-shrink-0">
+    <div 
+      className="bg-gradient-to-br from-[#16273D] via-[#121F33] to-[#0E1726] rounded-2xl overflow-hidden border border-slate-700/50 shadow-xl hover:shadow-2xl hover:border-purple-500/50 transition-all duration-300 flex flex-col justify-between group cursor-pointer h-full relative"
+      onClick={() => onPreview(placement)}
+      style={{ fontFamily: "'Poppins', sans-serif" }}
+    >
+      {/* Top Main Section */}
+      <div className="p-4 sm:p-4.5 pt-4 pb-3 flex flex-row items-stretch justify-between gap-2 flex-grow relative min-h-[195px]">
+        {/* Left Column (Text Details) */}
+        <div className="w-[56%] sm:w-[58%] flex flex-col justify-between z-20 pr-1">
+          <div>
+            {/* Company Badge */}
+            <CompanyBadge company={primaryCompany} />
+
+            {/* Student Name */}
+            <h3 className="text-white font-bold text-base sm:text-[17px] tracking-tight leading-snug mb-0.5">
+              {placement.name}
+            </h3>
+
+            {/* Qualification */}
+            <p className="text-slate-400 text-[11px] sm:text-xs font-normal mb-2.5">
+              {placement.qualification}
+            </p>
+          </div>
+
+          {/* Story Quote Excerpt */}
+          <p className="text-slate-300/90 text-[11px] leading-relaxed line-clamp-2 sm:line-clamp-3 font-normal opacity-90">
+            {storyText}
+          </p>
+        </div>
+
+        {/* Right Column (Seamless Student Photo Cutout - No Gray Box) */}
+        <div className="absolute top-0 right-0 w-[48%] sm:w-[50%] h-full overflow-hidden rounded-tr-2xl pointer-events-none z-10">
           <img
             src={imageSrc}
             alt={placement.imageAlt || placement.name}
-            className="h-[270px] w-full rounded-2xl group-hover:scale-105 transition-all duration-300 object-cover object-top"
+            className="w-full h-full object-cover object-top filter drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
             loading="lazy"
+            onError={(e) => {
+              e.target.src = "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600";
+            }}
           />
-          <div className="absolute bottom-0 z-10 h-60 w-full bg-gradient-to-t pointer-events-none from-black to-transparent"></div>
-          {/* Companies badges overlaid on top-right of image */}
-          {placement.companies && placement.companies.length > 0 && (
-            <div className="absolute right-3 top-3 z-20 flex flex-wrap gap-1.5 justify-end">
-              {placement.companies.map((company) => (
-                <span
-                  key={company}
-                  className="rounded-full bg-black/70 backdrop-blur-md px-2.5 py-1 text-xs font-semibold text-white shadow-md border border-white/20"
-                >
-                  {company}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-        <div className="px-4 pb-4 pt-2 flex flex-col flex-grow justify-between">
-          <div>
-            <p className="font-medium border-b border-gray-600 pb-4 text-gray-200 text-sm line-clamp-3 italic">
-              “{storyText}”
-            </p>
-            <p className="mt-3 font-semibold text-white text-base">— {placement.name}</p>
-            <p className="text-xs font-medium text-gray-400 mt-0.5">{placement.qualification}</p>
-          </div>
-          <div className="mt-4 pt-3 flex items-center justify-between border-t border-gray-800">
-            <p className="text-sm font-medium bg-gradient-to-r from-[#8B5CF6] via-[#E0724A] to-[#9938CA] text-transparent bg-clip-text font-bold">
-              {packageText ? `${packageText}` : "Placed"}
-            </p>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onPreview(placement);
-              }}
-              className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#8B5CF6] to-[#9938CA] text-white hover:opacity-90 transition-opacity cursor-pointer shadow"
-            >
-              Preview
-            </button>
-          </div>
+          
+          {/* Seamless Blue Tint & Overlay */}
+          <div className="absolute inset-0 bg-[#121F33]/20 mix-blend-color"></div>
+          
+          {/* Left Edge Soft Dissolve Gradient */}
+          <div className="absolute inset-y-0 left-0 w-16 sm:w-20 bg-gradient-to-r from-[#121F33] via-[#121F33]/70 to-transparent"></div>
+          
+          {/* Bottom Edge Fade into Footer */}
+          <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#0E1726] via-[#0E1726]/80 to-transparent"></div>
+          
+          {/* Top Edge Soft Vignette */}
+          <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-[#16273D]/50 to-transparent"></div>
         </div>
       </div>
-    </>
+
+      {/* Card Footer Bar */}
+      <div className="bg-[#0A111C]/90 border-t border-slate-800/80 px-4 py-2.5 flex items-center justify-between z-20">
+        {/* Package Pill */}
+        <div className="bg-[#00D9B7] hover:bg-[#00C4A5] text-[#030A21] px-3 py-1 rounded-lg text-xs font-extrabold shadow-md shadow-[#00D9B7]/25 flex items-center gap-1">
+          ₹ {packageText ? packageText : "Placed"}
+        </div>
+
+        {/* Action Link */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onPreview(placement);
+          }}
+          className="text-slate-200 group-hover:text-white font-medium text-xs flex items-center gap-1 transition-colors cursor-pointer"
+        >
+          <span>View Success Story</span>
+          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+        </button>
+      </div>
+    </div>
   );
 };
 
 const PlacementsPage = ({ initialPlacements = [] }) => {
-  const [placements, setPlacements] = useState(initialPlacements.length > 0 ? initialPlacements : []);
+  const [placements, setPlacements] = useState(
+    initialPlacements && initialPlacements.length > 0 ? initialPlacements : placementCards
+  );
   const [selectedPlacement, setSelectedPlacement] = useState(null);
-  const [loading, setLoading] = useState(initialPlacements.length === 0);
+  const [loading, setLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState("All");
 
   useEffect(() => {
-    if (initialPlacements.length === 0) {
-      const fetchPlacements = async () => {
-        try {
-          setLoading(true);
-          const data = await apiClient.get("/api/placements");
-          if (data && data.length > 0) {
-            setPlacements(data);
-          } else {
-            console.warn("No placement records returned by API, using hardcoded fallback.");
-            setPlacements(sortedPlacementCards);
-          }
-        } catch (err) {
-          console.error("API error loading placements, using hardcoded fallback:", err);
-          setPlacements(sortedPlacementCards);
-        } finally {
-          setLoading(false);
-        }
-      };
-      fetchPlacements();
+    if (initialPlacements && initialPlacements.length > 0) {
+      setPlacements(initialPlacements);
     }
+    
+    // Fetch real-time database placements from API
+    async function loadDatabasePlacements() {
+      try {
+        const response = await fetch("/api/placements");
+        if (response.ok) {
+          const data = await response.json();
+          if (Array.isArray(data) && data.length > 0) {
+            setPlacements(data);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load database placements from API:", err);
+      }
+    }
+
+    loadDatabasePlacements();
   }, [initialPlacements]);
+
+  const filterTabs = [
+    "All", 
+    "Medical Affairs", 
+    "Clinical Research", 
+    "Pharmacovigilance", 
+    "Freshers", 
+    "Experienced"
+  ];
+
+  // Dynamic filter logic
+  const filteredPlacements = placements.filter((item) => {
+    if (activeTab === "All") return true;
+    const cat = item.category || "";
+    const role = (item.role || "").toLowerCase();
+    const qual = (item.qualification || "").toLowerCase();
+    const story = (item.story || item.successStory || "").toLowerCase();
+
+    if (activeTab === "Medical Affairs") {
+      return cat === "Medical Affairs" || role.includes("medical affairs") || story.includes("medical affairs");
+    }
+    if (activeTab === "Clinical Research") {
+      return cat === "Clinical Research" || role.includes("clinical research") || story.includes("clinical research");
+    }
+    if (activeTab === "Pharmacovigilance") {
+      return cat === "Pharmacovigilance" || role.includes("pharmacovigilance") || story.includes("pharmacovigilance");
+    }
+    if (activeTab === "Freshers") {
+      return cat === "Freshers" || qual.includes("mbbs") || qual.includes("pharm. d");
+    }
+    if (activeTab === "Experienced") {
+      return cat === "Experienced" || qual.includes("md") || qual.includes("dnb");
+    }
+    return true;
+  });
 
   const handleCloseModal = () => setSelectedPlacement(null);
   const handleBackdropClick = (e) => {
@@ -368,115 +486,244 @@ const PlacementsPage = ({ initialPlacements = [] }) => {
     }
   };
 
-  const modalImageSrc = selectedPlacement ? formatS3Url(selectedPlacement.imageUrl || selectedPlacement.image) : "";
-  const modalPackageText = selectedPlacement ? (Array.isArray(selectedPlacement.packages) ? selectedPlacement.packages.join(" & ") : (selectedPlacement.package || "")) : "";
-  const modalStoryText = selectedPlacement ? (selectedPlacement.successStory || selectedPlacement.story) : "";
+  const modalImageSrc = selectedPlacement 
+    ? formatS3Url(selectedPlacement.imageUrl || selectedPlacement.image) || "/Assets/doctor.webp"
+    : "";
+  const modalPackageText = selectedPlacement 
+    ? (Array.isArray(selectedPlacement.packages) ? selectedPlacement.packages.join(" & ") : (selectedPlacement.package || "")) 
+    : "";
+  const modalStoryText = selectedPlacement 
+    ? (selectedPlacement.successStory || selectedPlacement.story) 
+    : "";
 
   return (
-    <main className="min-h-screen px-8 pt-28 pb-12 max-sm:px-4 bg-[#F8FAFC]" aria-labelledby="placements-title">
-      <h1
-        id="placements-title"
-        className="mb-8 text-center text-3xl font-semibold text-[#030A21]"
-        style={{ fontFamily: "'Poppins', sans-serif" }}
-      >
-        Upskilling Placements
-      </h1>
+    <main 
+      className="min-h-screen pt-28 pb-16 px-4 sm:px-8 lg:px-12 bg-gradient-to-b from-[#F5F3FF] via-[#F8FAFC] to-[#F8FAFC] text-slate-900 overflow-x-hidden relative"
+      style={{ fontFamily: "'Poppins', sans-serif" }}
+    >
+      {/* Background Graphic Decoration (Shield with growth arrow top right) */}
+      <div className="absolute top-12 right-6 md:right-16 pointer-events-none opacity-80 hidden md:block z-0">
+        <div className="relative w-64 h-64 flex items-center justify-center">
+          {/* Subtle Ambient Radial Glow */}
+          <div className="absolute inset-0 bg-purple-200/40 rounded-full blur-3xl"></div>
+          
+          {/* Decorative Floating Shield Graphic */}
+          <div className="relative z-10 transform translate-x-4 -translate-y-2">
+            <svg width="220" height="200" viewBox="0 0 220 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Outer Shield Outline */}
+              <path d="M120 20 C160 20, 200 35, 200 75 C200 135, 120 180, 120 180 C120 180, 40 135, 40 75 C40 35, 80 20, 120 20 Z" 
+                stroke="url(#shield_grad)" strokeWidth="3" strokeDasharray="6 6" fill="url(#shield_fill)" fillOpacity="0.1" />
+              {/* Inner Plus / Cross */}
+              <path d="M120 50 V100 M95 75 H145" stroke="#C4B5FD" strokeWidth="4" strokeLinecap="round" opacity="0.6" />
+              {/* Upward Growth Arrow */}
+              <path d="M70 140 Q130 110 180 40 M180 40 H150 M180 40 V70" stroke="#7C3AED" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+              <defs>
+                <linearGradient id="shield_grad" x1="40" y1="20" x2="200" y2="180" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#DDD6FE" />
+                  <stop offset="1" stopColor="#7C3AED" />
+                </linearGradient>
+                <linearGradient id="shield_fill" x1="40" y1="20" x2="200" y2="180" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#EDE9FE" />
+                  <stop offset="1" stopColor="#C4B5FD" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
 
-      {/* Grid containing the cards */}
-      <section className="mx-auto grid max-w-7xl grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 p-4">
-        {loading ? (
-          Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)
-        ) : (
-          placements.map((placement) => (
-            <PlacementCard
-              key={placement._id || placement.id}
-              placement={placement}
-              onPreview={setSelectedPlacement}
-            />
-          ))
-        )}
-      </section>
+          {/* Subtle Ambient Circles */}
+          <div className="absolute top-4 left-2 w-10 h-10 border-2 border-purple-200/60 rounded-full"></div>
+          <div className="absolute bottom-8 right-4 w-6 h-6 border-2 border-indigo-200/50 rounded-full"></div>
+        </div>
+      </div>
 
-      {/* Details Modal */}
-      {selectedPlacement && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
-          onClick={handleBackdropClick}
-        >
-          <div className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-2xl transition-all">
-            {/* Close Button */}
-            <button
-              onClick={handleCloseModal}
-              className="absolute right-4 top-4 cursor-pointer text-2xl font-semibold text-gray-400 hover:text-gray-600 transition-colors"
-              aria-label="Close modal"
-            >
-              &times;
-            </button>
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* HERO HEADER SECTION */}
+        <section className="relative mb-8 text-left">
+          {/* Top Pill Badge */}
+          <div className="inline-flex items-center gap-1.5 bg-[#00D9B7]/15 border border-[#00D9B7]/30 text-[#008F78] px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
+            <ShieldCheck className="w-4 h-4 text-[#008F78]" />
+            <span>CAREER OUTCOMES</span>
+          </div>
 
-            <div className="p-6 sm:p-8">
-              {/* Header Info */}
-              <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start text-center sm:text-left">
-                <img
-                  src={modalImageSrc}
-                  alt={selectedPlacement.name}
-                  className="h-28 w-28 flex-shrink-0 rounded-full border-4 border-[#00D9B7] object-cover shadow-md"
-                />
-                <div className="flex-1 mt-2 sm:mt-0">
-                  <h2
-                    className="text-2xl font-bold text-[#030A21]"
-                    style={{ fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    {selectedPlacement.name}
-                  </h2>
-                  {selectedPlacement.role && (
-                    <p
-                      className="text-sm font-semibold text-[#00D9B7] uppercase tracking-wide mt-1"
-                      style={{ fontFamily: "'Poppins', sans-serif" }}
-                    >
-                      {selectedPlacement.role}
+          {/* Main Title & Subtitle */}
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 relative z-10">
+            <div>
+              <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-extrabold text-[#0F172A] tracking-tight leading-tight mb-2">
+                Student Success Stories
+              </h1>
+              <p className="text-slate-500 text-base sm:text-lg font-normal">
+                Real professionals. Real career transformations.
+              </p>
+            </div>
+
+            {/* Live Floating Badge Animation */}
+            <div className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-[#00D9B7]/30 shadow-lg shadow-[#00D9B7]/10 self-start lg:self-auto transition-transform hover:scale-105 cursor-default">
+              <div className="relative flex h-3 w-3 flex-shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00D9B7] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00D9B7]"></span>
+              </div>
+              <div className="text-left">
+                <p className="text-xs sm:text-sm font-bold text-[#008F78] flex items-center gap-1">
+                  <span>✨ 100% Placement Assistance</span>
+                </p>
+                <p className="text-[11px] text-slate-500 font-medium">
+                  Verified Alumni Career Outcomes
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FLOATING STATS KPI BAR */}
+        <section className="bg-white rounded-2xl p-4 sm:p-5 shadow-lg shadow-slate-900/5 border border-slate-100 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 divide-y sm:divide-y-0 divide-slate-100">
+            {/* Stat 1 */}
+            <div className="flex items-center gap-3.5 pt-2 sm:pt-0 sm:pr-4">
+              <div className="w-11 h-11 rounded-xl bg-[#00D9B7]/15 border border-[#00D9B7]/25 flex items-center justify-center text-[#008F78] flex-shrink-0">
+                <Users className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">500+</p>
+                <p className="text-xs sm:text-sm font-medium text-slate-500">Professionals Trained</p>
+              </div>
+            </div>
+
+            {/* Stat 2 */}
+            <div className="flex items-center gap-3.5 pt-2 sm:pt-0 sm:px-4 sm:border-l sm:border-slate-100">
+              <div className="w-11 h-11 rounded-xl bg-[#00D9B7]/15 border border-[#00D9B7]/25 flex items-center justify-center text-[#008F78] flex-shrink-0">
+                <Rocket className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">100+</p>
+                <p className="text-xs sm:text-sm font-medium text-slate-500">Career Transitions</p>
+              </div>
+            </div>
+
+            {/* Stat 3 */}
+            <div className="flex items-center gap-3.5 pt-2 sm:pt-0 sm:px-4 sm:border-l sm:border-slate-100">
+              <div className="w-11 h-11 rounded-xl bg-[#00D9B7]/15 border border-[#00D9B7]/25 flex items-center justify-center text-[#008F78] flex-shrink-0">
+                <Award className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">32 LPA</p>
+                <p className="text-xs sm:text-sm font-medium text-slate-500">Highest Package</p>
+              </div>
+            </div>
+
+            {/* Stat 4 */}
+            <div className="flex items-center gap-3.5 pt-2 sm:pt-0 sm:pl-4 sm:border-l sm:border-slate-100">
+              <div className="w-11 h-11 rounded-xl bg-[#00D9B7]/15 border border-[#00D9B7]/25 flex items-center justify-center text-[#008F78] flex-shrink-0">
+                <Handshake className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">50+</p>
+                <p className="text-xs sm:text-sm font-medium text-slate-500">Hiring Partners</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* STUDENT PLACEMENTS CARDS GRID */}
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
+          {loading ? (
+            Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)
+          ) : filteredPlacements.length > 0 ? (
+            filteredPlacements.map((placement) => (
+              <PlacementCard
+                key={placement._id || placement.id}
+                placement={placement}
+                onPreview={setSelectedPlacement}
+              />
+            ))
+          ) : (
+            <div className="col-span-full py-12 text-center text-slate-500 font-medium">
+              No placement records found under this filter category.
+            </div>
+          )}
+        </section>
+
+        {/* SUCCESS STORY DETAIL MODAL */}
+        {selectedPlacement && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-sm animate-fadeIn"
+            onClick={handleBackdropClick}
+          >
+            <div className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-2xl transition-all">
+              {/* Close Button */}
+              <button
+                onClick={handleCloseModal}
+                className="absolute right-5 top-5 z-10 cursor-pointer w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-800 transition-colors flex items-center justify-center"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="p-6 sm:p-8 max-h-[85vh] overflow-y-auto">
+                {/* Header Profile */}
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left border-b border-slate-100 pb-6">
+                  <img
+                    src={modalImageSrc}
+                    alt={selectedPlacement.name}
+                    className="w-28 h-28 flex-shrink-0 rounded-2xl object-cover object-top border-4 border-purple-100 shadow-md bg-slate-100"
+                    onError={(e) => {
+                      e.target.src = "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600";
+                    }}
+                  />
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1.5">
+                      {selectedPlacement.role && (
+                        <span className="bg-purple-100 text-[#7C3AED] px-3 py-1 rounded-full text-xs font-bold">
+                          {selectedPlacement.role}
+                        </span>
+                      )}
+                      <span className="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold">
+                        ₹ {modalPackageText || "Placed"}
+                      </span>
+                    </div>
+
+                    <h2 className="text-2xl font-bold text-slate-900">
+                      {selectedPlacement.name}
+                    </h2>
+
+                    <p className="text-sm font-medium text-slate-500 mt-1">
+                      {selectedPlacement.qualification}
                     </p>
-                  )}
-                  <p
-                    className="text-sm text-gray-500 mt-0.5"
-                    style={{ fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    {selectedPlacement.qualification}
-                  </p>
-                  <div
-                    className="mt-3 inline-block rounded-md bg-[#F7DD4B]/20 px-3 py-1 text-sm font-bold text-[#17264B]"
-                    style={{ fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    {modalPackageText}
+
+                    {selectedPlacement.location && (
+                      <p className="text-xs text-slate-400 mt-0.5">
+                        📍 {selectedPlacement.location}
+                      </p>
+                    )}
                   </div>
                 </div>
-              </div>
 
-              {/* Companies Placed In */}
-              <div className="mt-6 border-t border-gray-100 pt-4">
-                <h3 className="text-sm font-bold text-gray-700">Placed At</h3>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {(selectedPlacement.companies || []).map((company) => (
-                    <span
-                      key={company}
-                      className="rounded bg-gray-100 px-3 py-1 text-xs font-bold text-[#17264B]"
-                    >
-                      {company}
-                    </span>
-                  ))}
+                {/* Companies Placed In */}
+                <div className="mt-6">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+                    Placed At
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {(selectedPlacement.companies || []).map((company) => (
+                      <CompanyBadge key={company} company={company} />
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Success Story */}
-              <div className="mt-5">
-                <h3 className="text-sm font-bold text-gray-700">Success Story</h3>
-                <div className="mt-2 rounded-lg border-l-4 border-[#00D9B7] bg-gray-50 p-4 italic text-sm text-gray-600 leading-relaxed max-h-[220px] overflow-y-auto whitespace-pre-wrap">
-                  "{modalStoryText}"
+                {/* Success Story Content */}
+                <div className="mt-6">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+                    Full Success Story
+                  </h3>
+                  <div className="rounded-2xl bg-slate-50 border border-slate-200/80 p-5 italic text-sm text-slate-700 leading-relaxed max-h-[260px] overflow-y-auto whitespace-pre-wrap">
+                    "{modalStoryText}"
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </main>
   );
 };

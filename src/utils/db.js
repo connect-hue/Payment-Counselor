@@ -1,4 +1,12 @@
 import mongoose from "mongoose";
+import dns from "dns";
+
+// Fix Windows Node.js SRV DNS lookup refusal for MongoDB Atlas cluster
+try {
+  dns.setServers(["8.8.8.8", "1.1.1.1"]);
+} catch (err) {
+  console.warn("Could not set custom DNS servers for MongoDB:", err);
+}
 
 const MONGODB_URI = process.env.MONGODB_URI;
 

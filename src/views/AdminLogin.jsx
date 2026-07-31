@@ -1,14 +1,23 @@
-import React, { useState, useEffect } from "react";
+"use client";
+
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { apiClient } from "../utils/apiClient";
+import styles from "./AdminLogin.module.css";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isFocusedPassword, setIsFocusedPassword] = useState(false);
+
   const router = useRouter();
+
+  // Mouse Tracking Refs & State
+  const botRef = useRef(null);
+  const [headTransform, setHeadTransform] = useState("rotateX(0deg) rotateY(0deg)");
+  const [pupilOffset, setPupilOffset] = useState({ x: 0, y: 0 });
 
   // If already authenticated, redirect to dashboard
   useEffect(() => {
@@ -22,6 +31,34 @@ const AdminLogin = () => {
     };
     checkSession();
   }, [router]);
+
+  // Mouse tracking logic using useRef and window event listener
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (!botRef.current) return;
+
+      const rect = botRef.current.getBoundingClientRect();
+      const botCenterX = rect.left + rect.width / 2;
+      const botCenterY = rect.top + rect.height / 2;
+
+      const deltaX = e.clientX - botCenterX;
+      const deltaY = e.clientY - botCenterY;
+
+      // Calculate head tilt angles
+      const rotateY = Math.max(-12, Math.min(12, deltaX / 45));
+      const rotateX = Math.max(-8, Math.min(8, -deltaY / 45));
+
+      // Calculate eye pupil translation (limited to eye socket boundary)
+      const pupilX = Math.max(-14, Math.min(14, deltaX / 25));
+      const pupilY = Math.max(-12, Math.min(12, deltaY / 25));
+
+      setHeadTransform(`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+      setPupilOffset({ x: pupilX, y: pupilY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,102 +74,130 @@ const AdminLogin = () => {
       await apiClient.post("/api/admin/auth/login", { email, password });
       router.push("/admin/placements");
     } catch (err) {
-      setError(err.message || "Invalid email or password.");
-    } finally {
+      setError(err.message || "Invalid username or password.");
       setLoading(false);
     }
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-[#F8FAFC] px-4 py-24 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-2xl border border-gray-100 shadow-xl">
-        <div className="text-center">
-          <img
-            className="mx-auto h-12 w-auto"
-            src="/Assets/logo.svg"
-            alt="Academically Logo"
-            onError={(e) => {
-              e.target.src = "/Assets/logo.webp";
-            }}
-          />
-          <h1
-            className="mt-6 text-2xl font-bold text-[#030A21]"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-          >
-            Placement Management
-          </h1>
-          <p className="mt-2 text-sm text-gray-500">Sign in to your administrator dashboard</p>
+    <main className={styles.container}>
+      <div className={styles.mainWrapper}>
+        {/* INTERACTIVE BLUE ROBOT CHARACTER */}
+        <div className={styles.robotSection} ref={botRef}>
+          {/* Yellow Antenna */}
+          <div className={styles.antennaWrapper}>
+            <div className={styles.antennaBall} />
+            <div className={styles.antennaStem} />
+          </div>
+
+          {/* Robot Head */}
+          <div className={styles.robotHead} style={{ transform: headTransform }}>
+            {/* Eyes Container */}
+            <div className={styles.eyesContainer}>
+              {/* Left Eye */}
+              <div className={styles.eyeSocket}>
+                <div
+                  className={`${styles.eyelids} ${
+                    isFocusedPassword ? styles.eyelidsCovered : ""
+                  }`}
+                />
+                <div
+                  className={styles.pupil}
+                  style={{
+                    transform: `translate(${pupilOffset.x}px, ${pupilOffset.y}px)`,
+                  }}
+                >
+                  <div className={styles.pupilGlare} />
+                </div>
+              </div>
+
+              {/* Right Eye */}
+              <div className={styles.eyeSocket}>
+                <div
+                  className={`${styles.eyelids} ${
+                    isFocusedPassword ? styles.eyelidsCovered : ""
+                  }`}
+                />
+                <div
+                  className={styles.pupil}
+                  style={{
+                    transform: `translate(${pupilOffset.x}px, ${pupilOffset.y}px)`,
+                  }}
+                >
+                  <div className={styles.pupilGlare} />
+                </div>
+              </div>
+            </div>
+
+            {/* Mouth */}
+            <div
+              className={`${styles.mouth} ${
+                loading ? styles.mouthSurprised : ""
+              }`}
+            />
+          </div>
+
+          {/* Neck */}
+          <div className={styles.robotNeck} />
+
+          {/* Body / Shoulders */}
+          <div className={styles.robotBody} />
         </div>
 
-        {error && (
-          <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-md">
-            <p className="text-sm font-medium text-red-700">{error}</p>
-          </div>
-        )}
+        {/* WHITE LOGIN CARD */}
+        <div className={styles.loginCard}>
+          <h1 className={styles.title}>Welcome Back!</h1>
 
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="space-y-4">
-            <div>
-              <label
-                htmlFor="email-address"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Email Address
+          {error && <div className={styles.errorBanner}>{error}</div>}
+
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.inputGroup}>
+              <label htmlFor="username" className={styles.label}>
+                Username
               </label>
               <input
-                id="email-address"
+                id="username"
                 name="email"
                 type="email"
-                autoComplete="email"
+                autoComplete="username"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none block w-full px-3 py-2.5 border border-gray-350 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#00D9B7] focus:border-[#00D9B7] text-sm text-[#030A21]"
-                placeholder="admin@academically.com"
+                className={styles.inputField}
+                placeholder="Enter username"
               />
             </div>
 
-            <div className="relative">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
+            <div className={styles.inputGroup}>
+              <label htmlFor="password" className={styles.label}>
                 Password
               </label>
-              <div className="relative">
-                <input
-                  id="password"
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  autoComplete="current-password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2.5 border border-gray-350 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#00D9B7] focus:border-[#00D9B7] text-sm text-[#030A21]"
-                  placeholder="••••••••"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-450 hover:text-gray-600 text-xs font-semibold cursor-pointer"
-                >
-                  {showPassword ? "Hide" : "Show"}
-                </button>
-              </div>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                onFocus={() => setIsFocusedPassword(true)}
+                onBlur={() => setIsFocusedPassword(false)}
+                className={styles.inputField}
+                placeholder="Enter password"
+              />
             </div>
-          </div>
 
-          <div>
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-[#030A21] bg-[#00D9B7] hover:bg-[#00D9B7]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00D9B7] transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
+              className={`${styles.submitBtn} ${
+                loading ? styles.submitBtnDisabled : ""
+              }`}
             >
-              {loading ? "Signing in..." : "Sign In"}
+              {loading ? "Signing In..." : "Sign In"}
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </main>
   );

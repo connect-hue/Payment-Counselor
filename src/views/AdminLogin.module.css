@@ -1,0 +1,284 @@
+/* AdminLogin.module.css - Copy of Exact Blue Robot Login Page Design */
+
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e4e7ff 0%, #dbe2fc 50%, #eee8fe 100%);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Side-by-Side Main Wrapper */
+.mainWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .mainWrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+/* ROBOT CHARACTER SECTION */
+.robotSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 260px;
+  user-select: none;
+}
+
+/* Yellow Antenna Above Head */
+.antennaWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: -4px;
+  z-index: 2;
+}
+
+.antennaBall {
+  width: 22px;
+  height: 22px;
+  background-color: #facc15;
+  border: 3px solid #1e293b;
+  border-radius: 50%;
+  box-shadow: inset -2px -2px 0px rgba(0, 0, 0, 0.15);
+}
+
+.antennaStem {
+  width: 5px;
+  height: 24px;
+  background-color: #1e293b;
+}
+
+/* Robot Head */
+.robotHead {
+  width: 210px;
+  height: 160px;
+  background-color: #2db5f6;
+  border: 3.5px solid #1e293b;
+  border-radius: 50% 50% 46% 46%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 -8px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.08s ease-out;
+  z-index: 3;
+}
+
+/* Eye Sockets & Pupils */
+.eyesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: -10px;
+}
+
+.eyeSocket {
+  width: 62px;
+  height: 62px;
+  background-color: #ffffff;
+  border: 3.5px solid #1e293b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pupil {
+  width: 28px;
+  height: 28px;
+  background-color: #1e293b;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.05s ease-out;
+}
+
+.pupilGlare {
+  width: 8px;
+  height: 8px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
+/* Eyelids / Covered State when typing password */
+.eyelids {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background-color: #2db5f6;
+  border-bottom: 3.5px solid #1e293b;
+  transition: height 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 5;
+}
+
+.eyelidsCovered {
+  height: 100%;
+}
+
+/* Cute Mouth Smile */
+.mouth {
+  position: absolute;
+  bottom: 28px;
+  width: 36px;
+  height: 16px;
+  border-bottom: 3.5px solid #1e293b;
+  border-radius: 0 0 18px 18px;
+}
+
+.mouthSurprised {
+  width: 18px;
+  height: 18px;
+  background-color: #1e293b;
+  border-radius: 50%;
+  border: none;
+  bottom: 24px;
+}
+
+/* Robot Neck */
+.robotNeck {
+  width: 68px;
+  height: 18px;
+  background-color: #94a3b8;
+  border: 3.5px solid #1e293b;
+  border-top: none;
+  border-bottom: none;
+  z-index: 2;
+  margin-top: -2px;
+}
+
+/* Robot Body / Shoulders */
+.robotBody {
+  width: 220px;
+  height: 90px;
+  background-color: #2db5f6;
+  border: 3.5px solid #1e293b;
+  border-radius: 90px 90px 0 0;
+  box-shadow: inset 0 -8px 12px rgba(0, 0, 0, 0.08);
+  margin-top: -2px;
+  z-index: 1;
+}
+
+/* LOGIN CARD FORM SECTION */
+.loginCard {
+  width: 100%;
+  max-width: 380px;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 3rem 2.25rem;
+  box-shadow: 0 20px 40px -10px rgba(100, 116, 139, 0.18);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #1e293b;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  letter-spacing: -0.02em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.inputField {
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  color: #1e293b;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.inputField::placeholder {
+  color: #94a3b8;
+}
+
+.inputField:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.submitBtn {
+  width: 100%;
+  background-color: #34d399;
+  border: none;
+  color: #0f172a;
+  padding: 0.9rem;
+  border-radius: 14px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.submitBtn:hover {
+  background-color: #22c55e;
+  color: #ffffff;
+}
+
+.submitBtn:active {
+  transform: scale(0.98);
+}
+
+.submitBtnDisabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.errorBanner {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}

@@ -453,31 +453,46 @@ function CourseDetailsPage() {
             "pathname": "/doh-exam-preparation-course"
         },
         {
+            "name": "Physician-Clinical Drug Development",
+            "category": "Job Assistance",
+            "description": "Specialized Executive Program in Clinical Drug Development designed specifically for Physicians (MBBS/MD) transitioning into Clinical Research, Pharmacovigilance, and Drug Safety leadership roles with expert 1-on-1 mentorship, capstone projects, and placement assistance.",
+            "brochure": "/CourseImage/CDD.png",
+            "audfees": "3550 AUD",
+            "inrfees": "2,36,000 INR including GST",
+            "duration": "5 Months",
+            "brochureLink": "https://drive.google.com/file/d/1ofQPSUGdQHFTghGxhiCzEXW2Lfb9RjMm/view?usp=sharing",
+            "students": "500+",
+            "location": "Global",
+            "courseImage": "https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg",
+            "link": "",
+            "pathname": "/physician-clinical-drug-development"
+        },
+        {
             "name": "Clinical Drug Development",
             "category": "Job Assistance",
-            "description": "Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease.",
-            "brochure": "/CourseImage/CDD.png",
-            "audfees": "2400 AUD",
-            "inrfees": "1,50,000 INR",
-            "duration": "4 Months",
-            "brochureLink": "https://drive.google.com/file/d/1-gfbOnONXifTnE4Pfb8zFdHNdeHv_HF8/view?usp=sharing",
-            "students": "500+",
-            "location": "Australia",
+            "description": "Executive Program in Clinical Drug Development for healthcare, pharmacy, and life science graduates looking to enter Clinical Research, Pharmacovigilance, and Medical Writing with practical industry capstone training and dedicated placement support.",
+            "brochure": "/CourseImage/Clinical-Drug-Development.png",
+            "audfees": "3550 AUD",
+            "inrfees": "2,36,000 INR including GST",
+            "duration": "5 Months",
+            "brochureLink": "https://drive.google.com/file/d/1UC8UM-thJ2ejYzWZ_3RC_kCJKlBjWfbO/view?usp=sharing",
+            "students": "600+",
+            "location": "India",
             "courseImage": "https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg",
             "link": "",
             "pathname": "/clinical-drug-development"
         },
         {
-            "name": "Medical Science Liaison (MSL)",
+            "name": "Medical Affairs",
             "category": "Job Assistance",
-            "description": "Build a successful career in the pharmaceutical industry with Academically's Executive Programme in Medical Affairs/Medical Science Liaison. Designed for doctors, pharmacists, dentists, life science graduates, and PhD holders, this 4-month online course offers industry-focused training, practical capstone projects, expert mentorship, and dedicated job assistance. Learn medical affairs, KOL engagement, scientific communication, clinical research, publication strategy, and evidence generation while developing skills that employers value. With interview preparation, career guidance, and placement support, the programme helps you confidently step into Medical Affairs and MSL roles across leading pharmaceutical and healthcare organisations.",
-            "brochure": "/CourseImage/Clinical-Drug-Development.png",
-            "audfees": "3445 AUD",
-            "inrfees": "2,32,000 INR including 18% GST",
-            "duration": "4 Months",
-            "brochureLink": "https://drive.google.com/file/d/1n5avgRWW5kWNSWubSZF7cYMTLAiQKHM9/view",
+            "description": "Build a successful career in the pharmaceutical industry with Academically's Executive Programme in Medical Affairs/Medical Science Liaison. Designed for doctors, pharmacists, dentists, life science graduates, and PhD holders, this 4-month online course offers industry-focused training, practical capstone projects, expert mentorship, and dedicated job assistance.",
+            "brochure": "/CourseImage/MSL.png",
+            "audfees": "3550 AUD",
+            "inrfees": "2,36,000 INR including GST",
+            "duration": "5 Months",
+            "brochureLink": "https://drive.google.com/file/d/1VfibdCFribwLdQWIHnC6DjFJRTM8OxfC/view?usp=sharing",
             "students": "500+",
-            "location": "India",
+            "location": "Australia",
             "courseImage": "https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg",
             "link": "",
             "pathname": "/medical-science-liaison-(msl)"
@@ -485,20 +500,40 @@ function CourseDetailsPage() {
     ];
 
     // Find the course that matches the slug (case-insensitive comparison)
-    const coursed = coursesData || coursesObject.find(course => (course.pathname) == pathName);
+    const normalizedPath = (pathName || "").toLowerCase().replace(/^\//, "");
+    const coursed = coursesData || coursesObject.find(course => {
+        const cPath = (course.pathname || "").toLowerCase().replace(/^\//, "");
+        const cSlug = (course.name || "").toLowerCase().replace(/\s+/g, "-");
+        return cPath === normalizedPath || cSlug === normalizedPath;
+    });
+
     const getYouTubeEmbedURL = (url) => {
+        if (!url || typeof url !== "string") return "";
         try {
             const parsedUrl = new URL(url);
             const videoId = parsedUrl.searchParams.get("v");
             if (!videoId && parsedUrl.hostname === "youtu.be") {
                 return `https://www.youtube.com/embed/${parsedUrl.pathname.slice(1)}`;
             }
-            return `https://www.youtube.com/embed/${videoId}`;
+            if (videoId) {
+                return `https://www.youtube.com/embed/${videoId}`;
+            }
+            return url;
         } catch (error) {
             console.error("Invalid YouTube URL", error);
             return "";
         }
     };
+
+    const embedUrl = getYouTubeEmbedURL(coursed?.link);
+    const isJobAssistancePath = [
+        "clinical-drug-development", 
+        "physician-clinical-drug-development", 
+        "medical-affairs", 
+        "medical-science-liaison-(msl)"
+    ].includes(normalizedPath);
+
+    const showImage = isJobAssistancePath || !coursed?.link || !embedUrl;
 
     const Tile = ({ icon, heading, subtext, link }) => (
         <div
@@ -517,15 +552,19 @@ function CourseDetailsPage() {
         <div className="flex-col items-center mt-4 justify-center w-[85%] mx-auto">
             {/* YouTube Embed or Course Image */}
             <div className="flex justify-center items-center w-full max-sm:mt-10 max-sm:mb-6">
-                {["/clinical-drug-development", "/clinical-drug-development/", "/medical-science-liaison-(msl)", "/medical-science-liaison-(msl)/"].includes(pathName) ? (
+                {showImage ? (
                     <img
-                        src={pathName.includes("msl") ? "/CourseImage/MSL.png" : (coursed?.location === "India" ? "/CourseImage/Clinical-Drug-Development.png" : "/CourseImage/CDD.png")}
+                        src={
+                            coursed?.brochure || (normalizedPath.includes("msl") || normalizedPath.includes("medical-affairs") 
+                                ? "/CourseImage/MSL.png" 
+                                : (coursed?.location === "India" ? "/CourseImage/Clinical-Drug-Development.png" : "/CourseImage/CDD.png"))
+                        }
                         alt={coursed?.name || "Course Image"}
                         className="w-full h-[90vh] max-sm:h-[40vh] rounded-xl shadow-lg scale-75 max-sm:scale-100 max-sm:mt-14 object-contain"
                     />
                 ) : (
                     <iframe
-                        src={getYouTubeEmbedURL(coursed?.link)}
+                        src={embedUrl}
                         title="YouTube Video"
                         className="w-full h-[90vh] max-sm:h-[40vh] rounded-xl shadow-lg scale-75 max-sm:scale-100 max-sm:mt-14"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

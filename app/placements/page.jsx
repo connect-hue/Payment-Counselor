@@ -2,8 +2,7 @@ import connectDB from "@/src/utils/db";
 import Placement from "@/src/models/Placement";
 import PlacementsPage from "@/src/views/PlacementsPage";
 
-// Revalidate this page in the background at most every 60 seconds (Incremental Static Regeneration)
-export const revalidate = 60;
+export const revalidate = 10;
 
 async function getPlacements() {
   try {

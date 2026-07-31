@@ -456,32 +456,43 @@ const coursesObject = {
 
   'Job Assistance': [
     {
+      name: 'Physician-Clinical Drug Development',
+      category: 'Job Assistance',
+      description: 'Specialized Executive Program in Clinical Drug Development designed specifically for Physicians (MBBS/MD) transitioning into Clinical Research, Pharmacovigilance, and Drug Safety leadership roles with expert 1-on-1 mentorship, capstone projects, and placement assistance.',
+      brochure: '/CourseImage/CDD.png',
+      audfees: '2400 AUD',
+      inrfees: '1,50,000 INR',
+      duration: '4 Months',
+      brochureLink: 'https://drive.google.com/file/d/1ofQPSUGdQHFTghGxhiCzEXW2Lfb9RjMm/view?usp=sharing',
+      students: '500+',
+      location: 'Global',
+      courseImage: 'https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg',
+    },
+    {
       name: 'Clinical Drug Development',
       category: 'Job Assistance',
-      description: 'Clear the Australian Medical Council (AMC) Exam on your first attempt with the top-notch and best AMC coaching online. Our program features comprehensive online classes, extensive study materials, and AI-driven mock tests, making it the perfect AMC Exam Preparation Course for international doctors aiming to migrate to and practice in Australia. Enroll in our proven program today and pass the Australian Medical Council Exam with confidence and ease.',
+      description: 'Executive Program in Clinical Drug Development for healthcare, pharmacy, and life science graduates looking to enter Clinical Research, Pharmacovigilance, and Medical Writing with practical industry capstone training and dedicated placement support.',
       brochure: '/CourseImage/Clinical-Drug-Development.png',
       audfees: '2400 AUD',
       inrfees: '1,50,000 INR',
       duration: '4 Months',
-      brochureLink: 'https://drive.google.com/file/d/1-gfbOnONXifTnE4Pfb8zFdHNdeHv_HF8/view?usp=sharing',
-      students: '500+',
+      brochureLink: 'https://drive.google.com/file/d/1UC8UM-thJ2ejYzWZ_3RC_kCJKlBjWfbO/view?usp=sharing',
+      students: '600+',
       location: 'India',
       courseImage: 'https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg',
-      // link: 'https://youtu.be/cyKpBv_xGl0'
     },
     {
-      name: 'Medical Science Liaison (MSL)',
+      name: 'Medical Affairs',
       category: 'Job Assistance',
       description: 'Build a successful career in the pharmaceutical industry with Academically Executive Programme in Medical Affairs/Medical Science Liaison. Designed for doctors, pharmacists, dentists, life science graduates, and PhD holders, this 4-month online course offers industry-focused training, practical capstone projects, expert mentorship, and dedicated job assistance. Learn medical affairs, KOL engagement, scientific communication, clinical research, publication strategy, and evidence generation while developing skills that employers value. With interview preparation, career guidance, and placement support, the programme helps you confidently step into Medical Affairs and MSL roles across leading pharmaceutical and healthcare organisations.',
       brochure: '/CourseImage/MSL.png',
       audfees: '3445 AUD',
       inrfees: '2,32,000 INR including 18% GST',
       duration: '4-5 Months',
-      brochureLink: 'https://drive.google.com/file/d/1n5avgRWW5kWNSWubSZF7cYMTLAiQKHM9/view',
+      brochureLink: 'https://drive.google.com/file/d/1VfibdCFribwLdQWIHnC6DjFJRTM8OxfC/view?usp=sharing',
       students: '500+',
       location: 'Australia',
       courseImage: 'https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg',
-      // link: 'https://youtu.be/cyKpBv_xGl0'
     }
   ],
 
