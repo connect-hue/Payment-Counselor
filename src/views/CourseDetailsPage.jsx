@@ -485,8 +485,8 @@ function CourseDetailsPage() {
         {
             "name": "Medical Affairs",
             "category": "Job Assistance",
-            "description": "Build a successful career in the pharmaceutical industry with Academically's Executive Programme in Medical Affairs/Medical Science Liaison. Designed for doctors, pharmacists, dentists, life science graduates, and PhD holders, this 4-month online course offers industry-focused training, practical capstone projects, expert mentorship, and dedicated job assistance.",
-            "brochure": "/CourseImage/MSL.png",
+            "description": "Build a successful career in the pharmaceutical industry with Academically's Executive Programme in Medical Affairs/Medical Science Liaison. Designed for doctors, pharmacists, dentists, life science graduates, and PhD holders, this 5-month online course offers industry-focused training, practical capstone projects, expert mentorship, and dedicated job assistance.",
+            "brochure": "/CourseImage/MA.png",
             "audfees": "3550 AUD",
             "inrfees": "2,36,000 INR including GST",
             "duration": "5 Months",

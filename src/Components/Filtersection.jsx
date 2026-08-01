@@ -27,20 +27,22 @@ const FilterSection = () => {
         {filterData.map((data, index) => (
           <div
             key={index}
-            className="w-full border border-[#00D9B7]  "
+            className="w-full h-full border border-[#00D9B7] flex flex-col justify-between"
           >
-            <div className="p-4 flex flex-col ">
-              <img
-                src={data.img}
-                alt={data.name}
-                className="mb-4 rounded-md bg-white max-sm:w-[70vw] w-full sm:h-[300px] object-cover"
-              />
-              <div className="text-center">
-                <h5 className="text-lg font-semibold text-[#030A21]"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}>{data.name}</h5>
+            <div className="p-4 flex flex-col h-full justify-between">
+              <div>
+                <img
+                  src={data.img}
+                  alt={data.name}
+                  className="mb-4 rounded-md bg-white max-sm:w-[70vw] w-full sm:h-[300px] object-cover"
+                />
+                <div className="text-center min-h-[3rem] flex items-center justify-center">
+                  <h5 className="text-lg font-semibold text-[#030A21]"
+                    style={{ fontFamily: "'Poppins', sans-serif" }}>{data.name}</h5>
+                </div>
               </div>
               <button
-                className="mt-2 px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7] cursor-pointer"
+                className="mt-4 px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7] cursor-pointer"
                 onClick={() => handlePreviewClick(data.name)}
               >
                 Preview

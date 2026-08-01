@@ -1,12 +1,9 @@
-import mongoose from "mongoose";
 import dns from "dns";
+import mongoose from "mongoose";
 
-// Fix Windows Node.js SRV DNS lookup refusal for MongoDB Atlas cluster
 try {
-  dns.setServers(["8.8.8.8", "1.1.1.1"]);
-} catch (err) {
-  console.warn("Could not set custom DNS servers for MongoDB:", err);
-}
+  dns.setServers(["8.8.8.8", "8.8.4.4"]);
+} catch (err) {}
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -20,6 +17,33 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
+async function resolveSrvConnectionString(uri) {
+  if (!uri.startsWith("mongodb+srv://")) return uri;
+
+  try {
+    dns.setServers(["8.8.8.8", "8.8.4.4"]);
+    const match = uri.match(/^mongodb\+srv:\/\/([^:]+):([^@]+)@([^/]+)\/(.*)$/);
+    if (match) {
+      const [, user, pass, host, rest] = match;
+      const srvRecords = await dns.promises.resolveSrv(`_mongodb._tcp.${host}`);
+      let txtOpts = "authSource=admin";
+      try {
+        const txtRecords = await dns.promises.resolveTxt(host);
+        if (txtRecords?.[0]) txtOpts = txtRecords[0].join("&");
+      } catch (_) {}
+
+      if (srvRecords && srvRecords.length > 0) {
+        const hosts = srvRecords.map((r) => `${r.name}:${r.port}`).join(",");
+        const querySep = rest.includes("?") ? "&" : "?";
+        return `mongodb://${user}:${pass}@${hosts}/${rest}${querySep}${txtOpts}&ssl=true`;
+      }
+    }
+  } catch (err) {
+    console.warn("SRV resolution fallback trigger:", err.message);
+  }
+  return uri;
+}
+
 async function connectDB() {
   if (cached.conn) {
     return cached.conn;
@@ -28,11 +52,14 @@ async function connectDB() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
+      serverSelectionTimeoutMS: 5000,
+      connectTimeoutMS: 10000,
     };
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongooseInstance) => {
-      return mongooseInstance;
-    });
+    cached.promise = (async () => {
+      const connectionString = await resolveSrvConnectionString(MONGODB_URI);
+      return mongoose.connect(connectionString, opts);
+    })();
   }
 
   try {
@@ -46,3 +73,5 @@ async function connectDB() {
 }
 
 export default connectDB;
+
+
