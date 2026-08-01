@@ -11,7 +11,9 @@ export async function GET(request, { params }) {
     const { id } = await params;
 
     await connectDB();
-    const placement = await Placement.findById(id);
+    const placement = await Placement.findById(id)
+      .populate("createdBy", "name email")
+      .populate("updatedBy", "name email");
     if (!placement) {
       return NextResponse.json({ message: "Placement not found." }, { status: 404 });
     }
@@ -29,7 +31,7 @@ export async function PATCH(request, { params }) {
   let oldImageKeyToDelete = null;
 
   try {
-    await requireAdmin(request);
+    const admin = await requireAdmin(request);
     const { id } = await params;
 
     await connectDB();
@@ -90,6 +92,13 @@ export async function PATCH(request, { params }) {
     if (sortOrder !== null) placement.sortOrder = Number(sortOrder);
     if (isPublished !== null) {
       placement.isPublished = isPublished === "true" || isPublished === true;
+    }
+
+    // Set editor details
+    placement.updatedBy = admin._id;
+    placement.updatedByName = admin.name || "Admin";
+    if (!placement.createdByName) {
+      placement.createdByName = admin.name || "Admin";
     }
 
     // Handle image replacement if file provided

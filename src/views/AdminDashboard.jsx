@@ -269,6 +269,14 @@ const AdminDashboard = () => {
                             {placement.role && (
                               <div className="text-xs text-[#00D9B7] font-medium">{placement.role}</div>
                             )}
+                            {(placement.updatedByName || placement.updatedBy?.name || placement.createdByName || placement.createdBy?.name) && (
+                              <div className="text-[11px] text-gray-450 font-medium mt-0.5">
+                                <span>{placement.updatedByName || placement.updatedBy?.name ? "Edited by: " : "Added by: "}</span>
+                                <span className="font-semibold text-gray-700">
+                                  {placement.updatedByName || placement.updatedBy?.name || placement.createdByName || placement.createdBy?.name}
+                                </span>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </td>
@@ -351,6 +359,14 @@ const AdminDashboard = () => {
                         <span className="inline-block mt-0.5 text-[10px] text-[#00D9B7] bg-[#00D9B7]/5 px-1.5 py-0.5 rounded font-semibold">
                           {placement.role}
                         </span>
+                      )}
+                      {(placement.updatedByName || placement.updatedBy?.name || placement.createdByName || placement.createdBy?.name) && (
+                        <p className="text-[11px] text-gray-500 mt-0.5">
+                          {placement.updatedByName || placement.updatedBy?.name ? "Edited by: " : "Added by: "}
+                          <span className="font-semibold text-gray-700">
+                            {placement.updatedByName || placement.updatedBy?.name || placement.createdByName || placement.createdBy?.name}
+                          </span>
+                        </p>
                       )}
                     </div>
                   </div>
@@ -492,6 +508,17 @@ const AdminDashboard = () => {
                   "{previewPlacement.successStory}"
                 </div>
               </div>
+
+              {(previewPlacement.updatedByName || previewPlacement.updatedBy?.name || previewPlacement.createdByName || previewPlacement.createdBy?.name) && (
+                <div className="mt-5 border-t border-gray-100 pt-3 text-xs text-gray-500 font-medium flex items-center justify-between">
+                  <span>
+                    {previewPlacement.updatedByName || previewPlacement.updatedBy?.name ? "Last edited by: " : "Added by: "}
+                    <strong className="text-gray-800 font-semibold">
+                      {previewPlacement.updatedByName || previewPlacement.updatedBy?.name || previewPlacement.createdByName || previewPlacement.createdBy?.name}
+                    </strong>
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </div>

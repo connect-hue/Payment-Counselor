@@ -5,7 +5,7 @@ import { requireAdmin } from "@/src/utils/auth";
 
 export async function PATCH(request, { params }) {
   try {
-    await requireAdmin(request);
+    const admin = await requireAdmin(request);
     const { id } = await params;
     const { isPublished } = await request.json();
 
@@ -19,9 +19,15 @@ export async function PATCH(request, { params }) {
     await connectDB();
     const placement = await Placement.findByIdAndUpdate(
       id,
-      { isPublished },
+      { 
+        isPublished,
+        updatedBy: admin._id,
+        updatedByName: admin.name || "Admin"
+      },
       { new: true }
-    );
+    )
+      .populate("createdBy", "name email")
+      .populate("updatedBy", "name email");
 
     if (!placement) {
       return NextResponse.json({ message: "Placement not found." }, { status: 404 });

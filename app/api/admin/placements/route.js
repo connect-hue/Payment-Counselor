@@ -33,7 +33,8 @@ export async function GET(request) {
     await connectDB();
     const placements = await Placement.find(query)
       .sort({ sortOrder: 1, createdAt: -1 })
-      .populate("createdBy", "name email");
+      .populate("createdBy", "name email")
+      .populate("updatedBy", "name email");
 
     return NextResponse.json(placements, { status: 200 });
   } catch (error) {
@@ -130,6 +131,9 @@ export async function POST(request) {
       sortOrder: Number(sortOrder) || 0,
       isPublished: isPublished === "true" || isPublished === true,
       createdBy: admin._id,
+      createdByName: admin.name || "Admin",
+      updatedBy: admin._id,
+      updatedByName: admin.name || "Admin",
     });
 
     await placement.save();

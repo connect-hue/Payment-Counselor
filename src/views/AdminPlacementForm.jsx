@@ -29,6 +29,7 @@ const AdminPlacementForm = () => {
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState("");
   const [previewOpen, setPreviewOpen] = useState(false);
+  const [lastEditedBy, setLastEditedBy] = useState("");
 
   // Load existing placement details if in Edit Mode
   useEffect(() => {
@@ -46,6 +47,13 @@ const AdminPlacementForm = () => {
           setImageAlt(data.imageAlt || "");
           setSortOrder(data.sortOrder);
           setIsPublished(data.isPublished);
+          setLastEditedBy(
+            data.updatedByName ||
+              data.updatedBy?.name ||
+              data.createdByName ||
+              data.createdBy?.name ||
+              ""
+          );
           const formattedUrl = formatS3Url(data.imageUrl);
           setExistingImageUrl(formattedUrl);
           setImagePreview(formattedUrl);
@@ -192,11 +200,18 @@ const AdminPlacementForm = () => {
 
         <div className="bg-white border border-gray-100 rounded-xl shadow-sm p-6 sm:p-8">
           <h1
-            className="text-2xl font-bold text-[#030A21] mb-6"
+            className="text-2xl font-bold text-[#030A21] mb-2"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
             {isEditMode ? "Edit Placement Record" : "Add New Placement Record"}
           </h1>
+
+          {lastEditedBy && (
+            <div className="mb-6 inline-flex items-center gap-1.5 bg-teal-50 border border-teal-200 text-teal-800 text-xs font-semibold px-3 py-1 rounded-md shadow-xs">
+              <span>Edited by:</span>
+              <span className="font-bold text-teal-900">{lastEditedBy}</span>
+            </div>
+          )}
 
           {error && (
             <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-md mb-6">
