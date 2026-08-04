@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { 
   Users, 
   Rocket, 
@@ -9,7 +10,8 @@ import {
   ArrowRight, 
   ShieldCheck, 
   X,
-  Building2
+  Building2,
+  CheckCircle2
 } from "lucide-react";
 import { apiClient } from "../utils/apiClient";
 import { formatS3Url } from "../utils/s3Helpers";
@@ -498,134 +500,151 @@ const PlacementsPage = ({ initialPlacements = [] }) => {
 
   return (
     <main 
-      className="min-h-screen pt-28 pb-16 px-4 sm:px-8 lg:px-12 bg-gradient-to-b from-[#F5F3FF] via-[#F8FAFC] to-[#F8FAFC] text-slate-900 overflow-x-hidden relative"
+      className="min-h-screen pt-20 sm:pt-24 pb-16 px-4 sm:px-8 lg:px-12 bg-gradient-to-b from-[#F0FDFB]/70 via-[#F8FAFC] to-[#F8FAFC] text-slate-900 overflow-x-hidden relative"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
-      {/* Background Graphic Decoration (Shield with growth arrow top right) */}
-      <div className="absolute top-12 right-6 md:right-16 pointer-events-none opacity-80 hidden md:block z-0">
-        <div className="relative w-64 h-64 flex items-center justify-center">
-          {/* Subtle Ambient Radial Glow */}
-          <div className="absolute inset-0 bg-purple-200/40 rounded-full blur-3xl"></div>
-          
-          {/* Decorative Floating Shield Graphic */}
-          <div className="relative z-10 transform translate-x-4 -translate-y-2">
-            <svg width="220" height="200" viewBox="0 0 220 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              {/* Outer Shield Outline */}
-              <path d="M120 20 C160 20, 200 35, 200 75 C200 135, 120 180, 120 180 C120 180, 40 135, 40 75 C40 35, 80 20, 120 20 Z" 
-                stroke="url(#shield_grad)" strokeWidth="3" strokeDasharray="6 6" fill="url(#shield_fill)" fillOpacity="0.1" />
-              {/* Inner Plus / Cross */}
-              <path d="M120 50 V100 M95 75 H145" stroke="#C4B5FD" strokeWidth="4" strokeLinecap="round" opacity="0.6" />
-              {/* Upward Growth Arrow */}
-              <path d="M70 140 Q130 110 180 40 M180 40 H150 M180 40 V70" stroke="#7C3AED" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-              <defs>
-                <linearGradient id="shield_grad" x1="40" y1="20" x2="200" y2="180" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#DDD6FE" />
-                  <stop offset="1" stopColor="#7C3AED" />
-                </linearGradient>
-                <linearGradient id="shield_fill" x1="40" y1="20" x2="200" y2="180" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#EDE9FE" />
-                  <stop offset="1" stopColor="#C4B5FD" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-
-          {/* Subtle Ambient Circles */}
-          <div className="absolute top-4 left-2 w-10 h-10 border-2 border-purple-200/60 rounded-full"></div>
-          <div className="absolute bottom-8 right-4 w-6 h-6 border-2 border-indigo-200/50 rounded-full"></div>
-        </div>
-      </div>
-
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* HERO HEADER SECTION */}
-        <section className="relative mb-8 text-left">
-          {/* Top Pill Badge */}
-          <div className="inline-flex items-center gap-1.5 bg-[#00D9B7]/15 border border-[#00D9B7]/30 text-[#008F78] px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
-            <ShieldCheck className="w-4 h-4 text-[#008F78]" />
-            <span>CAREER OUTCOMES</span>
+        {/* HERO PLACEMENT HEADER SECTION (Matching uploaded photo) */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-12 sm:mb-16 pt-4 sm:pt-6">
+          {/* Left Text Column */}
+          <div className="lg:col-span-6 flex flex-col justify-center text-left">
+            {/* Top Pill Badge */}
+            <div className="inline-flex items-center gap-2 bg-[#E6F8F5] border border-[#00D9B7]/40 text-[#00A88F] px-4 py-1.5 rounded-full text-xs font-extrabold tracking-wider uppercase mb-5 self-start shadow-2xs">
+              <div className="w-4 h-4 rounded-full border border-[#00A88F] flex items-center justify-center p-0.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#00A88F]" />
+              </div>
+              <span>VERIFIED CAREER OUTCOMES</span>
+            </div>
+
+            {/* Main Heading */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-[#0F172A] tracking-tight leading-[1.12] mb-4">
+              Healthcare Careers,<br />
+              <span className="bg-gradient-to-r from-[#00D9B7] via-[#00C4A7] to-[#00A88F] bg-clip-text text-transparent">
+                Transformed.
+              </span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-slate-600 text-base sm:text-lg font-medium leading-relaxed mb-8 max-w-xl">
+              Real professionals. Real career transitions. Proven industry outcomes.
+            </p>
+
+            {/* Action CTA Buttons */}
+            <div className="flex flex-wrap items-center gap-4 mb-10">
+              <a
+                href="#placements-grid"
+                className="bg-[#00D9B7] hover:bg-[#00C4A7] text-white font-bold text-sm sm:text-base px-6 py-3.5 rounded-xl shadow-md shadow-[#00D9B7]/25 flex items-center gap-2.5 transition-all transform hover:-translate-y-0.5"
+              >
+                <span>Explore Success Stories</span>
+                <ArrowRight className="w-4.5 h-4.5 text-white" />
+              </a>
+              <Link
+                href="/"
+                className="border-2 border-[#00D9B7] text-[#00A88F] hover:bg-[#00D9B7]/10 font-bold text-sm sm:text-base px-6 py-3.5 rounded-xl transition-all"
+              >
+                View Career Programs
+              </Link>
+            </div>
+
+            {/* Footer Stats Row */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-slate-600 text-xs sm:text-sm font-semibold pt-4 border-t border-slate-200/80">
+              <div className="flex items-center gap-2">
+                <Users className="w-4 h-4 text-[#00D9B7]" />
+                <span><strong className="text-slate-900 font-bold">500+</strong> professionals trained</span>
+              </div>
+              <span className="text-slate-300 font-bold">•</span>
+              <div className="flex items-center gap-2">
+                <Rocket className="w-4 h-4 text-[#00D9B7]" />
+                <span><strong className="text-slate-900 font-bold">100+</strong> career transitions</span>
+              </div>
+              <span className="text-slate-300 font-bold">•</span>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#00D9B7]" />
+                <span><strong className="text-slate-900 font-bold">50+</strong> hiring partners</span>
+              </div>
+            </div>
           </div>
 
-          {/* Main Title & Subtitle */}
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 relative z-10">
-            <div>
-              <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-extrabold text-[#0F172A] tracking-tight leading-tight mb-2">
-                Student Success Stories
-              </h1>
-              <p className="text-slate-500 text-base sm:text-lg font-normal">
-                Real professionals. Real career transformations.
-              </p>
-            </div>
+          {/* Right Cards Visual Showcase Column */}
+          <div className="lg:col-span-6 relative mt-4 lg:mt-0">
+            {/* Background Ambient Glow & Mesh Elements */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#E6F8F5]/80 via-[#F0FDFB] to-[#E6F3FF]/70 rounded-3xl -rotate-1 transform scale-105 blur-xs"></div>
+            <div className="absolute -top-6 -right-6 w-32 h-32 bg-[#00D9B7]/10 rounded-full blur-2xl"></div>
+            <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-blue-400/10 rounded-full blur-2xl"></div>
 
-            {/* Live Floating Badge Animation */}
-            <div className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-[#00D9B7]/30 shadow-lg shadow-[#00D9B7]/10 self-start lg:self-auto transition-transform hover:scale-105 cursor-default">
-              <div className="relative flex h-3 w-3 flex-shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00D9B7] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00D9B7]"></span>
+            {/* 3 Overlapping Doctor Image Cards */}
+            <div className="relative z-10 grid grid-cols-3 gap-2.5 sm:gap-4 items-end pt-4 pb-2 px-2 sm:px-4">
+              
+              {/* CARD 1 (Left - Male Doctor) */}
+              <div className="relative flex flex-col items-center">
+                <div className="w-full h-56 sm:h-72 rounded-t-[60px] sm:rounded-t-[80px] rounded-b-2xl overflow-hidden bg-gradient-to-b from-[#A5F3FC]/70 via-[#67E8F9] to-[#06B6D4] shadow-md border-2 border-white relative group">
+                  <img
+                    src="/Assets/Dr. Samir.webp"
+                    alt="Dr. Samir Patwa"
+                    className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                {/* Floating KPI Badge 1 */}
+                <div className="w-[115%] sm:w-auto -mt-6 sm:-mt-8 bg-white/95 backdrop-blur-md shadow-xl border border-slate-100/90 rounded-2xl p-2 sm:p-3 flex items-center gap-2 sm:gap-3 z-20">
+                  <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#E6F8F5] text-[#00A88F] flex items-center justify-center flex-shrink-0 font-extrabold text-xs sm:text-sm">
+                    ₹
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm font-extrabold text-slate-900 leading-tight">32 LPA</p>
+                    <p className="text-[9px] sm:text-[11px] font-semibold text-slate-500 whitespace-nowrap">Highest Package</p>
+                  </div>
+                </div>
               </div>
-              <div className="text-left">
-                <p className="text-xs sm:text-sm font-bold text-[#008F78] flex items-center gap-1">
-                  <span>✨ 100% Placement Assistance</span>
-                </p>
-                <p className="text-[11px] text-slate-500 font-medium">
-                  Verified Alumni Career Outcomes
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* FLOATING STATS KPI BAR */}
-        <section className="bg-white rounded-2xl p-4 sm:p-5 shadow-lg shadow-slate-900/5 border border-slate-100 mb-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 divide-y sm:divide-y-0 divide-slate-100">
-            {/* Stat 1 */}
-            <div className="flex items-center gap-3.5 pt-2 sm:pt-0 sm:pr-4">
-              <div className="w-11 h-11 rounded-xl bg-[#00D9B7]/15 border border-[#00D9B7]/25 flex items-center justify-center text-[#008F78] flex-shrink-0">
-                <Users className="w-5 h-5" />
+              {/* CARD 2 (Center Prominent - Female Doctor) */}
+              <div className="relative flex flex-col items-center z-10">
+                <div className="w-full h-64 sm:h-84 rounded-t-[70px] sm:rounded-t-[100px] rounded-b-2xl overflow-hidden bg-gradient-to-b from-[#BFDBFE]/80 via-[#93C5FD] to-[#3B82F6] shadow-xl border-2 border-white relative group">
+                  <img
+                    src="/Assets/Laxmi.webp"
+                    alt="Dr. Laxmi Bhardwaj"
+                    className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                {/* Floating KPI Badge 2 */}
+                <div className="w-[115%] sm:w-auto -mt-6 sm:-mt-8 bg-white/95 backdrop-blur-md shadow-xl border border-slate-100/90 rounded-2xl p-2 sm:p-3 flex items-center gap-2 sm:gap-3 z-20">
+                  <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#EFF6FF] text-[#3B82F6] flex items-center justify-center flex-shrink-0">
+                    <Rocket className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 text-[#3B82F6]" />
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm font-extrabold text-slate-900 leading-tight">100+</p>
+                    <p className="text-[9px] sm:text-[11px] font-semibold text-slate-500 whitespace-nowrap">Career Transitions</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">500+</p>
-                <p className="text-xs sm:text-sm font-medium text-slate-500">Professionals Trained</p>
-              </div>
-            </div>
 
-            {/* Stat 2 */}
-            <div className="flex items-center gap-3.5 pt-2 sm:pt-0 sm:px-4 sm:border-l sm:border-slate-100">
-              <div className="w-11 h-11 rounded-xl bg-[#00D9B7]/15 border border-[#00D9B7]/25 flex items-center justify-center text-[#008F78] flex-shrink-0">
-                <Rocket className="w-5 h-5" />
+              {/* CARD 3 (Right - Male Doctor) */}
+              <div className="relative flex flex-col items-center">
+                <div className="w-full h-56 sm:h-72 rounded-t-[60px] sm:rounded-t-[80px] rounded-b-2xl overflow-hidden bg-gradient-to-b from-[#C7D2FE]/70 via-[#A5B4FC] to-[#6366F1] shadow-md border-2 border-white relative group">
+                  <img
+                    src="/Assets/ApurvaKumar.webp"
+                    alt="Dr. Apurvakumar Patel"
+                    className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                {/* Floating KPI Badge 3 */}
+                <div className="w-[115%] sm:w-auto -mt-6 sm:-mt-8 bg-white/95 backdrop-blur-md shadow-xl border border-slate-100/90 rounded-2xl p-2 sm:p-3 flex items-center gap-2 sm:gap-3 z-20">
+                  <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#EEF2FF] text-[#6366F1] flex items-center justify-center flex-shrink-0">
+                    <Handshake className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 text-[#6366F1]" />
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm font-extrabold text-slate-900 leading-tight">50+</p>
+                    <p className="text-[9px] sm:text-[11px] font-semibold text-slate-500 whitespace-nowrap">Hiring Partners</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">100+</p>
-                <p className="text-xs sm:text-sm font-medium text-slate-500">Career Transitions</p>
-              </div>
-            </div>
 
-            {/* Stat 3 */}
-            <div className="flex items-center gap-3.5 pt-2 sm:pt-0 sm:px-4 sm:border-l sm:border-slate-100">
-              <div className="w-11 h-11 rounded-xl bg-[#00D9B7]/15 border border-[#00D9B7]/25 flex items-center justify-center text-[#008F78] flex-shrink-0">
-                <Award className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">32 LPA</p>
-                <p className="text-xs sm:text-sm font-medium text-slate-500">Highest Package</p>
-              </div>
-            </div>
-
-            {/* Stat 4 */}
-            <div className="flex items-center gap-3.5 pt-2 sm:pt-0 sm:pl-4 sm:border-l sm:border-slate-100">
-              <div className="w-11 h-11 rounded-xl bg-[#00D9B7]/15 border border-[#00D9B7]/25 flex items-center justify-center text-[#008F78] flex-shrink-0">
-                <Handshake className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">50+</p>
-                <p className="text-xs sm:text-sm font-medium text-slate-500">Hiring Partners</p>
-              </div>
             </div>
           </div>
         </section>
 
 
         {/* STUDENT PLACEMENTS CARDS GRID */}
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
+        <section id="placements-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 pt-4">
           {loading ? (
             Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)
           ) : filteredPlacements.length > 0 ? (
