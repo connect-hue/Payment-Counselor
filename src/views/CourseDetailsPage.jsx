@@ -310,7 +310,7 @@ function CourseDetailsPage() {
             "audfees": "3200 AUD",
             "inrfees": "1,75,000 INR",
             "duration": "6 Months",
-            "brochureLink": "https://drive.google.com/file/d/1a5ZSYUWph8B7qRHsyoJh0na47PoO3B1S/view?usp=drive_link",
+            "brochureLink": "https://drive.google.com/file/d/1csAGYP5KHLuQ8odeOKDYptnMW-jeZcvT/view?usp=sharing",
             "students": "1800+",
             "location": "Australia",
             "courseImage": "https://assets.academically.com/course/6HH1R0honlPjXvd2eSMeIXlo42F7hE2jyFUxhJuT.jpg",
@@ -455,7 +455,7 @@ function CourseDetailsPage() {
         {
             "name": "Physician-Clinical Drug Development",
             "category": "Job Assistance",
-            "description": "Specialized Executive Program in Clinical Drug Development designed specifically for Physicians (MBBS/MD) transitioning into Clinical Research, Pharmacovigilance, and Drug Safety leadership roles with expert 1-on-1 mentorship, capstone projects, and placement assistance.",
+            "description": "Build a successful career beyond clinical practice with Academically's Executive Programme in Clinical Drug Development. Designed primarily for MBBS, MD, and MS doctors, this 5-month online programme prepares physicians for high-impact careers in Clinical Research, Pharmacovigilance, Medical Affairs, and the pharmaceutical industry. Gain practical expertise in the complete drug development lifecycle, including clinical trials, regulatory pathways, drug safety, medical review, and scientific communication through real-world case studies, clinical trial simulations, and capstone projects. Learn directly from global industry experts, receive personalised mentorship, interview preparation, career guidance, and placement support, and develop the industry-ready skills leading pharmaceutical companies, CROs, and biotech organisations seek for high paying job opportunities like drug safety physician, clinical trials investigator, medical monitor and so on.",
             "brochure": "/CourseImage/CDD.png",
             "audfees": "3550 AUD",
             "inrfees": "2,36,000 INR including GST",
@@ -470,7 +470,7 @@ function CourseDetailsPage() {
         {
             "name": "Clinical Drug Development",
             "category": "Job Assistance",
-            "description": "Executive Program in Clinical Drug Development for healthcare, pharmacy, and life science graduates looking to enter Clinical Research, Pharmacovigilance, and Medical Writing with practical industry capstone training and dedicated placement support.",
+            "description": "Build a successful career in global clinical research with Academically's Executive Programme in Clinical Drug Development. Designed for doctors, pharmacists, dentists, nurses, allied health professionals, and life science graduates, this 5-month online programme delivers industry-focused training to become medical reviewer, medical advisor, medical writer, regulatory affairs, clinical research associate, clinical research coordinator and more. Learn from industry experts through real-world case studies, clinical trial simulations, capstone projects, and hands-on assignments that mirror pharmaceutical industry workflows. Develop job-ready skills in drug development, safety reporting, regulatory compliance, and scientific communication while benefiting from 1:1 personalised mentorship, interview preparation, career guidance, and placement support. Gain the confidence to pursue high paying job opportunities across leading pharmaceutical companies, CROs, and biotech organisations in India and worldwide.",
             "brochure": "/CourseImage/Clinical-Drug-Development.png",
             "audfees": "3550 AUD",
             "inrfees": "2,36,000 INR including GST",
@@ -485,7 +485,7 @@ function CourseDetailsPage() {
         {
             "name": "Medical Affairs",
             "category": "Job Assistance",
-            "description": "Build a successful career in the pharmaceutical industry with Academically's Executive Programme in Medical Affairs/Medical Science Liaison. Designed for doctors, pharmacists, dentists, life science graduates, and PhD holders, this 5-month online course offers industry-focused training, practical capstone projects, expert mentorship, and dedicated job assistance.",
+            "description": "Build a successful career in the pharmaceutical industry with Academically's Executive Programme in Medical Affairs. Designed for doctors, pharmacists, dentists, life science graduates, and PhD holders, this 5-month online course offers industry-focused training, practical capstone projects, expert mentorship, and dedicated job assistance. Learn medical affairs, KOL engagement, scientific communication, clinical research, publication strategy, and evidence generation while developing skills that employers value. With interview preparation, career guidance, and placement support, the programme helps you confidently step into Medical Affairs field, getting high paying MSL job opportunities across leading pharmaceutical and healthcare organisations.",
             "brochure": "/CourseImage/MA.png",
             "audfees": "3550 AUD",
             "inrfees": "2,36,000 INR including GST",
