@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { formatS3Url } from "@/src/utils/s3Helpers";
+import { formatS3Url } from "../utils/s3Helpers.js";
 
 const placementSchema = new mongoose.Schema(
   {

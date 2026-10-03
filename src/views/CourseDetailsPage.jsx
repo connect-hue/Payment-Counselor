@@ -1,8 +1,10 @@
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { formatS3Url } from "../utils/s3Helpers";
 
 function CourseDetailsPage() {
     const pathName = usePathname();
-    const coursesData = undefined;
+    const [dbCourse, setDbCourse] = useState(null);
 
     const coursesObject = [ 
         {
@@ -501,11 +503,32 @@ function CourseDetailsPage() {
 
     // Find the course that matches the slug (case-insensitive comparison)
     const normalizedPath = (pathName || "").toLowerCase().replace(/^\//, "");
-    const coursed = coursesData || coursesObject.find(course => {
+
+    useEffect(() => {
+        if (!normalizedPath) return;
+        const fetchCourse = async () => {
+            try {
+                const res = await fetch(`/api/brochures/${encodeURIComponent(normalizedPath)}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.name) {
+                        setDbCourse(data);
+                    }
+                }
+            } catch (err) {
+                console.error("Failed to load dynamic brochure from API:", err);
+            }
+        };
+        fetchCourse();
+    }, [normalizedPath]);
+
+    const fallbackCourse = coursesObject.find(course => {
         const cPath = (course.pathname || "").toLowerCase().replace(/^\//, "");
         const cSlug = (course.name || "").toLowerCase().replace(/\s+/g, "-");
         return cPath === normalizedPath || cSlug === normalizedPath;
     });
+
+    const coursed = dbCourse || fallbackCourse;
 
     const getYouTubeEmbedURL = (url) => {
         if (!url || typeof url !== "string") return "";
@@ -535,6 +558,10 @@ function CourseDetailsPage() {
 
     const showImage = isJobAssistancePath || !coursed?.link || !embedUrl;
 
+    const formattedBrochureImg = formatS3Url(coursed?.brochure) || (normalizedPath.includes("msl") || normalizedPath.includes("medical-affairs") 
+        ? "/CourseImage/MSL.png" 
+        : (coursed?.location === "India" ? "/CourseImage/Clinical-Drug-Development.png" : "/CourseImage/CDD.png"));
+
     const Tile = ({ icon, heading, subtext, link }) => (
         <div
             className="flex flex-col items-center text-center p-4 lg:p-6 xl:p-8 rounded-2xl w-full"
@@ -543,7 +570,7 @@ function CourseDetailsPage() {
             <div className="mb-4 w-20 h-20 xl:w-24 xl:h-24">{icon}</div>
             <h3 className="text-xl lg:text-2xl xl:text-3xl font-semibold">{heading}</h3>
             <p className="text-md lg:text-lg xl:text-xl">
-                {link ? <a href={link} className="underline" target="_blank">Click here</a> : subtext}
+                {link ? <a href={link} className="underline" target="_blank" rel="noreferrer">Click here</a> : subtext}
             </p>
         </div>
     );
@@ -554,11 +581,7 @@ function CourseDetailsPage() {
             <div className="flex justify-center items-center w-full max-sm:mt-10 max-sm:mb-6">
                 {showImage ? (
                     <img
-                        src={
-                            coursed?.brochure || (normalizedPath.includes("msl") || normalizedPath.includes("medical-affairs") 
-                                ? "/CourseImage/MSL.png" 
-                                : (coursed?.location === "India" ? "/CourseImage/Clinical-Drug-Development.png" : "/CourseImage/CDD.png"))
-                        }
+                        src={formattedBrochureImg}
                         alt={coursed?.name || "Course Image"}
                         className="w-full h-[90vh] max-sm:h-[40vh] rounded-xl shadow-lg scale-75 max-sm:scale-100 max-sm:mt-14 object-contain"
                     />

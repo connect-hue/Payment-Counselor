@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter, useParams, usePathname, useSearchParams } from "next/navigation";
 import SearchBar from "./SearchBar";
 import CourseList from "./CourseList";
+import { formatS3Url } from "../utils/s3Helpers";
 
 const filterData = [
   { name: "All" },
@@ -517,7 +518,33 @@ const coursesObject = {
 const Filter = () => {
   const params = useParams();
   const name = decodeURIComponent(params.name || "");
-  const courses = coursesObject[name] || [];
+  const [apiCourses, setApiCourses] = useState(null);
+
+  useEffect(() => {
+    if (!name) return;
+    const fetchCategoryBrochures = async () => {
+      try {
+        const res = await fetch(`/api/brochures?category=${encodeURIComponent(name)}`);
+        if (res.ok) {
+          const list = await res.json();
+          if (Array.isArray(list) && list.length > 0) {
+            const formatted = list.map((item) => ({
+              ...item,
+              brochure: formatS3Url(item.brochure),
+              fees: item.audfees || item.inrfees || "Contact for fees",
+            }));
+            setApiCourses(formatted);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch brochures for category:", err);
+      }
+    };
+    fetchCategoryBrochures();
+  }, [name]);
+
+  const fallbackCourses = coursesObject[name] || [];
+  const courses = apiCourses || fallbackCourses;
   const [filteredCourses, setFilteredCourses] = useState(courses);
   const [selectedFilter, setSelectedFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -530,15 +557,15 @@ const Filter = () => {
   const filterCoursesByLocation = (location) => {
     return location === "All"
       ? courses
-      : courses.filter(course => course.location === location);
+      : courses.filter(course => (course.location || "").toLowerCase() === location.toLowerCase());
   };
 
   // 🔍 Function to filter by search query
   const filterCoursesBySearch = (courseList, query) => {
     if (!query) return courseList;
     return courseList.filter(course =>
-      course.name.toLowerCase().includes(query.toLowerCase()) ||
-      course.description.toLowerCase().includes(query.toLowerCase())
+      (course.name || "").toLowerCase().includes(query.toLowerCase()) ||
+      (course.description || "").toLowerCase().includes(query.toLowerCase())
     );
   };
 

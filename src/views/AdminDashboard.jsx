@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { apiClient } from "../utils/apiClient";
 import { formatS3Url } from "../utils/s3Helpers";
+import AdminNav from "../Components/AdminNav";
 
 const AdminDashboard = () => {
   const [placements, setPlacements] = useState([]);
@@ -41,7 +42,7 @@ const AdminDashboard = () => {
     } catch (err) {
       console.error(err);
       if (err.message.includes("Authentication required") || err.message.includes("Session expired")) {
-        navigate("/admin/login");
+        router.push("/admin/login");
       } else {
         setError(err.message || "Failed to load placements dashboard.");
       }
@@ -118,50 +119,37 @@ const AdminDashboard = () => {
   const draftCount = totalCount - publishedCount;
 
   return (
-    <main className="min-h-screen bg-[#F8FAFC] pb-16 pt-24 px-4 sm:px-6 lg:px-8">
-      {/* Header Container */}
-      <div className="max-w-7xl mx-auto flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-5 mb-8">
-        <div className="flex items-center gap-4">
-          <img
-            className="h-10 w-auto"
-            src="/Assets/logo.svg"
-            alt="Academically Logo"
-            onError={(e) => {
-              e.target.src = "/Assets/logo.webp";
-            }}
-          />
+    <div className="min-h-screen bg-[#F8FAFC]">
+      <AdminNav admin={admin} title="Placement Management" />
+
+      <main className="max-w-7xl mx-auto pb-16 pt-8 px-4 sm:px-6 lg:px-8">
+        {/* Top Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-5 mb-8 gap-4">
           <div>
-            <h1
+            <h2
               className="text-2xl font-bold text-[#030A21]"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
-              Placement Management
-            </h1>
-            {admin && (
-              <p className="text-xs text-gray-500 mt-0.5">
-                Logged in as: <span className="font-semibold text-gray-700">{admin.name}</span> ({admin.role})
-              </p>
-            )}
+              Candidate Placements
+            </h2>
+            <p className="text-sm text-gray-500 mt-1">
+              Manage student placement testimonials, packages, and recruiter details.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              onClick={() => router.push("/admin/placements/new")}
+              className="px-4 py-2 bg-[#00D9B7] text-[#030A21] font-bold text-sm rounded-lg hover:bg-[#00c4a5] transition-all shadow-xs cursor-pointer flex items-center gap-1.5"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v16m8-8H4" />
+              </svg>
+              Add Placement
+            </button>
           </div>
         </div>
-
-        <div className="flex flex-wrap items-center gap-3">
-          <button
-            onClick={() => router.push("/admin/placements/new")}
-            className="px-4 py-2 bg-[#00D9B7] text-[#030A21] font-bold text-sm rounded-lg hover:bg-[#00D9B7]/95 transition-all shadow-sm cursor-pointer"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-          >
-            + Add Placement
-          </button>
-          <button
-            onClick={handleLogout}
-            className="px-4 py-2 border border-gray-300 text-gray-700 bg-white text-sm font-semibold rounded-lg hover:bg-gray-55 transition-all cursor-pointer"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-          >
-            Logout
-          </button>
-        </div>
-      </div>
 
       {error && (
         <div className="max-w-7xl mx-auto bg-red-50 border-l-4 border-red-500 p-4 rounded-md mb-8">
@@ -571,7 +559,8 @@ const AdminDashboard = () => {
           </div>
         </div>
       )}
-    </main>
+      </main>
+    </div>
   );
 };
 

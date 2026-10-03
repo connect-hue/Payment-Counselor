@@ -33,14 +33,15 @@ export const formatS3Url = (url) => {
  * @param {Buffer} fileBuffer 
  * @param {string} mimeType 
  * @param {string} originalName 
+ * @param {string} folder
  * @returns {Promise<{ imageUrl: string, imageKey: string }>}
  */
-export const uploadToS3 = async (fileBuffer, mimeType, originalName) => {
+export const uploadToS3 = async (fileBuffer, mimeType, originalName, folder = "placements") => {
   if (process.env.AWS_ACCESS_KEY_ID === "mock_aws_access_key") {
     console.log("[S3 MOCK] Mock upload for file:", originalName);
     const uuid = uuidv4();
     const ext = originalName.split(".").pop() || "png";
-    const key = `placements/${uuid}.${ext}`;
+    const key = `${folder}/${uuid}.${ext}`;
     const rawBaseUrl = process.env.AWS_PUBLIC_BASE_URL || "https://mock.s3.amazonaws.com";
     const baseUrl = formatS3Url(rawBaseUrl).replace(/\/$/, "");
     return {
@@ -51,7 +52,7 @@ export const uploadToS3 = async (fileBuffer, mimeType, originalName) => {
 
   const extension = originalName.split(".").pop() || "png";
   const uuid = uuidv4();
-  const key = `placements/${uuid}.${extension}`;
+  const key = `${folder}/${uuid}.${extension}`;
 
   const params = {
     Bucket: process.env.AWS_S3_BUCKET,
