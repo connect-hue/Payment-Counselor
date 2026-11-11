@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter, useParams, usePathname, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import SearchBar from "./SearchBar";
 import CourseList from "./CourseList";
 import { formatS3Url } from "../utils/s3Helpers";
@@ -517,15 +518,33 @@ const coursesObject = {
   ]
 };
 
-const Filter = ({ initialShowFees = true }) => {
+const Filter = ({
+  initialShowFees = true,
+  initialCourses = null,
+  hasServerData = false,
+}) => {
   const params = useParams();
   const name = decodeURIComponent(params.name || "");
-  const [apiCourses, setApiCourses] = useState(null);
+  const [apiCourses, setApiCourses] = useState(hasServerData ? initialCourses : null);
+  const [loading, setLoading] = useState(!hasServerData);
+  const [fetchFailed, setFetchFailed] = useState(false);
   const [showFees, setShowFees] = useState(initialShowFees);
+
+  useEffect(() => {
+    setShowFees(initialShowFees);
+    if (hasServerData) {
+      setApiCourses(initialCourses);
+      setLoading(false);
+      setFetchFailed(false);
+    }
+  }, [initialShowFees, initialCourses, hasServerData]);
 
   useEffect(() => {
     let active = true;
     const fetchCategoryBrochures = async () => {
+      if (!hasServerData) {
+        setLoading(true);
+      }
       try {
         const settingsPromise = fetch("/api/settings", { cache: "no-store" });
         const brochuresPromise = name
@@ -537,7 +556,7 @@ const Filter = ({ initialShowFees = true }) => {
           brochuresPromise,
         ]);
 
-        let currentShowFees = showFees;
+        let currentShowFees = initialShowFees;
         if (settingsRes?.ok) {
           const settingsData = await settingsRes.json();
           if (typeof settingsData?.showFees === "boolean") {
@@ -548,34 +567,45 @@ const Filter = ({ initialShowFees = true }) => {
 
         if (brochuresRes?.ok) {
           const list = await brochuresRes.json();
-          if (Array.isArray(list) && list.length > 0 && active) {
+          if (Array.isArray(list) && active) {
             const formatted = list.map((item) => ({
               ...item,
               brochure: formatS3Url(item.brochure),
               fees: currentShowFees ? (item.audfees || item.inrfees || "Contact for fees") : "",
             }));
             setApiCourses(formatted);
+            setFetchFailed(false);
           }
+        } else if (brochuresRes && !hasServerData && active) {
+          setFetchFailed(true);
         }
       } catch (err) {
         console.error("Failed to fetch brochures for category:", err);
+        if (!hasServerData && active) {
+          setFetchFailed(true);
+        }
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
       }
     };
     fetchCategoryBrochures();
     return () => {
       active = false;
     };
-  }, [name]);
+  }, [name, hasServerData, initialShowFees]);
 
   const fallbackCourses = coursesObject[name] || [];
-  const courses = apiCourses || fallbackCourses;
-  const [filteredCourses, setFilteredCourses] = useState(courses);
-  const [selectedFilter, setSelectedFilter] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
+  const courses = apiCourses !== null ? apiCourses : fetchFailed ? fallbackCourses : [];
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const filterFromUrl = searchParams.get('filter');
+  const [selectedFilter, setSelectedFilter] = useState(() =>
+    filterFromUrl && filterData.some((f) => f.name === filterFromUrl) ? filterFromUrl : "All"
+  );
+  const [searchQuery, setSearchQuery] = useState("");
 
   // 🔍 Function to filter by location
   const filterCoursesByLocation = (location) => {
@@ -593,12 +623,10 @@ const Filter = ({ initialShowFees = true }) => {
     );
   };
 
-  // 🧠 Update filtered courses when filters or search changes
-  useEffect(() => {
-    const locationFiltered = filterCoursesByLocation(selectedFilter);
-    const finalFiltered = filterCoursesBySearch(locationFiltered, searchQuery);
-    setFilteredCourses(finalFiltered);
-  }, [selectedFilter, searchQuery, courses]);
+  const filteredCourses = filterCoursesBySearch(
+    filterCoursesByLocation(selectedFilter),
+    searchQuery
+  );
 
   // const handleFilterClick = (location) => {
   //   setSelectedFilter(location);
@@ -627,29 +655,53 @@ const Filter = ({ initialShowFees = true }) => {
   return (
     <>
       <h1 className="text-2xl mt-24 font-bold px-4"></h1>
-      {filteredCourses.length > 0 &&
-        <SearchBar onSearch={setSearchQuery} />
-      }
-      {courses.length > 1 && (
-        <div
-          className="flex-wrap justify-center gap-2 sm:gap-4 mt-8 flex mx-6"
-          style={{ fontFamily: "Poppins, sans-serif" }}
-        >
-          {filterData.map((filter) => (
-            <button
-              key={filter.name}
-              className={`xl:px-8 px-6 py-3 border border-[#0FB995] text-sm sm:text-base rounded-md ${selectedFilter === filter.name
-                ? "bg-[#0FB995] text-white"
-                : "text-black"
-                }`}
-              onClick={() => handleFilterClick(filter.name)}
-            >
-              {filter.name}
-            </button>
-          ))}
+      {loading ? (
+        <div className="min-h-[60vh] flex flex-col items-center justify-center p-8">
+          <div className="inline-block animate-spin rounded-full h-10 w-10 border-4 border-[#00D9B7] border-t-transparent mb-4"></div>
+          <p className="text-gray-500 text-sm font-medium">Loading brochures...</p>
         </div>
+      ) : courses.length === 0 ? (
+        <div className="min-h-[60vh] flex flex-col items-center justify-center p-8 text-center">
+          <h2 className="text-xl font-semibold text-[#030A21] mb-2">
+            No brochures available
+          </h2>
+          <p className="text-sm text-gray-500 mb-6 max-w-md">
+            There are currently no published brochures in this category.
+          </p>
+          <Link
+            href="/"
+            className="px-5 py-2.5 bg-[#00D9B7] text-[#030A21] font-semibold text-sm rounded-lg hover:bg-[#00c4a5] transition-colors"
+          >
+            Back to Courses
+          </Link>
+        </div>
+      ) : (
+        <>
+          {filteredCourses.length > 0 && (
+            <SearchBar onSearch={setSearchQuery} />
+          )}
+          {courses.length > 1 && (
+            <div
+              className="flex-wrap justify-center gap-2 sm:gap-4 mt-8 flex mx-6"
+              style={{ fontFamily: "Poppins, sans-serif" }}
+            >
+              {filterData.map((filter) => (
+                <button
+                  key={filter.name}
+                  className={`xl:px-8 px-6 py-3 border border-[#0FB995] text-sm sm:text-base rounded-md ${selectedFilter === filter.name
+                    ? "bg-[#0FB995] text-white"
+                    : "text-black"
+                    }`}
+                  onClick={() => handleFilterClick(filter.name)}
+                >
+                  {filter.name}
+                </button>
+              ))}
+            </div>
+          )}
+          <CourseList courses={filteredCourses} showFees={showFees} />
+        </>
       )}
-      <CourseList courses={filteredCourses} showFees={showFees} />
     </>
   );
 };

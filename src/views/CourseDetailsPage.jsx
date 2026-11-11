@@ -2,11 +2,20 @@
 
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { formatS3Url } from "../utils/s3Helpers";
 
-function CourseDetailsPage({ initialShowFees = true }) {
+function CourseDetailsPage({
+    initialShowFees = true,
+    initialCourse = null,
+    hasServerData = false,
+    isUnavailable = false,
+}) {
     const pathName = usePathname();
-    const [dbCourse, setDbCourse] = useState(null);
+    const [dbCourse, setDbCourse] = useState(initialCourse);
+    const [unavailable, setUnavailable] = useState(isUnavailable);
+    const [loading, setLoading] = useState(!hasServerData);
+    const [fetchFailed, setFetchFailed] = useState(false);
     const [showFees, setShowFees] = useState(initialShowFees);
 
     const coursesObject = [ 
@@ -508,8 +517,21 @@ function CourseDetailsPage({ initialShowFees = true }) {
     const normalizedPath = (pathName || "").toLowerCase().replace(/^\//, "");
 
     useEffect(() => {
+        setShowFees(initialShowFees);
+        if (hasServerData) {
+            setDbCourse(initialCourse);
+            setUnavailable(isUnavailable);
+            setLoading(false);
+            setFetchFailed(false);
+        }
+    }, [initialShowFees, initialCourse, hasServerData, isUnavailable]);
+
+    useEffect(() => {
         let active = true;
         const fetchCourseAndSettings = async () => {
+            if (!hasServerData) {
+                setLoading(true);
+            }
             try {
                 const settingsPromise = fetch("/api/settings", { cache: "no-store" });
                 const coursePromise = normalizedPath
@@ -532,17 +554,60 @@ function CourseDetailsPage({ initialShowFees = true }) {
                     const data = await courseRes.json();
                     if (data && data.name && active) {
                         setDbCourse(data);
+                        setUnavailable(false);
+                        setFetchFailed(false);
                     }
+                } else if (courseRes?.status === 404 && active) {
+                    setDbCourse(null);
+                    setUnavailable(true);
+                    setFetchFailed(false);
+                } else if (courseRes && !hasServerData && active) {
+                    setFetchFailed(true);
                 }
             } catch (err) {
                 console.error("Failed to load dynamic brochure from API:", err);
+                if (!hasServerData && active) {
+                    setFetchFailed(true);
+                }
+            } finally {
+                if (active) {
+                    setLoading(false);
+                }
             }
         };
         fetchCourseAndSettings();
-        return () => {
+        if (loading) {
+        return (
+            <div className="min-h-[70vh] flex flex-col items-center justify-center mt-16 p-8">
+                <div className="inline-block animate-spin rounded-full h-10 w-10 border-4 border-[#00D9B7] border-t-transparent mb-4"></div>
+                <p className="text-gray-500 text-sm font-medium">Loading course brochure...</p>
+            </div>
+        );
+    }
+
+    if (unavailable || !coursed) {
+        return (
+            <div className="min-h-[70vh] flex flex-col items-center justify-center mt-16 p-8 text-center">
+                <h1 className="text-2xl font-bold text-[#030A21] mb-2" style={{ fontFamily: "Poppins, sans-serif" }}>
+                    Brochure Not Available
+                </h1>
+                <p className="text-sm text-gray-500 mb-6 max-w-md" style={{ fontFamily: "Outfit, sans-serif" }}>
+                    This course brochure is currently unpublished or could not be found.
+                </p>
+                <Link
+                    href="/"
+                    className="px-5 py-2.5 bg-[#00D9B7] text-[#030A21] font-semibold text-sm rounded-lg hover:bg-[#00c4a5] transition-colors"
+                >
+                    Browse All Courses
+                </Link>
+            </div>
+        );
+    }
+
+    return () => {
             active = false;
         };
-    }, [normalizedPath]);
+    }, [normalizedPath, hasServerData]);
 
     const fallbackCourse = coursesObject.find(course => {
         const cPath = (course.pathname || "").toLowerCase().replace(/^\//, "");
@@ -550,7 +615,7 @@ function CourseDetailsPage({ initialShowFees = true }) {
         return cPath === normalizedPath || cSlug === normalizedPath;
     });
 
-    const coursed = dbCourse || fallbackCourse;
+    const coursed = dbCourse || (fetchFailed && !unavailable ? fallbackCourse : null);
 
     const getYouTubeEmbedURL = (url) => {
         if (!url || typeof url !== "string") return "";
@@ -596,6 +661,34 @@ function CourseDetailsPage({ initialShowFees = true }) {
             </p>
         </div>
     );
+
+    if (loading) {
+        return (
+            <div className="min-h-[70vh] flex flex-col items-center justify-center mt-16 p-8">
+                <div className="inline-block animate-spin rounded-full h-10 w-10 border-4 border-[#00D9B7] border-t-transparent mb-4"></div>
+                <p className="text-gray-500 text-sm font-medium">Loading course brochure...</p>
+            </div>
+        );
+    }
+
+    if (unavailable || !coursed) {
+        return (
+            <div className="min-h-[70vh] flex flex-col items-center justify-center mt-16 p-8 text-center">
+                <h1 className="text-2xl font-bold text-[#030A21] mb-2" style={{ fontFamily: "Poppins, sans-serif" }}>
+                    Brochure Not Available
+                </h1>
+                <p className="text-sm text-gray-500 mb-6 max-w-md" style={{ fontFamily: "Outfit, sans-serif" }}>
+                    This course brochure is currently unpublished or could not be found.
+                </p>
+                <Link
+                    href="/"
+                    className="px-5 py-2.5 bg-[#00D9B7] text-[#030A21] font-semibold text-sm rounded-lg hover:bg-[#00c4a5] transition-colors"
+                >
+                    Browse All Courses
+                </Link>
+            </div>
+        );
+    }
 
     return (
         <div className="flex-col items-center mt-4 justify-center w-[85%] mx-auto">

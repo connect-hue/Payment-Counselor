@@ -6,6 +6,10 @@ import { getSiteSettings } from "@/src/utils/siteSettings";
 
 export const dynamic = "force-dynamic";
 
+function escapeRegExp(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 export async function GET(request, { params }) {
   try {
     const { slug } = await params;
@@ -36,7 +40,7 @@ export async function GET(request, { params }) {
     if (!brochure) {
       // Fallback search by regex match on name or slug
       brochure = await Brochure.findOne({
-        name: { $regex: new RegExp(`^${cleanSlug.replace(/-/g, " ")}$`, "i") },
+        name: { $regex: new RegExp(`^${escapeRegExp(cleanSlug.replace(/-/g, " "))}$`, "i") },
         isPublished: true,
       }).lean();
 

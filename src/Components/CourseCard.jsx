@@ -4,6 +4,9 @@ import Link from "next/link";
 
 const CourseCard = ({ course, onClick, showFees = true }) => {
   const displayFees = course.fees || course.audfees || course.inrfees;
+  const courseHref = course.slug
+    ? `/${course.slug}`
+    : course.pathname || `/${(course.name || "").toLowerCase().replace(/\s+/g, "-")}`;
 
   return (
     <div
@@ -27,7 +30,7 @@ const CourseCard = ({ course, onClick, showFees = true }) => {
             )}
           </div>
         </div>
-        <Link href={`/${course.name.toLowerCase().replace(/\s+/g, '-')}`} className="mt-4 block w-full">
+        <Link href={courseHref} className="mt-4 block w-full">
           <button
             className="px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7] cursor-pointer"
           >

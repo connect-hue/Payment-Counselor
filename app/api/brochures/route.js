@@ -6,6 +6,10 @@ import { getSiteSettings } from "@/src/utils/siteSettings";
 
 export const dynamic = "force-dynamic";
 
+function escapeRegExp(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 export async function GET(request) {
   try {
     await connectDB();
@@ -19,19 +23,20 @@ export async function GET(request) {
     const query = { isPublished: true };
 
     if (category && category.toLowerCase() !== "all") {
-      query.category = { $regex: new RegExp(`^${category}$`, "i") };
+      query.category = { $regex: new RegExp(`^${escapeRegExp(category)}$`, "i") };
     }
 
     if (location && location.toLowerCase() !== "all") {
-      query.location = { $regex: new RegExp(`^${location}$`, "i") };
+      query.location = { $regex: new RegExp(`^${escapeRegExp(location)}$`, "i") };
     }
 
     if (search) {
+      const safeSearch = escapeRegExp(search);
       query.$or = [
-        { name: { $regex: search, $options: "i" } },
-        { description: { $regex: search, $options: "i" } },
-        { category: { $regex: search, $options: "i" } },
-        { location: { $regex: search, $options: "i" } },
+        { name: { $regex: safeSearch, $options: "i" } },
+        { description: { $regex: safeSearch, $options: "i" } },
+        { category: { $regex: safeSearch, $options: "i" } },
+        { location: { $regex: safeSearch, $options: "i" } },
       ];
     }
 
