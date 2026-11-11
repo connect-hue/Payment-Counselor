@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const filterData = [
   { name: "Pharmacist", img: "/Assets/pharmacist.jpg" },
@@ -14,12 +14,6 @@ const filterData = [
   { name: "Other Professionals", img: "/Assets/healthcare.webp" },
 ];
 const FilterSection = () => {
-  const router = useRouter();
-
-  const handlePreviewClick = (name) => {
-    router.push(`/preview/${encodeURIComponent(name)}`);
-  };
-
   return (
     <div className="h-full p-8 mt-20 ">
       <h1 className="text-center text-3xl font-semibold">Our Courses</h1>
@@ -27,7 +21,7 @@ const FilterSection = () => {
         {filterData.map((data, index) => (
           <div
             key={index}
-            className="w-full h-full border border-[#00D9B7] flex flex-col justify-between"
+            className="w-full h-full border border-[#00D9B7] flex flex-col justify-between transition-shadow duration-200 hover:shadow-md"
           >
             <div className="p-4 flex flex-col h-full justify-between">
               <div>
@@ -41,12 +35,12 @@ const FilterSection = () => {
                     style={{ fontFamily: "'Poppins', sans-serif" }}>{data.name}</h5>
                 </div>
               </div>
-              <button
-                className="mt-4 px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7] cursor-pointer"
-                onClick={() => handlePreviewClick(data.name)}
+              <Link
+                href={`/preview/${encodeURIComponent(data.name)}`}
+                className="mt-4 px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00c4a5] transition-colors text-center block cursor-pointer"
               >
                 Preview
-              </button>
+              </Link>
             </div>
           </div>
         ))}

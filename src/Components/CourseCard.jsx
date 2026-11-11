@@ -10,7 +10,7 @@ const CourseCard = ({ course, onClick, showFees = true }) => {
 
   return (
     <div
-      className="w-full h-full border border-[#00D9B7] flex flex-col justify-between">
+      className="w-full h-full border border-[#00D9B7] flex flex-col justify-between transition-shadow duration-200 hover:shadow-md">
       <div className="p-4 flex flex-col h-full justify-between">
         <div>
           <img src={course.brochure} alt={course.name}
@@ -32,7 +32,7 @@ const CourseCard = ({ course, onClick, showFees = true }) => {
         </div>
         <Link href={courseHref} className="mt-4 block w-full">
           <button
-            className="px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00D9B7] cursor-pointer"
+            className="px-4 py-2 w-full bg-[#00D9B7] font-semibold text-[#030A21] text-sm sm:text-base rounded-md hover:bg-[#00c4a5] transition-colors cursor-pointer"
           >
             Preview
           </button>

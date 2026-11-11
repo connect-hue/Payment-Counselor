@@ -540,11 +540,13 @@ const Filter = ({
   }, [initialShowFees, initialCourses, hasServerData]);
 
   useEffect(() => {
+    if (hasServerData) {
+      return;
+    }
+
     let active = true;
     const fetchCategoryBrochures = async () => {
-      if (!hasServerData) {
-        setLoading(true);
-      }
+      setLoading(true);
       try {
         const settingsPromise = fetch("/api/settings", { cache: "no-store" });
         const brochuresPromise = name

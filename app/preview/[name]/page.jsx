@@ -13,7 +13,6 @@ function escapeRegExp(str) {
 
 async function getCategoryPageData(rawName) {
   const categoryName = decodeURIComponent(rawName || "");
-  const { showFees } = await getSiteSettings();
 
   try {
     await connectDB();
@@ -24,9 +23,10 @@ async function getCategoryPageData(rawName) {
       query.category = { $regex: new RegExp(`^${escapeRegExp(categoryName)}$`, "i") };
     }
 
-    const docs = await Brochure.find(query)
-      .sort({ sortOrder: 1, createdAt: -1 })
-      .lean();
+    const [{ showFees }, docs] = await Promise.all([
+      getSiteSettings(),
+      Brochure.find(query).sort({ sortOrder: 1, createdAt: -1 }).lean(),
+    ]);
 
     const initialCourses = docs.map((item) => {
       const plain = JSON.parse(JSON.stringify(item));
@@ -49,7 +49,7 @@ async function getCategoryPageData(rawName) {
     return {
       initialCourses: null,
       hasServerData: false,
-      showFees,
+      showFees: true,
     };
   }
 }

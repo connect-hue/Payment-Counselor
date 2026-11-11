@@ -532,25 +532,42 @@ export const initialBrochuresData = [
 
 /**
  * Automatically seeds default brochures if the collection is empty.
+ * Cached in-process after first verification to avoid running countDocuments() on every request.
  */
 export async function ensureBrochuresSeeded() {
-  await connectDB();
-  const count = await Brochure.countDocuments();
-  if (count === 0) {
-    console.log("Seeding initial brochures data...");
-    const docs = initialBrochuresData.map((item, index) => {
-      const slug = (item.pathname ? item.pathname.replace(/^\//, "") : slugify(item.name)) || `course-${index + 1}`;
-      return {
-        ...item,
-        slug,
-        isPublished: true,
-        sortOrder: item.sortOrder || index + 1,
-        createdByName: "System Seed",
-        updatedByName: "System Seed",
-      };
-    });
-
-    await Brochure.insertMany(docs);
-    console.log(`Successfully seeded ${docs.length} brochures!`);
+  if (global.__brochuresSeeded) {
+    return;
   }
+
+  if (!global.__brochuresSeedPromise) {
+    global.__brochuresSeedPromise = (async () => {
+      await connectDB();
+      const count = await Brochure.countDocuments();
+      if (count === 0) {
+        console.log("Seeding initial brochures data...");
+        const docs = initialBrochuresData.map((item, index) => {
+          const slug =
+            (item.pathname ? item.pathname.replace(/^\//, "") : slugify(item.name)) ||
+            `course-${index + 1}`;
+          return {
+            ...item,
+            slug,
+            isPublished: true,
+            sortOrder: item.sortOrder || index + 1,
+            createdByName: "System Seed",
+            updatedByName: "System Seed",
+          };
+        });
+
+        await Brochure.insertMany(docs);
+        console.log(`Successfully seeded ${docs.length} brochures!`);
+      }
+      global.__brochuresSeeded = true;
+    })().catch((err) => {
+      global.__brochuresSeedPromise = null;
+      throw err;
+    });
+  }
+
+  return global.__brochuresSeedPromise;
 }

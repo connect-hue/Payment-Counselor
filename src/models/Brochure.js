@@ -124,6 +124,7 @@ const brochureSchema = new mongoose.Schema(
 
 brochureSchema.index({ category: 1, location: 1 });
 brochureSchema.index({ isPublished: 1, sortOrder: 1 });
+brochureSchema.index({ pathname: 1 });
 
 const Brochure = mongoose.models.Brochure || mongoose.model("Brochure", brochureSchema);
 

@@ -527,11 +527,13 @@ function CourseDetailsPage({
     }, [initialShowFees, initialCourse, hasServerData, isUnavailable]);
 
     useEffect(() => {
+        if (hasServerData) {
+            return;
+        }
+
         let active = true;
         const fetchCourseAndSettings = async () => {
-            if (!hasServerData) {
-                setLoading(true);
-            }
+            setLoading(true);
             try {
                 const settingsPromise = fetch("/api/settings", { cache: "no-store" });
                 const coursePromise = normalizedPath

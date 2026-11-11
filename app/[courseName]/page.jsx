@@ -11,7 +11,6 @@ function escapeRegExp(str) {
 }
 
 async function getCoursePageData(rawCourseName) {
-  const { showFees } = await getSiteSettings();
   const cleanSlug = decodeURIComponent(rawCourseName || "")
     .toLowerCase()
     .replace(/^\//, "");
@@ -22,7 +21,7 @@ async function getCoursePageData(rawCourseName) {
       initialCourse: null,
       hasServerData: true,
       isUnavailable: true,
-      showFees,
+      showFees: true,
     };
   }
 
@@ -30,13 +29,18 @@ async function getCoursePageData(rawCourseName) {
     await connectDB();
     await ensureBrochuresSeeded();
 
-    let brochure = await Brochure.findOne({
-      $or: [
-        { slug: cleanSlug },
-        { pathname: cleanPath },
-        { pathname: cleanSlug },
-      ],
-    }).lean();
+    const [{ showFees }, primaryMatch] = await Promise.all([
+      getSiteSettings(),
+      Brochure.findOne({
+        $or: [
+          { slug: cleanSlug },
+          { pathname: cleanPath },
+          { pathname: cleanSlug },
+        ],
+      }).lean(),
+    ]);
+
+    let brochure = primaryMatch;
 
     if (!brochure) {
       brochure = await Brochure.findOne({
@@ -68,7 +72,7 @@ async function getCoursePageData(rawCourseName) {
       initialCourse: null,
       hasServerData: false,
       isUnavailable: false,
-      showFees,
+      showFees: true,
     };
   }
 }
