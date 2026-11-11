@@ -2,14 +2,18 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
-    const isProduction = process.env.NODE_ENV === "production";
-    const cookieDomain = process.env.COOKIE_DOMAIN || "";
+    const forwardedProto = request.headers.get("x-forwarded-proto") || "";
+    const isHttps =
+      forwardedProto.split(",")[0].trim() === "https" ||
+      request.url.startsWith("https://");
+    const requestHost = (request.headers.get("host") || "").split(":")[0].toLowerCase();
+    const cookieDomain = (process.env.COOKIE_DOMAIN || "").trim().toLowerCase();
 
-    let cookieString = `token=; HttpOnly; Path=/; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=${isProduction ? "None" : "Lax"}`;
-    if (isProduction) {
+    let cookieString = `token=; HttpOnly; Path=/; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=${isHttps ? "None" : "Lax"}`;
+    if (isHttps) {
       cookieString += "; Secure";
     }
-    if (cookieDomain && cookieDomain !== "localhost") {
+    if (cookieDomain && cookieDomain !== "localhost" && requestHost.endsWith(cookieDomain)) {
       cookieString += `; Domain=${cookieDomain}`;
     }
 

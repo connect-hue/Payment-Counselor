@@ -1,6 +1,6 @@
 import React from "react";
 
-const CourseDetails = ({ course, onClose }) => {
+const CourseDetails = ({ course, onClose, showFees = true }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded-lg w-1/2 shadow-lg relative">
@@ -9,7 +9,9 @@ const CourseDetails = ({ course, onClose }) => {
         </button>
         <h2 className="text-2xl font-bold">{course.name}</h2>
         <p className="mt-2">{course.description}</p>
-        <p className="mt-2"><strong>Fees:</strong> {course.fees}</p>
+        {showFees && (
+          <p className="mt-2"><strong>Fees:</strong> {course.fees || course.audfees || course.inrfees}</p>
+        )}
         <p className="mt-2"><strong>Students:</strong> {course.students}</p>
       </div>
     </div>

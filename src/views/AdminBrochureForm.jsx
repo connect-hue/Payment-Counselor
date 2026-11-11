@@ -76,13 +76,19 @@ const AdminBrochureForm = () => {
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState("");
   const [lastEditedBy, setLastEditedBy] = useState("");
+  const [showFees, setShowFees] = useState(true);
+  const [togglingFees, setTogglingFees] = useState(false);
 
   // Fetch admin session & existing brochure data if editing
   useEffect(() => {
     const init = async () => {
       try {
-        const sessionData = await apiClient.get("/api/admin/auth/me");
+        const [sessionData, settingsData] = await Promise.all([
+          apiClient.get("/api/admin/auth/me"),
+          apiClient.get("/api/admin/settings").catch(() => ({ showFees: true })),
+        ]);
         setAdmin(sessionData.admin);
+        setShowFees(settingsData?.showFees !== false);
 
         if (isEditMode) {
           setFetching(true);
@@ -126,7 +132,12 @@ const AdminBrochureForm = () => {
         }
       } catch (err) {
         console.error(err);
-        if (err.message?.includes("Authentication required")) {
+        if (
+          err.message?.includes("Authentication required") ||
+          err.message?.includes("Session expired") ||
+          err.message?.includes("Administrator account not found") ||
+          err.message?.includes("Account is inactive")
+        ) {
           router.push("/admin/login");
         } else {
           setError(err.message || "Failed to load brochure details.");
@@ -173,6 +184,21 @@ const AdminBrochureForm = () => {
         return;
       }
       setBrochurePdfFile(file);
+    }
+  };
+
+  const handleToggleFees = async () => {
+    if (togglingFees) return;
+    try {
+      setTogglingFees(true);
+      const updated = await apiClient.patch("/api/admin/settings", {
+        showFees: !showFees,
+      });
+      setShowFees(updated?.showFees !== false);
+    } catch (err) {
+      alert("Failed to update fees visibility: " + err.message);
+    } finally {
+      setTogglingFees(false);
     }
   };
 
@@ -437,10 +463,32 @@ const AdminBrochureForm = () => {
 
             {/* 2. Fees & Program Details Card */}
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-xs space-y-5">
-              <h3 className="text-base font-bold text-[#030A21] border-b border-gray-100 pb-3 flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-teal-50 text-[#00D9B7] flex items-center justify-center text-xs font-bold">2</span>
-                Pricing & Program Specifications
-              </h3>
+              <div className="border-b border-gray-100 pb-3 flex flex-wrap items-center justify-between gap-2">
+                <h3 className="text-base font-bold text-[#030A21] flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-teal-50 text-[#00D9B7] flex items-center justify-center text-xs font-bold">2</span>
+                  Pricing & Program Specifications
+                </h3>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={showFees}
+                  onClick={handleToggleFees}
+                  disabled={togglingFees}
+                  className={`inline-flex items-center gap-2 px-2.5 py-1 rounded-md text-xs font-semibold border transition-colors cursor-pointer disabled:opacity-50 ${
+                    showFees
+                      ? "bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100"
+                      : "bg-amber-50 text-amber-900 border-amber-300 hover:bg-amber-100"
+                  }`}
+                >
+                  <span>{togglingFees ? "Updating..." : showFees ? "Fees Cards: ON" : "Fees Cards: OFF"}</span>
+                </button>
+              </div>
+
+              {!showFees && (
+                <div className="bg-amber-50 border border-amber-200 text-amber-900 px-3 py-2 rounded-lg text-xs">
+                  Fees cards are currently switched <strong>OFF</strong> globally. You can still store or edit fee values below, and they will appear once switched back ON.
+                </div>
+              )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* AUD Fees */}
@@ -768,7 +816,7 @@ const AdminBrochureForm = () => {
                       >
                         📍 {category === "Custom" ? customLocation || "Location" : location}
                       </span>
-                      {(audfees || inrfees) && (
+                      {showFees && (audfees || inrfees) && (
                         <span
                           className="text-gray-700 px-2 py-1 rounded font-medium"
                           style={{ background: "rgba(153, 246, 228, 0.4)" }}

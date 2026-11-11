@@ -50,14 +50,18 @@ export async function POST(request) {
     );
 
     // Cookie configuration
-    const isProduction = process.env.NODE_ENV === "production";
-    const cookieDomain = process.env.COOKIE_DOMAIN || "";
-    
-    let cookieString = `token=${token}; HttpOnly; Path=/; Max-Age=${7 * 24 * 60 * 60}; SameSite=${isProduction ? "None" : "Lax"}`;
-    if (isProduction) {
+    const forwardedProto = request.headers.get("x-forwarded-proto") || "";
+    const isHttps =
+      forwardedProto.split(",")[0].trim() === "https" ||
+      request.url.startsWith("https://");
+    const requestHost = (request.headers.get("host") || "").split(":")[0].toLowerCase();
+    const cookieDomain = (process.env.COOKIE_DOMAIN || "").trim().toLowerCase();
+
+    let cookieString = `token=${token}; HttpOnly; Path=/; Max-Age=${7 * 24 * 60 * 60}; SameSite=${isHttps ? "None" : "Lax"}`;
+    if (isHttps) {
       cookieString += "; Secure";
     }
-    if (cookieDomain && cookieDomain !== "localhost") {
+    if (cookieDomain && cookieDomain !== "localhost" && requestHost.endsWith(cookieDomain)) {
       cookieString += `; Domain=${cookieDomain}`;
     }
 

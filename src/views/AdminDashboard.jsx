@@ -41,7 +41,12 @@ const AdminDashboard = () => {
       setError("");
     } catch (err) {
       console.error(err);
-      if (err.message.includes("Authentication required") || err.message.includes("Session expired")) {
+      if (
+        err.message.includes("Authentication required") ||
+        err.message.includes("Session expired") ||
+        err.message.includes("Administrator account not found") ||
+        err.message.includes("Account is inactive")
+      ) {
         router.push("/admin/login");
       } else {
         setError(err.message || "Failed to load placements dashboard.");

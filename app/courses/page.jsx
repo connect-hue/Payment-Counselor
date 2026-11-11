@@ -1,9 +1,11 @@
-"use client";
-
 import CourseList from "@/src/Components/CourseList";
+import { getSiteSettings } from "@/src/utils/siteSettings";
 
-export default function CoursesPage() {
+export const dynamic = "force-dynamic";
+
+export default async function CoursesPage() {
+  const { showFees } = await getSiteSettings();
   return (
-    <CourseList courses={[]} />
+    <CourseList courses={[]} showFees={showFees} />
   );
 }

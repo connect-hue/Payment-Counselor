@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/src/utils/db";
 import Brochure from "@/src/models/Brochure";
 import { ensureBrochuresSeeded } from "@/src/data/defaultBrochures";
+import { getSiteSettings } from "@/src/utils/siteSettings";
 
 export const dynamic = "force-dynamic";
 
@@ -34,12 +35,23 @@ export async function GET(request) {
       ];
     }
 
-    const brochures = await Brochure.find(query).sort({ sortOrder: 1, createdAt: -1 });
+    const [brochures, { showFees }] = await Promise.all([
+      Brochure.find(query).sort({ sortOrder: 1, createdAt: -1 }).lean(),
+      getSiteSettings(),
+    ]);
 
-    return NextResponse.json(brochures, {
+    const responseData = showFees
+      ? brochures
+      : brochures.map((item) => ({
+          ...item,
+          audfees: "",
+          inrfees: "",
+        }));
+
+    return NextResponse.json(responseData, {
       status: 200,
       headers: {
-        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+        "Cache-Control": "no-store, max-age=0",
       },
     });
   } catch (error) {

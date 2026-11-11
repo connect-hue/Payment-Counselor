@@ -30,6 +30,11 @@ const AdminBrochuresDashboard = () => {
   // Sync state
   const [syncing, setSyncing] = useState(false);
 
+  // Global Fees Visibility state
+  const [showFees, setShowFees] = useState(true);
+  const [settingsLoading, setSettingsLoading] = useState(true);
+  const [togglingFees, setTogglingFees] = useState(false);
+
   const router = useRouter();
 
   const fetchSessionAndBrochures = async () => {
@@ -50,7 +55,12 @@ const AdminBrochuresDashboard = () => {
       setError("");
     } catch (err) {
       console.error(err);
-      if (err.message.includes("Authentication required") || err.message.includes("Session expired")) {
+      if (
+        err.message.includes("Authentication required") ||
+        err.message.includes("Session expired") ||
+        err.message.includes("Administrator account not found") ||
+        err.message.includes("Account is inactive")
+      ) {
         router.push("/admin/login");
       } else {
         setError(err.message || "Failed to load brochures dashboard.");
@@ -63,6 +73,37 @@ const AdminBrochuresDashboard = () => {
   useEffect(() => {
     fetchSessionAndBrochures();
   }, [search, statusFilter, categoryFilter, locationFilter]);
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        setSettingsLoading(true);
+        const settingsData = await apiClient.get("/api/admin/settings");
+        setShowFees(settingsData?.showFees !== false);
+      } catch (err) {
+        console.error("Failed to fetch site settings:", err);
+      } finally {
+        setSettingsLoading(false);
+      }
+    };
+    fetchSettings();
+  }, []);
+
+  const handleToggleFees = async () => {
+    if (togglingFees) return;
+    const nextValue = !showFees;
+    try {
+      setTogglingFees(true);
+      const updated = await apiClient.patch("/api/admin/settings", {
+        showFees: nextValue,
+      });
+      setShowFees(updated?.showFees !== false);
+    } catch (err) {
+      alert("Failed to update fees visibility: " + err.message);
+    } finally {
+      setTogglingFees(false);
+    }
+  };
 
   const handleTogglePublish = async (id, currentStatus) => {
     try {
@@ -156,6 +197,43 @@ const AdminBrochuresDashboard = () => {
 
           <div className="flex flex-wrap items-center gap-3">
             <button
+              type="button"
+              role="switch"
+              aria-checked={showFees}
+              onClick={handleToggleFees}
+              disabled={settingsLoading || togglingFees}
+              className={`inline-flex items-center gap-2.5 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold border transition-all cursor-pointer disabled:opacity-50 ${
+                showFees
+                  ? "bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100"
+                  : "bg-amber-50 text-amber-900 border-amber-300 hover:bg-amber-100"
+              }`}
+              title={
+                showFees
+                  ? "Fees cards are visible on all brochures. Click to hide."
+                  : "Fees cards are hidden on all brochures. Click to show."
+              }
+            >
+              <span>
+                {togglingFees
+                  ? "Updating..."
+                  : showFees
+                  ? "Fees Cards: ON"
+                  : "Fees Cards: OFF"}
+              </span>
+              <span
+                className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
+                  showFees ? "bg-emerald-500" : "bg-gray-400"
+                }`}
+              >
+                <span
+                  className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white shadow-xs transition-transform ${
+                    showFees ? "translate-x-[18px]" : "translate-x-[3px]"
+                  }`}
+                />
+              </span>
+            </button>
+
+            <button
               onClick={handleSyncDefaults}
               disabled={syncing}
               className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300 transition-colors disabled:opacity-50"
@@ -178,6 +256,25 @@ const AdminBrochuresDashboard = () => {
             </button>
           </div>
         </div>
+
+        {!settingsLoading && !showFees && (
+          <div className="bg-amber-50 border border-amber-200 text-amber-900 px-4 py-3 rounded-xl mb-6 text-xs sm:text-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <span className="inline-block w-2 h-2 rounded-full bg-amber-500 shrink-0" />
+              <span>
+                <strong>Fees Cards Hidden:</strong> All fees cards and fee badges are currently hidden across every public brochure.
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={handleToggleFees}
+              disabled={togglingFees}
+              className="self-start sm:self-auto px-3 py-1 bg-amber-600 text-white rounded-md text-xs font-semibold hover:bg-amber-700 transition-colors cursor-pointer disabled:opacity-50"
+            >
+              {togglingFees ? "Updating..." : "Show Fees Cards"}
+            </button>
+          </div>
+        )}
 
         {/* Metric Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -465,14 +562,19 @@ const AdminBrochuresDashboard = () => {
                         <td className="px-4 py-4 whitespace-nowrap text-xs">
                           <div className="space-y-0.5">
                             {item.audfees && (
-                              <div className="font-semibold text-gray-900">
+                              <div className={`font-semibold ${showFees ? "text-gray-900" : "text-gray-400"}`}>
                                 {item.audfees}
                               </div>
                             )}
                             {item.inrfees && (
-                              <div className="text-gray-600">
+                              <div className={showFees ? "text-gray-600" : "text-gray-400"}>
                                 {item.inrfees}
                               </div>
+                            )}
+                            {!settingsLoading && !showFees && (item.audfees || item.inrfees) && (
+                              <span className="inline-block px-1.5 py-0.5 rounded text-[10px] font-medium bg-amber-100 text-amber-800">
+                                Hidden on site
+                              </span>
                             )}
                             <div className="text-gray-500 text-[11px]">
                               ⏱ {item.duration || "4 Months"} • 👥 {item.students || "1000+"}
@@ -605,12 +707,20 @@ const AdminBrochuresDashboard = () => {
 
                   <div className="grid grid-cols-2 gap-2 mt-4 text-xs">
                     <div className="bg-gray-50 p-2 rounded-lg">
-                      <span className="text-gray-400 block">AUD Fees</span>
-                      <span className="font-semibold text-gray-800">{previewBrochure.audfees || "N/A"}</span>
+                      <span className="text-gray-400 block">
+                        AUD Fees {!showFees && "(Hidden)"}
+                      </span>
+                      <span className={`font-semibold ${showFees ? "text-gray-800" : "text-gray-400"}`}>
+                        {previewBrochure.audfees || "N/A"}
+                      </span>
                     </div>
                     <div className="bg-gray-50 p-2 rounded-lg">
-                      <span className="text-gray-400 block">INR Fees</span>
-                      <span className="font-semibold text-gray-800">{previewBrochure.inrfees || "N/A"}</span>
+                      <span className="text-gray-400 block">
+                        INR Fees {!showFees && "(Hidden)"}
+                      </span>
+                      <span className={`font-semibold ${showFees ? "text-gray-800" : "text-gray-400"}`}>
+                        {previewBrochure.inrfees || "N/A"}
+                      </span>
                     </div>
                     <div className="bg-gray-50 p-2 rounded-lg">
                       <span className="text-gray-400 block">Duration</span>

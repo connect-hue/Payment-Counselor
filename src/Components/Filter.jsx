@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { useRouter, useParams, usePathname, useSearchParams } from "next/navigation";
 import SearchBar from "./SearchBar";
@@ -515,23 +517,42 @@ const coursesObject = {
   ]
 };
 
-const Filter = () => {
+const Filter = ({ initialShowFees = true }) => {
   const params = useParams();
   const name = decodeURIComponent(params.name || "");
   const [apiCourses, setApiCourses] = useState(null);
+  const [showFees, setShowFees] = useState(initialShowFees);
 
   useEffect(() => {
-    if (!name) return;
+    let active = true;
     const fetchCategoryBrochures = async () => {
       try {
-        const res = await fetch(`/api/brochures?category=${encodeURIComponent(name)}`);
-        if (res.ok) {
-          const list = await res.json();
-          if (Array.isArray(list) && list.length > 0) {
+        const settingsPromise = fetch("/api/settings", { cache: "no-store" });
+        const brochuresPromise = name
+          ? fetch(`/api/brochures?category=${encodeURIComponent(name)}`, { cache: "no-store" })
+          : Promise.resolve(null);
+
+        const [settingsRes, brochuresRes] = await Promise.all([
+          settingsPromise,
+          brochuresPromise,
+        ]);
+
+        let currentShowFees = showFees;
+        if (settingsRes?.ok) {
+          const settingsData = await settingsRes.json();
+          if (typeof settingsData?.showFees === "boolean") {
+            currentShowFees = settingsData.showFees;
+            if (active) setShowFees(currentShowFees);
+          }
+        }
+
+        if (brochuresRes?.ok) {
+          const list = await brochuresRes.json();
+          if (Array.isArray(list) && list.length > 0 && active) {
             const formatted = list.map((item) => ({
               ...item,
               brochure: formatS3Url(item.brochure),
-              fees: item.audfees || item.inrfees || "Contact for fees",
+              fees: currentShowFees ? (item.audfees || item.inrfees || "Contact for fees") : "",
             }));
             setApiCourses(formatted);
           }
@@ -541,6 +562,9 @@ const Filter = () => {
       }
     };
     fetchCategoryBrochures();
+    return () => {
+      active = false;
+    };
   }, [name]);
 
   const fallbackCourses = coursesObject[name] || [];
@@ -625,7 +649,7 @@ const Filter = () => {
           ))}
         </div>
       )}
-      <CourseList courses={filteredCourses} />
+      <CourseList courses={filteredCourses} showFees={showFees} />
     </>
   );
 };
